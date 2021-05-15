@@ -44,6 +44,22 @@ Result: <br />
 ## Giving styles
 I tried not to add a lot styles to let free to devs, and i added classNames to components to you take that and give styles. I named classes starting to * rnr- * (rnr like 'React-Notion-Render') and the notion name of component / style. Then i go to list the name of classNames and their reference. This classes not has styles, for that should be easy to you give styles.
 
+##### Components
+
+| ClassName          | Notion Reference    | HTML Tag                                         |
+| ------------------ | ------------------- | ------------------------------------------------ |
+| rnr-heading_1 | Heading 1 | h1 |
+| rnr-heading_2 | Heading 2 | h2 |
+| rnr-heading_3 | Heading 3 | h3 |
+| rnr-paragraph | Paragraph | p |
+| rnr-to_do | To-do List | ul |
+| rnr-bulleted_list_item | Bulleted List | ul |
+| rnr-numbered_list_item | Numered List | ol |
+| rnr-toggle | Toggle List | ul |
+
+#### Text Styles
+
+
 ## Upgrades / TO DO:
  - Give default styles for text variants (underline, colors, bold, etc)
  - Add more list styles(numerated and toggle lists)
