@@ -20,6 +20,9 @@ export default function getBlocksToRender(blocks: Block[]): ParsedBlock[] {
   const cleanBlocks = blocks.filter(
     (block) => block.type !== blockEnum.UNSUPPORTED
   )
+
+  if (!cleanBlocks.length) return []
+
   const returnBlocks: ParsedBlock[] = []
 
   for (let i = 0; i < cleanBlocks.length; i++) {
