@@ -76,6 +76,7 @@ For the colors, that classes are generated like other classes, 'rnr-NAME_COLOR',
 ![image](https://user-images.githubusercontent.com/38046239/118379410-867ad300-b5b0-11eb-8068-b832c5c134c7.png)
 
 ## Upgrades / TO DO:
+ - Support links on Text Component
  - Give default styles for text variants (underline, colors, bold, etc)
  - Add more list styles(numerated and toggle lists)
  - Improve default styles
