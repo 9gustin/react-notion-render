@@ -42,6 +42,10 @@ Result: <br />
 ![image](https://user-images.githubusercontent.com/38046239/118378677-c3909680-b5ab-11eb-8d80-2ad2afcc663c.png)
 
 ## Giving styles
+To give styles yo may activate a second param of *render* method. That generate classes to all components and text styles.
+```tsx
+render(mockedData.results, true)
+```
 I tried not to add a lot styles to let free to devs, and i added classNames to components to you take that and give styles. I named classes starting to * rnr- * (rnr like 'React-Notion-Render') and the notion name of component / style. Then i go to list the name of classNames and their reference. This classes not has styles, for that should be easy to you give styles.
 
 ##### Components
@@ -58,7 +62,18 @@ I tried not to add a lot styles to let free to devs, and i added classNames to c
 | rnr-toggle | Toggle List | ul |
 
 #### Text Styles
+Now i not give any styles fot that classes <br />
+| ClassName          | Notion Reference    |
+| ------------------ | ------------------- | 
+| rnr-bold | Bold |
+| rnr-italic | Italicize |
+| rnr-strikethrough | Strike Through |
+| rnr-underline | Underline |
 
+#### Text colors
+Now i not give any styles fot that classes. <br />
+For the colors, that classes are generated like other classes, 'rnr-NAME_COLOR', then NAME_COLOR are taked from notion dropdown into lower case. Like 'rnr-blue', 'rnr-red'. <br />
+![image](https://user-images.githubusercontent.com/38046239/118379410-867ad300-b5b0-11eb-8068-b832c5c134c7.png)
 
 ## Upgrades / TO DO:
  - Give default styles for text variants (underline, colors, bold, etc)
