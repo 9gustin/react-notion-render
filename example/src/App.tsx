@@ -1,10 +1,12 @@
 import React from 'react'
 
-import { Heading1 } from '@9gustin/react-notion-render'
+import render from '@9gustin/react-notion-render'
 import '@9gustin/react-notion-render/dist/index.css'
 
+import mockedData from './mockedData.json'
+
 const App = () => {
-  return <Heading1 />
+  return <div>{render(mockedData.results)}</div>
 }
 
 export default App
