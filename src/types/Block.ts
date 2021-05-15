@@ -33,5 +33,7 @@ export default interface Block {
 export interface ParsedBlock {
   id: id
   type: blockEnum
-  render: React.ReactNode
+  block?: Block
+  items?: Block[]
+  render?: React.ReactNode
 }

@@ -4,13 +4,12 @@ import Heading2 from '../components/Heading2'
 import Heading3 from '../components/Heading3'
 import List from '../components/List'
 import Paragraph from '../components/Paragraph'
-import Block, { ParsedBlock } from '../types/Block'
+import { ParsedBlock } from '../types/Block'
 import { blockEnum } from '../types/BlockTypes'
 
-export function parseBlocks(blocks: Block[]): ParsedBlock[] {
+export function parseBlocks(blocks: ParsedBlock[]): ParsedBlock[] {
   return blocks.map((block) => ({
-    id: block.id,
-    type: blockEnum[block.type],
+    ...block,
     render: parseBlock(block)
   }))
 }
@@ -23,7 +22,7 @@ type Component =
   | typeof Paragraph
   | null
 
-function parseBlock(block: Block): React.ReactNode {
+function parseBlock(block: ParsedBlock): React.ReactNode {
   let Component: Component = null
 
   switch (block.type) {
@@ -51,5 +50,5 @@ function parseBlock(block: Block): React.ReactNode {
     }
   }
 
-  return Component ? <Component {...block} /> : ''
+  return Component ? <Component key={block.id} {...block} /> : ''
 }
