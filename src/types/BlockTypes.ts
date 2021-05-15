@@ -1,4 +1,4 @@
- export enum blockTypes {
+export enum blockTypes {
   HEADING1 = 'heading_1',
   HEADING2 = 'heading_2',
   HEADING3 = 'heading_3',
