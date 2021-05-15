@@ -1,5 +1,6 @@
 // TODO: Numeric, dots, checks, toggle
 import React from 'react'
+import withContentValidation from '../withContentValidation'
 
 function List() {
   return (
@@ -10,4 +11,4 @@ function List() {
   )
 }
 
-export default List
+export default withContentValidation(List)
