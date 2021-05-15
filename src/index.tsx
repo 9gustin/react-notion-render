@@ -3,9 +3,11 @@ import Heading2 from './components/Heading2'
 import Heading3 from './components/Heading3'
 import List from './components/List'
 import Paragraph from './components/Paragraph'
+import { parseBlocks } from './utils/parseBlocks'
 import renderBlocks from './utils/renderBlocks'
 
 // Components
 export { Heading1, Heading2, Heading3, Paragraph, List }
 
-export default renderBlocks
+// Utils
+export { renderBlocks as render, parseBlocks as parser }
