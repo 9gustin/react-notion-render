@@ -17,16 +17,19 @@ p {
   line-break: anywhere;
 }
 
-h1 {
+h1,
+h1 > * {
   font-size: var(--font-size-display-text);
   font-weight: var(--medium-weight);
 }
 
-h2 {
+h2,
+h2 > * {
   font-size: var(--font-size-title);
   font-weight: var(--medium-weight);
 }
 
-h3 {
+h3,
+h3 > * {
   font-size: var(--font-size-sub-title);
 }

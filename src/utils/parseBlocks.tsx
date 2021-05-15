@@ -7,10 +7,13 @@ import Paragraph from '../components/Paragraph'
 import { ParsedBlock } from '../types/Block'
 import { blockEnum } from '../types/BlockTypes'
 
-export function parseBlocks(blocks: ParsedBlock[]): ParsedBlock[] {
+export function parseBlocks(
+  blocks: ParsedBlock[],
+  withClassNames: boolean
+): ParsedBlock[] {
   return blocks.map((block) => ({
     ...block,
-    render: parseBlock(block)
+    render: parseBlock(block, withClassNames)
   }))
 }
 
@@ -22,7 +25,10 @@ type Component =
   | typeof Paragraph
   | null
 
-function parseBlock(block: ParsedBlock): React.ReactNode {
+function parseBlock(
+  block: ParsedBlock,
+  withClassNames: boolean
+): React.ReactNode {
   let Component: Component = null
 
   switch (block.type) {
@@ -50,5 +56,9 @@ function parseBlock(block: ParsedBlock): React.ReactNode {
     }
   }
 
-  return Component ? <Component key={block.id} {...block} /> : ''
+  return Component ? (
+    <Component key={block.id} withClassNames={withClassNames} {...block} />
+  ) : (
+    ''
+  )
 }
