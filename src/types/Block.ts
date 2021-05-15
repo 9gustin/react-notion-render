@@ -5,7 +5,7 @@ type blockObject = 'block' | 'database' | 'page'
 
 type id = string
 
-interface BlockTypeContent {
+export interface BlockTypeContent {
   text: Text[]
 }
 
@@ -36,4 +36,5 @@ export interface ParsedBlock {
   block?: Block
   items?: Block[]
   render?: React.ReactNode
+  children?: React.ReactNode
 }
