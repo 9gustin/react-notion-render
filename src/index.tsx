@@ -6,6 +6,8 @@ import Paragraph from './components/Paragraph'
 import { parseBlocks } from './utils/parseBlocks'
 import renderBlocks from './utils/renderBlocks'
 
+import './styles/index.css'
+
 // Components
 export { Heading1, Heading2, Heading3, Paragraph, List }
 

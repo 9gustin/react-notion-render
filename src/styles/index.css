@@ -1,0 +1,32 @@
+:root {
+  --font-size-display-text: 32px;
+  --font-size-title: 28px;
+  --font-size-sub-title: 22px;
+  --font-size-primary: 16px;
+
+  --normal-weight: 400;
+  --medium-weight: 500;
+}
+
+*{
+  font-size: var(--font-size-primary);
+  font-weight: var(--normal-weight);
+}
+
+p {
+  line-break: anywhere;
+}
+
+h1 {
+  font-size: var(--font-size-display-text);
+  font-weight: var(--medium-weight);
+}
+
+h2 {
+  font-size: var(--font-size-title);
+  font-weight: var(--medium-weight);
+}
+
+h3 {
+  font-size: var(--font-size-sub-title);
+}
