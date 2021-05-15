@@ -9,8 +9,7 @@ function withContentValidation<P extends object>(
   return (props: Block) => {
     if (
       props.type === blockEnum.UNSUPPORTED ||
-      !props[props.type] ||
-      props[props.type]?.text === []
+      !props[props.type]?.text.length
     ) {
       return null
     }
