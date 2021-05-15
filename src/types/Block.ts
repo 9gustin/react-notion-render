@@ -3,12 +3,14 @@ import Text from './Text'
 
 type blockObject = 'block' | 'database' | 'page'
 
+type id = string
+
 interface BlockTypeContent {
   text: Text[]
 }
 
 export default interface Block {
-  id: string
+  id: id
   type: blockTypes
   object: blockObject
   createdTime: Date
@@ -23,4 +25,10 @@ export default interface Block {
   [blockTypes.CHECK_LIST]: BlockTypeContent
   [blockTypes.TOGGLE_LIST]: BlockTypeContent
   [blockTypes.UNSUPPORTED]: {}
+}
+
+export interface ParsedBlock {
+  id: id
+  type: blockTypes
+  render: React.ReactNode
 }
