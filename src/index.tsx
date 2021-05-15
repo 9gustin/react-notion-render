@@ -1,10 +1,11 @@
-import * as React from 'react'
-import styles from './styles.module.css'
+import Heading1 from './components/Heading1'
+import Heading2 from './components/Heading2'
+import Heading3 from './components/Heading3'
+import List from './components/List'
+import Paragraph from './components/Paragraph'
+import renderBlocks from './utils/renderBlocks'
 
-interface Props {
-  text: string
-}
+// Components
+export { Heading1, Heading2, Heading3, Paragraph, List }
 
-export const ExampleComponent = ({ text }: Props) => {
-  return <div className={styles.test}>Example Component: {text}</div>
-}
+export default renderBlocks
