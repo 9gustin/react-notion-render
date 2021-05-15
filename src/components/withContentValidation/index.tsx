@@ -2,22 +2,26 @@ import React from 'react'
 
 import { ParsedBlock } from '../../types/Block'
 import { blockEnum } from '../../types/BlockTypes'
-import renderContent from '../../utils/renderContent'
+import StyledText from '../StyledText'
 
 function withContentValidation<P extends object>(
   Component: React.ComponentType<P>
 ): React.FC<P & ParsedBlock> {
   return (props: ParsedBlock) => {
-    if (
-      props.type === blockEnum.UNSUPPORTED ||
-      (!props.items && !props.block?.[props.type]?.text.length)
-    ) {
+    const typeContent =
+      props.type === blockEnum.UNSUPPORTED
+        ? undefined
+        : props.block?.[props.type]?.text
+
+    if (!typeContent && !props.items) {
       return null
     }
 
     return (
       <Component {...(props as P)}>
-        {renderContent(props.block?.[props.type])}
+        {typeContent?.map((text, i) => (
+          <StyledText key={i} {...text} />
+        ))}
       </Component>
     )
   }
