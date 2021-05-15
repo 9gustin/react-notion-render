@@ -1,12 +1,12 @@
 import React, { Fragment, useMemo } from 'react'
 import Block from '../types/Block'
-import { blockTypes } from '../types/BlockTypes'
+import { blockEnum } from '../types/BlockTypes'
 import { parseBlocks } from './parseBlocks'
 
 export default function renderBlocks(apiBlocks: Block[]): React.ReactNode {
   const blocks = useMemo(() => {
     return parseBlocks(
-      apiBlocks.filter((block) => block.type !== blockTypes.UNSUPPORTED)
+      apiBlocks.filter((block) => block.type !== blockEnum.UNSUPPORTED)
     )
   }, [apiBlocks])
 

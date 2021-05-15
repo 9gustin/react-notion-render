@@ -1,4 +1,4 @@
-import { blockTypes } from './BlockTypes'
+import { blockEnum } from './BlockTypes'
 import Text from './Text'
 
 type blockObject = 'block' | 'database' | 'page'
@@ -11,24 +11,27 @@ interface BlockTypeContent {
 
 export default interface Block {
   id: id
-  type: blockTypes
-  object: blockObject
-  createdTime: Date
-  lastEditedTime: Date
-  hasChildren: boolean
-  [blockTypes.HEADING1]: BlockTypeContent
-  [blockTypes.HEADING2]: BlockTypeContent
-  [blockTypes.HEADING3]: BlockTypeContent
-  [blockTypes.PARAGRAPH]: BlockTypeContent
-  [blockTypes.DOTS_LIST]: BlockTypeContent
-  [blockTypes.ENUM_LIST]: BlockTypeContent
-  [blockTypes.CHECK_LIST]: BlockTypeContent
-  [blockTypes.TOGGLE_LIST]: BlockTypeContent
-  [blockTypes.UNSUPPORTED]: {}
+  type: blockEnum | string
+  object: blockObject | string
+  // eslint-disable-next-line camelcase
+  created_time: Date | string
+  // eslint-disable-next-line camelcase
+  last_edited_time: Date | string
+  // eslint-disable-next-line camelcase
+  has_children: boolean
+  [blockEnum.HEADING1]?: BlockTypeContent
+  [blockEnum.HEADING2]?: BlockTypeContent
+  [blockEnum.HEADING3]?: BlockTypeContent
+  [blockEnum.PARAGRAPH]?: BlockTypeContent
+  [blockEnum.DOTS_LIST]?: BlockTypeContent
+  [blockEnum.ENUM_LIST]?: BlockTypeContent
+  [blockEnum.CHECK_LIST]?: BlockTypeContent
+  [blockEnum.TOGGLE_LIST]?: BlockTypeContent
+  [blockEnum.UNSUPPORTED]?: {}
 }
 
 export interface ParsedBlock {
   id: id
-  type: blockTypes
+  type: blockEnum
   render: React.ReactNode
 }

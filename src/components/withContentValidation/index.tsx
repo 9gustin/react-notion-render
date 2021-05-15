@@ -1,16 +1,16 @@
 import React from 'react'
 
 import Block from '../../types/Block'
-import { blockTypes } from '../../types/BlockTypes'
+import { blockEnum } from '../../types/BlockTypes'
 
 function withContentValidation<P extends object>(
   Component: React.ComponentType<P>
-): React.ReactNode {
+): React.FC<P & Block> {
   return (props: Block) => {
     if (
-      props.type === blockTypes.UNSUPPORTED ||
+      props.type === blockEnum.UNSUPPORTED ||
       !props[props.type] ||
-      props[props.type].text === []
+      props[props.type]?.text === []
     ) {
       return null
     }

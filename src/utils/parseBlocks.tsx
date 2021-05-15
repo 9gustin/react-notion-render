@@ -5,44 +5,51 @@ import Heading3 from '../components/Heading3'
 import List from '../components/List'
 import Paragraph from '../components/Paragraph'
 import Block, { ParsedBlock } from '../types/Block'
-import { blockTypes } from '../types/BlockTypes'
+import { blockEnum } from '../types/BlockTypes'
 
 export function parseBlocks(blocks: Block[]): ParsedBlock[] {
   return blocks.map((block) => ({
     id: block.id,
-    type: block.type,
+    type: blockEnum[block.type],
     render: parseBlock(block)
   }))
 }
 
+type Component =
+  | typeof Heading1
+  | typeof Heading2
+  | typeof Heading3
+  | typeof List
+  | typeof Paragraph
+  | null
+
 function parseBlock(block: Block): React.ReactNode {
+  let Component: Component = null
+
   switch (block.type) {
-    case blockTypes.HEADING1: {
-      return <Heading1 />
+    case blockEnum.HEADING1: {
+      Component = Heading1
+      break
     }
-    case blockTypes.HEADING2: {
-      return <Heading2 />
+    case blockEnum.HEADING2: {
+      Component = Heading2
+      break
     }
-    case blockTypes.HEADING3: {
-      return <Heading3 />
+    case blockEnum.HEADING3: {
+      Component = Heading3
+      break
     }
-    case blockTypes.PARAGRAPH: {
-      return <Paragraph />
+    case blockEnum.PARAGRAPH: {
+      Component = Paragraph
+      break
     }
-    case blockTypes.DOTS_LIST: {
-      return <List />
-    }
-    case blockTypes.ENUM_LIST: {
-      return <List />
-    }
-    case blockTypes.CHECK_LIST: {
-      return <List />
-    }
-    case blockTypes.TOGGLE_LIST: {
-      return <List />
-    }
-    default: {
-      return ''
+    case blockEnum.DOTS_LIST:
+    case blockEnum.ENUM_LIST:
+    case blockEnum.CHECK_LIST:
+    case blockEnum.TOGGLE_LIST: {
+      Component = List
     }
   }
+
+  return Component ? <Component {...block} /> : ''
 }

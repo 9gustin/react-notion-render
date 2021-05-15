@@ -1,4 +1,4 @@
-type textTypes = 'text'
+type textTypes = 'text' | string
 
 export default interface Text {
   type: textTypes
@@ -14,6 +14,7 @@ export default interface Text {
     code: boolean
     color: string
   }
-  plainText: string
+  // eslint-disable-next-line camelcase
+  plain_text: string
   href: string | null
 }
