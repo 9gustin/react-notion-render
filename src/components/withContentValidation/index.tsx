@@ -4,8 +4,12 @@ import { ParsedBlock } from '../../types/Block'
 import { blockEnum } from '../../types/BlockTypes'
 import StyledText from '../StyledText'
 
-interface WithContentValidationProps extends ParsedBlock {
+export interface WithContentValidationProps extends ParsedBlock {
   withClassNames: boolean
+}
+
+export interface DropedProps extends ParsedBlock {
+  className?: string
 }
 
 function withContentValidation<P extends object>(
@@ -24,6 +28,7 @@ function withContentValidation<P extends object>(
     return (
       <Component
         className={withClassNames ? `rnr-${props.type}` : ''}
+        withClassNames={withClassNames}
         {...(props as P)}
       >
         {typeContent?.map((text, i) => (

@@ -1,19 +1,20 @@
 // TODO: Numeric, dots, checks, toggle
 import React from 'react'
-import { ParsedBlock } from '../../types/Block'
+
 import { blockEnum } from '../../types/BlockTypes'
-import withContentValidation from '../withContentValidation'
+import withContentValidation, { DropedProps } from '../withContentValidation'
 import ListItem from './components/ListItem'
 
-function List({ items }: ParsedBlock) {
+function List({ items, className }: DropedProps) {
   return (
-    <ul>
+    <ul className={className}>
       {items?.map((item) => (
         <ListItem
           key={item.id}
           block={item}
           id={item.id}
           type={item.type as blockEnum}
+          withClassNames={false}
         />
       ))}
     </ul>

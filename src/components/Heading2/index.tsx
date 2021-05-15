@@ -1,9 +1,8 @@
 import React from 'react'
-import { ParsedBlock } from '../../types/Block'
-import withContentValidation from '../withContentValidation'
+import withContentValidation, { DropedProps } from '../withContentValidation'
 
-function Heading2({ children }: ParsedBlock) {
-  return <h2>{children}</h2>
+function Heading2({ children, className }: DropedProps) {
+  return <h2 className={className}>{children}</h2>
 }
 
 export default withContentValidation(Heading2)

@@ -1,11 +1,9 @@
 import React from 'react'
 
-import { ParsedBlock } from '../../types/Block'
+import withContentValidation, { DropedProps } from '../withContentValidation'
 
-import withContentValidation from '../withContentValidation'
-
-function Paragraph({ children }: ParsedBlock) {
-  return <p>{children}</p>
+function Paragraph({ children, className }: DropedProps) {
+  return <p className={className}>{children}</p>
 }
 
 export default withContentValidation(Paragraph)
