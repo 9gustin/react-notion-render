@@ -60,7 +60,7 @@ const App = () => {
   
   useEffect(() => {
       getDatabase(MY_DATABASE)
-      .then(data => getBlocks(database[0].id))
+      .then(database => getBlocks(database[0].id))
       .then(setBlocks)
   }, [])
 
