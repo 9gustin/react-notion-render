@@ -7,10 +7,6 @@
 ## Description
 This package **not make calls to Notion API** . The purpose of this library is convert the Notion API response to HTML. The Notion's API return the content of page with an structure of blocks([example](https://github.com/9gustin/react-notion-render/blob/main/example/src/mockedData.json)) and this library resolve that structure.
 
-## Notion API Reference
-[Retrieve block children](https://developers.notion.com/reference/get-block-children) <br />
-[Working with page content](https://developers.notion.com/docs/working-with-page-content)
-
 ## Install
 
 ```bash
@@ -40,6 +36,40 @@ Source: <br />
 [mockedData](https://github.com/9gustin/react-notion-render/blob/main/example/src/mockedData.json) <br /><br />
 Result: <br />
 ![image](https://user-images.githubusercontent.com/38046239/118378677-c3909680-b5ab-11eb-8d80-2ad2afcc663c.png)
+
+## Notion API Reference
+[Retrieve block children](https://developers.notion.com/reference/get-block-children) <br />
+[Working with page content](https://developers.notion.com/docs/working-with-page-content)
+
+## Notion API Integration example
+I would use the package [@notionhq/client](https://www.npmjs.com/package/@notionhq/client) and take this example of [Notion Service](https://github.com/samuelkraft/notion-blog-nextjs/blob/master/lib/notion.js). This example take pages of an database an render the first of list.
+
+
+```jsx
+import React, { useState, useEffect } from 'react'
+
+import { render } from '@9gustin/react-notion-render'
+import '@9gustin/react-notion-render/dist/index.css'
+
+import { getDatabase, getBlocks } from '../services/notion'
+
+const MY_DATABASE = '54d0ff3097694ad08bd21932d598b93d';
+
+const App = () => {
+  const [blocks, setBlocks] = useState([]);
+  
+  useEffect(() => {
+      getDatabase(MY_DATABASE)
+      .then(data => getBlocks(database[0].id))
+      .then(setBlocks)
+  }, [])
+
+  return <div>{render(blocks)}</div>
+}
+
+export default App
+
+```
 
 ## Giving styles
 To give styles yo may activate a second param of **render** method. That generate classes to all components and text styles.
@@ -76,6 +106,7 @@ For the colors, that classes are generated like other classes, 'rnr-NAME_COLOR',
 ![image](https://user-images.githubusercontent.com/38046239/118379410-867ad300-b5b0-11eb-8068-b832c5c134c7.png)
 
 ## Upgrades / TO DO:
+ - Improve exported types for typescript use
  - Support links on Text Component
  - Give default styles for text variants (underline, colors, bold, etc)
  - Add more list styles(numerated and toggle lists)
