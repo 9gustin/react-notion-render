@@ -28,7 +28,6 @@ function withContentValidation<P extends object>(
     return (
       <Component
         className={withClassNames ? `rnr-${props.type}` : ''}
-        withClassNames={withClassNames}
         {...(props as P)}
       >
         {typeContent?.map((text, i) => (
