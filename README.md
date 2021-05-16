@@ -42,32 +42,32 @@ Result: <br />
 [Working with page content](https://developers.notion.com/docs/working-with-page-content)
 
 ## Notion API Integration example
-I would use the package [@notionhq/client](https://www.npmjs.com/package/@notionhq/client) and take this example of [Notion Service](https://github.com/samuelkraft/notion-blog-nextjs/blob/master/lib/notion.js). This example take pages of an database an render the first of list.
+I would use the package [@notionhq/client](https://www.npmjs.com/package/@notionhq/client) and take this example of [Notion Service](https://github.com/samuelkraft/notion-blog-nextjs/blob/master/lib/notion.js). This example take pages of an database an render the first of list. This example it's in Next.js.
 
 
 ```jsx
-import React, { useState, useEffect } from 'react'
-
 import { render } from '@9gustin/react-notion-render'
 import '@9gustin/react-notion-render/dist/index.css'
 
-import { getDatabase, getBlocks } from '../services/notion'
+import {getDatabase, getBlocks} from '../services/notion'
 
 const MY_DATABASE = '54d0ff3097694ad08bd21932d598b93d';
 
-const App = () => {
-  const [blocks, setBlocks] = useState([]);
-  
-  useEffect(() => {
-      getDatabase(MY_DATABASE)
-      .then(database => getBlocks(database[0].id))
-      .then(setBlocks)
-  }, [])
-
+export default function Home({blocks}) {
   return <div>{render(blocks)}</div>
 }
 
-export default App
+export const getStaticProps = async () => {
+  const database = await getDatabase(MY_DATABASE);
+  const blocks = await getBlocks(database[0].id);
+
+  return {
+    props: {
+      blocks
+    },
+    revalidate: 1,
+  };
+};
 
 ```
 
