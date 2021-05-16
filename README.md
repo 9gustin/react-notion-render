@@ -53,7 +53,7 @@ import {getDatabase, getBlocks} from '../services/notion'
 
 const MY_DATABASE = '54d0ff3097694ad08bd21932d598b93d';
 
-export default function Home({blocks}) {
+export default function App({blocks}) {
   return <div>{render(blocks)}</div>
 }
 
