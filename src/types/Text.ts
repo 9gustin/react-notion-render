@@ -1,10 +1,14 @@
 type textTypes = 'text' | string
 
+type Link = {
+  url: string
+}
+
 export default interface Text {
   type: textTypes
   text: {
     content: string
-    link: string | null
+    link: Link | null
   }
   annotations: {
     bold: boolean

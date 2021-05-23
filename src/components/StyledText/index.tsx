@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useMemo } from 'react'
 
 import Text from '../../types/Text'
 
@@ -14,10 +14,16 @@ function StyledText({ text, annotations }: Text) {
     ${annotations.color !== DEFAULT_COLOR ? `rnr-${annotations.color}` : ''}
   `.trim()
 
+  const renderText = useMemo(
+    () =>
+      text.link ? <a href={text.link.url}>{text.content}</a> : text.content,
+    []
+  )
+
   return className ? (
-    <span className={className}>{text.content}</span>
+    <span className={className}>{renderText}</span>
   ) : (
-    <Fragment>{text.content}</Fragment>
+    <Fragment>{renderText}</Fragment>
   )
 }
 
