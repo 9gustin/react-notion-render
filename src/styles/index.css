@@ -25,10 +25,6 @@
   font-weight: var(--normal-weight);
 }
 
-p {
-  line-break: anywhere;
-}
-
 h1,
 h1 > * {
   font-size: var(--font-size-display-text);
