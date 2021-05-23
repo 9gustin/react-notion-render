@@ -3,7 +3,12 @@
   "version": "1.0.4",
   "description": "A library to render notion content",
   "author": "9gustin",
-  "keywords": ["Notion", "Notion API", "React Notion", "Notion pages"],
+  "keywords": [
+    "Notion",
+    "Notion API",
+    "React Notion",
+    "Notion pages"
+  ],
   "license": "MIT",
   "repository": "9gustin/react-notion-render",
   "main": "dist/index.js",
