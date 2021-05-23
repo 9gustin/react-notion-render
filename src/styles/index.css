@@ -6,9 +6,21 @@
 
   --normal-weight: 400;
   --medium-weight: 500;
+
+  --color-default: #333333;
+  --color-red: #F44708;
+  --color-gray: #757575;
+  --color-brown: #570000;
+  --color-orange: #FE9920;
+  --color-yellow: #F1DB4B;
+  --color-green: #1A936F;
+  --color-blue: #59A5D8;
+  --color-purple: #8367C7;
+  --color-pink: #FE5D9F;
 }
 
 *{
+  color: var(--color-default);
   font-size: var(--font-size-primary);
   font-weight: var(--normal-weight);
 }
@@ -32,4 +44,61 @@ h2 > * {
 h3,
 h3 > * {
   font-size: var(--font-size-sub-title);
+}
+
+
+:global(.rnr-bold) {
+  font-weight: var(--medium-weight);
+}
+
+:global(.rnr-italic) {
+  font-style: italic;
+}
+
+:global(.rnr-strikethrough) {
+  text-decoration: line-through;
+}
+
+:global(.rnr-underline)	{
+  text-decoration: underline;
+}
+
+:global(.rnr-underline.rnr-strikethrough) {
+  text-decoration: underline line-through;
+}
+
+:global(.rnr-red) {
+  color: var(--color-red)
+}
+
+:global(.rnr-gray) {
+  color: var(--color-gray)
+}
+
+:global(.rnr-brown) {
+  color: var(--color-brown)
+}
+
+:global(.rnr-orange) {
+  color: var(--color-orange)
+}
+
+:global(.rnr-yellow) {
+  color: var(--color-yellow)
+}
+
+:global(.rnr-green) {
+  color: var(--color-green)
+}
+
+:global(.rnr-blue) {
+  color: var(--color-blue)
+}
+
+:global(.rnr-purple) {
+  color: var(--color-purple)
+}
+
+:global(.rnr-pink) {
+  color: var(--color-pink)
 }
