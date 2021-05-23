@@ -5,6 +5,7 @@ import List from './components/List'
 import Paragraph from './components/Paragraph'
 import { parseBlocks } from './utils/parseBlocks'
 import renderBlocks from './utils/renderBlocks'
+import Block from './types/Block'
 
 import './styles/index.css'
 
@@ -13,3 +14,6 @@ export { Heading1, Heading2, Heading3, Paragraph, List }
 
 // Utils
 export { renderBlocks as render, parseBlocks as parser }
+
+// Types
+export { Block }
