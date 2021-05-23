@@ -14,48 +14,16 @@ npm i @9gustin/react-notion-render
 ```
 
 ## Usage
-
-```tsx
-import React from 'react'
-
-import { render } from '@9gustin/react-notion-render'
-import '@9gustin/react-notion-render/dist/index.css'
-
-import mockedData from './mockedData.json'
-
-const App = () => {
-  return <div>{render(mockedData.results)}</div>
-}
-
-export default App
-
-```
-
-## Example 
-Source: <br />
-[mockedData](https://github.com/9gustin/react-notion-render/blob/main/example/src/mockedData.json) <br /><br />
-Result: <br />
-![image](https://user-images.githubusercontent.com/38046239/118378677-c3909680-b5ab-11eb-8d80-2ad2afcc663c.png)
-
-## Notion API Reference
-[Retrieve block children](https://developers.notion.com/reference/get-block-children) <br />
-[Working with page content](https://developers.notion.com/docs/working-with-page-content)
-
-## Notion API Integration example
-I would use the package [@notionhq/client](https://www.npmjs.com/package/@notionhq/client) and take this example of [Notion Service](https://github.com/samuelkraft/notion-blog-nextjs/blob/master/lib/notion.js). This example take pages of an database an render the first of list. This example it's in Next.js.
-
+I would use the package [@notionhq/client](https://www.npmjs.com/package/@notionhq/client) to get data fron the Notion API and take this example of [Notion Service](https://github.com/samuelkraft/notion-blog-nextjs/blob/master/lib/notion.js) also you can fetch the data from the api. This example take pages of an database an render the first of list. This example it's in Next.js.
 
 ```jsx
-import { render } from '@9gustin/react-notion-render'
+import { render } from '@9gustin/react-notion-render';
 import '@9gustin/react-notion-render/dist/index.css'
+import { getBlocks, getDatabase } from '../services/notion';
 
-import {getDatabase, getBlocks} from '../services/notion'
+export default ({blocks}) => render(blocks);
 
 const MY_DATABASE = '54d0ff3097694ad08bd21932d598b93d';
-
-export default function App({blocks}) {
-  return <div>{render(blocks)}</div>
-}
 
 export const getStaticProps = async () => {
   const database = await getDatabase(MY_DATABASE);
@@ -64,17 +32,31 @@ export const getStaticProps = async () => {
   return {
     props: {
       blocks
-    },
-    revalidate: 1,
+    }
   };
 };
-
 ```
+
+## Notion API Reference
+[Retrieve block children](https://developers.notion.com/reference/get-block-children) <br />
+[Working with page content](https://developers.notion.com/docs/working-with-page-content)
+
+## Example 
+That i see in Notion: <br />
+![image](https://user-images.githubusercontent.com/38046239/119271929-26041b00-bbda-11eb-8354-10a63ab274a9.png)
+<br /><br />
+That is returned by Notion API: <br />
+[mockedData](https://github.com/9gustin/react-notion-render/blob/main/example/src/mockedData.json) 
+<br /><br />
+And that's are the **render** result: <br />
+![image](https://user-images.githubusercontent.com/38046239/119272311-ad9e5980-bbdb-11eb-9fe0-4114d0839062.png)
+
+
 
 ## Giving styles
 To give styles yo may activate a second param of **render** method. That generate classes to all components and text styles.
 ```tsx
-render(mockedData.results, true)
+render(blocks, true)
 ```
 I tried not to add a lot styles to let free to devs, and i added classNames to components to you take that and give styles. I named classes starting to **rnr-** (rnr like 'React-Notion-Render') and the notion name of component / style. Then i go to list the name of classNames and their reference. This classes not has styles, for that should be easy to you give styles.
 
@@ -92,7 +74,6 @@ I tried not to add a lot styles to let free to devs, and i added classNames to c
 | rnr-toggle | Toggle List | ul |
 
 #### Text Styles
-Now i not give any styles fot that classes <br />
 | ClassName          | Notion Reference    |
 | ------------------ | ------------------- | 
 | rnr-bold | Bold |
@@ -101,16 +82,21 @@ Now i not give any styles fot that classes <br />
 | rnr-underline | Underline |
 
 #### Text colors
-Now i not give any styles fot that classes. <br />
-For the colors, that classes are generated like other classes, 'rnr-NAME_COLOR', then NAME_COLOR are taked from notion dropdown into lower case. Like 'rnr-blue', 'rnr-red'. <br />
-![image](https://user-images.githubusercontent.com/38046239/118379410-867ad300-b5b0-11eb-8068-b832c5c134c7.png)
+| ClassName          | HEX |
+| ------------------ | --- | 
+| rnr-red | #F44708 |
+| rnr-gray | #757575 |
+| rnr-brown | #570000 |
+| rnr-orange | #FE9920 |
+| rnr-yellow | #F1DB4B |
+| rnr-green | #1A936F |
+| rnr-purple | #8367C7 |
+| rnr-pink | #FE5D9F |
+| rnr-blue | #006494 |
 
 ## Upgrades / TO DO:
- - Improve exported types for typescript use
- - Support links on Text Component
- - Give default styles for text variants (underline, colors, bold, etc)
+ - Dark theme support (improve colors to dark)
  - Add more list styles(numerated and toggle lists)
- - Improve default styles
 
 If you see something more that I forget feel free to add that in this list or fork this repo ;)
 
