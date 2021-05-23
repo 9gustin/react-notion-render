@@ -49,8 +49,7 @@ That is returned by Notion API: <br />
 [mockedData](https://github.com/9gustin/react-notion-render/blob/main/example/src/mockedData.json) 
 <br /><br />
 And that's are the **render** result: <br />
-![image](https://user-images.githubusercontent.com/38046239/119272311-ad9e5980-bbdb-11eb-9fe0-4114d0839062.png)
-
+![image](https://user-images.githubusercontent.com/38046239/119272468-682e5c00-bbdc-11eb-8ef5-dc0793523980.png)
 
 
 ## Giving styles
@@ -92,7 +91,7 @@ I tried not to add a lot styles to let free to devs, and i added classNames to c
 | rnr-green | #1A936F |
 | rnr-purple | #8367C7 |
 | rnr-pink | #FE5D9F |
-| rnr-blue | #006494 |
+| rnr-blue | #59A5D8 |
 
 ## Upgrades / TO DO:
  - Dark theme support (improve colors to dark)
