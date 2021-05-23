@@ -16,7 +16,13 @@ function StyledText({ text, annotations }: Text) {
 
   const renderText = useMemo(
     () =>
-      text.link ? <a href={text.link.url}>{text.content}</a> : text.content,
+      text.link ? (
+        <a href={text.link.url} target='_blank' rel='noreferrer'>
+          {text.content}
+        </a>
+      ) : (
+        text.content
+      ),
     []
   )
 
