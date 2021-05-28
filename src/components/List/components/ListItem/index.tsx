@@ -6,7 +6,13 @@ import withContentValidation, {
 } from '../../../withContentValidation'
 import Checkbox from '../Checkbox'
 
-function ListItem({ children, className, type, checked }: DropedProps) {
+function ListItem({
+  children,
+  className,
+  type,
+  checked,
+  innerChild
+}: DropedProps) {
   const renderChildren = useMemo(() => {
     if (type === blockEnum.CHECK_LIST) {
       return (
@@ -14,6 +20,13 @@ function ListItem({ children, className, type, checked }: DropedProps) {
           <Checkbox checked={checked} />
           {children}
         </Fragment>
+      )
+    } else if (type === blockEnum.TOGGLE_LIST && innerChild) {
+      return (
+        <details>
+          <summary>{children}</summary>
+          {innerChild}
+        </details>
       )
     }
     return children

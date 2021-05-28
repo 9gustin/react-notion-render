@@ -8,6 +8,7 @@ type id = string
 export interface BlockTypeContent {
   text: Text[]
   checked?: boolean
+  children?: Block[]
 }
 
 export default interface Block {
