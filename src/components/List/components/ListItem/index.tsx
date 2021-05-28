@@ -7,7 +7,6 @@ import withContentValidation, {
 import Checkbox from '../Checkbox'
 
 function ListItem({ children, className, type, checked }: DropedProps) {
-  console.log(children, className, type, checked)
   const renderChildren = useMemo(() => {
     if (type === blockEnum.CHECK_LIST) {
       return (
