@@ -4,13 +4,21 @@ import { blockEnum } from '../../types/BlockTypes'
 import withContentValidation, { DropedProps } from '../withContentValidation'
 import ListItem from './components/ListItem'
 
+import styles from './styles.module.css'
+
 function List({ items, className, type }: DropedProps) {
+  const cn = `${
+    type === blockEnum.CHECK_LIST || type === blockEnum.TOGGLE_LIST
+      ? styles['remove-style']
+      : ''
+  } ${className}`
+
   const renderList = useCallback(
     (children: React.ReactNode) => {
       if (type === blockEnum.ENUM_LIST)
-        return <ol className={className}>{children}</ol>
+        return <ol className={cn}>{children}</ol>
 
-      return <ul className={className}>{children}</ul>
+      return <ul className={cn}>{children}</ul>
     },
     [type]
   )
