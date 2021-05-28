@@ -95,7 +95,7 @@ I tried not to add a lot styles to let free to devs, and i added classNames to c
 
 ## Upgrades / TO DO:
  - Toggle item support
- - Export Text Component
+ - Export Components to use in the rest of page
  - Improve children groups
  - Dark theme support (improve colors to dark)
  - Add TO DO list component
