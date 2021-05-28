@@ -94,10 +94,10 @@ I tried not to add a lot styles to let free to devs, and i added classNames to c
 | rnr-blue | #59A5D8 |
 
 ## Upgrades / TO DO:
- - Toggle item support
  - Export Components to use in the rest of page
  - Improve children groups
  - Dark theme support (improve colors to dark)
+ - Toggle item support
  - Add TO DO list component
 
 If you see something more that I forget feel free to add that in this list or fork this repo ;)
