@@ -8,9 +8,21 @@ export default function renderBlocks(
   withClassNames: boolean = false
 ): React.ReactNode {
   const blocks = useMemo(() => {
-    return apiBlocks
-      ? parseBlocks(getBlocksToRender(apiBlocks), withClassNames)
-      : []
+    if (!apiBlocks) return []
+
+    const tempBlocks = getBlocksToRender(apiBlocks).map(
+      ({ items, ...rest }) => ({
+        ...rest,
+        items: items?.map((item) => ({
+          ...item,
+          children: item[item.type].children
+            ? getBlocksToRender(item[item.type].children)
+            : null
+        }))
+      })
+    )
+
+    return parseBlocks(tempBlocks, withClassNames)
   }, [apiBlocks])
 
   return <Fragment>{blocks.map((block) => block.render)}</Fragment>

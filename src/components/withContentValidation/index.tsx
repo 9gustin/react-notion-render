@@ -10,6 +10,8 @@ export interface WithContentValidationProps extends ParsedBlock {
 
 export interface DropedProps extends ParsedBlock {
   className?: string
+  checked?: boolean
+  innerChild?: React.ReactNode | null
 }
 
 function withContentValidation<P extends object>(
@@ -19,7 +21,7 @@ function withContentValidation<P extends object>(
     const typeContent =
       props.type === blockEnum.UNSUPPORTED
         ? undefined
-        : props.block?.[props.type]?.text
+        : props.block?.[props.type]
 
     if (!typeContent && !props.items) {
       return null
@@ -28,9 +30,11 @@ function withContentValidation<P extends object>(
     return (
       <Component
         className={withClassNames ? `rnr-${props.type}` : ''}
+        checked={typeContent?.checked}
+        innerChild={props.block?.render}
         {...(props as P)}
       >
-        {typeContent?.map((text, i) => (
+        {typeContent?.text.map((text, i) => (
           <StyledText key={i} {...text} />
         ))}
       </Component>

@@ -7,20 +7,19 @@
   --normal-weight: 400;
   --medium-weight: 500;
 
-  --color-default: #333333;
-  --color-red: #F44708;
-  --color-gray: #757575;
-  --color-brown: #570000;
+  --color-red: #ff2525;
+  --color-gray: #979797;
+  --color-brown: #816868;
   --color-orange: #FE9920;
   --color-yellow: #F1DB4B;
-  --color-green: #1A936F;
-  --color-blue: #59A5D8;
-  --color-purple: #8367C7;
+  --color-green: #22ae65;
+  --color-blue: #0eb7e4;
+  --color-purple: #a842ec;
   --color-pink: #FE5D9F;
+  --color-link: #060080;
 }
 
 *{
-  color: var(--color-default);
   font-size: var(--font-size-primary);
   font-weight: var(--normal-weight);
 }
@@ -42,6 +41,17 @@ h3 > * {
   font-size: var(--font-size-sub-title);
 }
 
+a,
+:any-link {
+  color: var(--color-link);
+  opacity: .8;
+  transition: opacity .3s;
+}
+
+a:focus,
+a:hover {
+  opacity: 1;
+}
 
 :global(.rnr-bold) {
   font-weight: var(--medium-weight);
