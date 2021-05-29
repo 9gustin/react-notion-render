@@ -12,7 +12,7 @@ export interface DropedProps extends ParsedBlock {
   className?: string
   checked?: boolean
   innerChild?: React.ReactNode | null
-  children: React.ReactNode | null
+  children?: React.ReactNode | null
 }
 
 function withContentValidation<P extends object>(
@@ -35,7 +35,9 @@ function withContentValidation<P extends object>(
         innerChild={props.block?.render}
         {...(props as P)}
       >
-        {typeContent?.text.map((text, i) => <StyledText key={i} {...text} />)}
+        {typeContent?.text.map((text, i) => (
+          <StyledText key={i} {...text} />
+        ))}
       </Component>
     )
   }
