@@ -43,13 +43,13 @@ export const getStaticProps = async () => {
 
 ## Example 
 That i see in Notion: <br />
-![image](https://user-images.githubusercontent.com/38046239/119271929-26041b00-bbda-11eb-8354-10a63ab274a9.png)
+![image](https://user-images.githubusercontent.com/38046239/120051696-044ecd80-bff8-11eb-8c5f-7a3d767ed979.png)
 <br /><br />
 That is returned by Notion API: <br />
 [mockedData](https://github.com/9gustin/react-notion-render/blob/main/example/src/mockedData.json) 
 <br /><br />
 And that's are the **render** result: <br />
-![image](https://user-images.githubusercontent.com/38046239/119272468-682e5c00-bbdc-11eb-8ef5-dc0793523980.png)
+![image](https://user-images.githubusercontent.com/38046239/120051651-cea9e480-bff7-11eb-9b1c-de81d46bc994.png)
 
 
 ## Giving styles
