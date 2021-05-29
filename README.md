@@ -43,13 +43,13 @@ export const getStaticProps = async () => {
 
 ## Example 
 That i see in Notion: <br />
-![image](https://user-images.githubusercontent.com/38046239/119271929-26041b00-bbda-11eb-8354-10a63ab274a9.png)
+![image](https://user-images.githubusercontent.com/38046239/120051696-044ecd80-bff8-11eb-8c5f-7a3d767ed979.png)
 <br /><br />
 That is returned by Notion API: <br />
 [mockedData](https://github.com/9gustin/react-notion-render/blob/main/example/src/mockedData.json) 
 <br /><br />
 And that's are the **render** result: <br />
-![image](https://user-images.githubusercontent.com/38046239/119272468-682e5c00-bbdc-11eb-8ef5-dc0793523980.png)
+![image](https://user-images.githubusercontent.com/38046239/120051651-cea9e480-bff7-11eb-9b1c-de81d46bc994.png)
 
 
 ## Giving styles
@@ -83,24 +83,18 @@ I tried not to add a lot styles to let free to devs, and i added classNames to c
 #### Text colors
 | ClassName          | HEX |
 | ------------------ | --- | 
-| rnr-red | #F44708 |
-| rnr-gray | #757575 |
-| rnr-brown | #570000 |
+| rnr-red | #ff2525 |
+| rnr-gray | #979797 |
+| rnr-brown | #816868 |
 | rnr-orange | #FE9920 |
 | rnr-yellow | #F1DB4B |
-| rnr-green | #1A936F |
-| rnr-purple | #8367C7 |
+| rnr-green | #22ae65 |
+| rnr-purple | #a842ec |
 | rnr-pink | #FE5D9F |
-| rnr-blue | #59A5D8 |
+| rnr-blue | #0eb7e4 |
 
 ## Upgrades / TO DO:
- - Export Components to use in the rest of page
- - Improve children groups
- - Dark theme support (improve colors to dark)
- - Toggle item support
- - Add TO DO list component
-
-If you see something more that I forget feel free to add that in this list or fork this repo ;)
+For the moment the list it's empty, if you see something more that I forget feel free to add that in this list or fork this repo ;)
 
 ## License
 
