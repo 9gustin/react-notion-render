@@ -57,7 +57,12 @@ function parseBlock(
   }
 
   return Component ? (
-    <Component key={block.id} withClassNames={withClassNames} {...block} />
+    <Component
+      key={block.id}
+      withClassNames={withClassNames}
+      {...block}
+      innerChild={null}
+    />
   ) : (
     ''
   )
