@@ -30,7 +30,7 @@ function ListItem({
       )
     }
     return children
-  }, [type, children, checked])
+  }, [type, children, checked, innerChild])
 
   return <li className={className}>{renderChildren}</li>
 }

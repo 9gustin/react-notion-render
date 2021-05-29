@@ -7,7 +7,14 @@ interface Props {
 }
 
 function Checkbox({ checked }: Props) {
-  return <input type='checkbox' checked={checked} className={styles.check} />
+  return (
+    <input
+      type='checkbox'
+      checked={checked}
+      className={styles.check}
+      readOnly
+    />
+  )
 }
 
 export default Checkbox

@@ -2,7 +2,6 @@ import React from 'react'
 
 import { ParsedBlock } from '../../types/Block'
 import { blockEnum } from '../../types/BlockTypes'
-import renderBlocks from '../../utils/renderBlocks'
 import StyledText from '../StyledText'
 
 export interface WithContentValidationProps extends ParsedBlock {
@@ -12,7 +11,7 @@ export interface WithContentValidationProps extends ParsedBlock {
 export interface DropedProps extends ParsedBlock {
   className?: string
   checked?: boolean
-  innerChild: React.ReactNode | null
+  innerChild?: React.ReactNode | null
 }
 
 function withContentValidation<P extends object>(
@@ -32,9 +31,7 @@ function withContentValidation<P extends object>(
       <Component
         className={withClassNames ? `rnr-${props.type}` : ''}
         checked={typeContent?.checked}
-        innerChild={
-          typeContent?.children ? renderBlocks(typeContent.children) : null
-        }
+        innerChild={props.block?.render}
         {...(props as P)}
       >
         {typeContent?.text.map((text, i) => (

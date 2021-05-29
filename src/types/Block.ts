@@ -30,6 +30,8 @@ export default interface Block {
   [blockEnum.CHECK_LIST]?: BlockTypeContent
   [blockEnum.TOGGLE_LIST]?: BlockTypeContent
   [blockEnum.UNSUPPORTED]?: {}
+  render?: React.ReactNode
+  children?: ParsedBlock[] | null
 }
 
 export interface ParsedBlock {
@@ -38,5 +40,4 @@ export interface ParsedBlock {
   block?: Block
   items?: Block[]
   render?: React.ReactNode
-  children?: React.ReactNode
 }

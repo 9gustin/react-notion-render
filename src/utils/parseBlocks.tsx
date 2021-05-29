@@ -11,7 +11,17 @@ export function parseBlocks(
   blocks: ParsedBlock[],
   withClassNames: boolean
 ): ParsedBlock[] {
-  return blocks.map((block) => ({
+  const blocksWithChildrens = blocks.map((block) => ({
+    ...block,
+    items: block.items?.map((item) => ({
+      ...item,
+      render: item.children
+        ? item.children.map((child) => parseBlock(child, withClassNames))
+        : null
+    }))
+  }))
+
+  return blocksWithChildrens.map((block) => ({
     ...block,
     render: parseBlock(block, withClassNames)
   }))
@@ -57,12 +67,7 @@ function parseBlock(
   }
 
   return Component ? (
-    <Component
-      key={block.id}
-      withClassNames={withClassNames}
-      {...block}
-      innerChild={null}
-    />
+    <Component key={block.id} withClassNames={withClassNames} {...block} />
   ) : (
     ''
   )

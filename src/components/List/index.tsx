@@ -31,7 +31,6 @@ function List({ items, className, type }: DropedProps) {
         id={item.id}
         type={item.type as blockEnum}
         withClassNames={false}
-        innerChild={null}
       />
     ))
   )
