@@ -41,6 +41,10 @@ export const getStaticProps = async () => {
 [Retrieve block children](https://developers.notion.com/reference/get-block-children) <br />
 [Working with page content](https://developers.notion.com/docs/working-with-page-content)
 
+## Live examples: 
+[Blog](https://github.com/9gustin/notion-blog-nextjs/tree/9blog) <br />
+[Single Page](https://github.com/sasigume/notion-to-next-single-page)
+
 ## Example 
 That i see in Notion: <br />
 ![image](https://user-images.githubusercontent.com/38046239/120085393-2571f580-c0ae-11eb-87c0-f2977db5ad5e.png)
