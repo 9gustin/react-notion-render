@@ -1,0 +1,45 @@
+.container {
+  padding: 20px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.plus {
+  font-size: 20px;
+  margin: 0 20px;
+}
+
+.heading {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--text-color);
+  text-transform: uppercase;
+  font-size: 15px;
+  opacity: 0.6;
+  letter-spacing: 0.5px;
+}
+
+.posts {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.post {
+  margin-bottom: 50px;
+}
+
+.postTitle {
+  margin-bottom: 10px;
+  font-size: 1.4rem;
+}
+
+.postTitle a {
+  color: inherit;
+}
+
+.postDescription {
+  margin-top: 0;
+  margin-bottom: 12px;
+  opacity: 0.65;
+}
