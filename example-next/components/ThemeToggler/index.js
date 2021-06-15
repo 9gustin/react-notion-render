@@ -1,27 +1,34 @@
-import React, { useEffect, useState } from 'react';
-import { THEMES, THEME_KEY, THEMES_LABELS } from './constants';
-import isNavigatorDarkTheme from '../../utils/isNavigatorDarkTheme';
+import React, { useEffect, useState } from 'react'
+import { THEMES, THEME_KEY, THEMES_LABELS } from './constants'
+import isNavigatorDarkTheme from '../../utils/isNavigatorDarkTheme'
 
-import styles from './styles.module.css';
+import styles from './styles.module.css'
 
 function ThemeToggler() {
-  const [selectedTheme, setTheme] = useState();
+  const [selectedTheme, setTheme] = useState()
 
-  const handleChangeTheme = () => setTheme(THEMES[Object.keys(THEMES).find(theme => THEMES[theme] !== selectedTheme)])
+  const handleChangeTheme = () =>
+    setTheme(
+      THEMES[
+        Object.keys(THEMES).find((theme) => THEMES[theme] !== selectedTheme)
+      ]
+    )
 
-  const actualTheme = () => localStorage.getItem(THEME_KEY);
+  const actualTheme = () => window.localStorage.getItem(THEME_KEY)
 
   useEffect(() => {
-    setTheme(actualTheme() || (isNavigatorDarkTheme() ? THEMES.DARK : THEMES.LIGHT));
+    setTheme(
+      actualTheme() || (isNavigatorDarkTheme() ? THEMES.DARK : THEMES.LIGHT)
+    )
   }, [])
 
   useEffect(() => {
     if (selectedTheme) {
-      localStorage.setItem(THEME_KEY, selectedTheme);
+      window.localStorage.setItem(THEME_KEY, selectedTheme)
       if (selectedTheme === THEMES.DARK) {
-        document.body.classList.add(THEMES.DARK);
+        document.body.classList.add(THEMES.DARK)
       } else {
-        document.body.classList.remove(THEMES.DARK);
+        document.body.classList.remove(THEMES.DARK)
       }
     }
   }, [selectedTheme])
@@ -33,4 +40,4 @@ function ThemeToggler() {
   )
 }
 
-export default ThemeToggler;
+export default ThemeToggler
