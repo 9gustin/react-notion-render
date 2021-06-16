@@ -41,6 +41,10 @@ export const getStaticProps = async () => {
 [Retrieve block children](https://developers.notion.com/reference/get-block-children) <br />
 [Working with page content](https://developers.notion.com/docs/working-with-page-content)
 
+## Live examples: 
+[Blog](https://github.com/9gustin/notion-blog-nextjs/tree/9blog) <br />
+[Single Page](https://github.com/sasigume/notion-to-next-single-page)
+
 ## Example 
 That i see in Notion: <br />
 ![image](https://user-images.githubusercontent.com/38046239/120085393-2571f580-c0ae-11eb-87c0-f2977db5ad5e.png)
@@ -93,8 +97,8 @@ I tried not to add a lot styles to let free to devs, and i added classNames to c
 | rnr-pink | #FE5D9F |
 | rnr-blue | #0eb7e4 |
 
-## Upgrades / TO DO:
-For the moment the list it's empty, if you see something more that I forget feel free to add that in this list or fork this repo ;)
+## Upgrades:
+If you find a bug, or want to suggest a feature you can create a [New Issue](https://github.com/9gustin/react-notion-render/issues/new) with that and i will analyze, feel free to create issues. Same if you want to contribute with something you can fork this repo and then make an PR with your feature ;)
 
 ## License
 
