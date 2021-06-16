@@ -1,0 +1,22 @@
+.logos {
+  display: flex;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.header {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 50px;
+}
+
+.header h1 {
+  width: 100%;
+}
+
+.header p {
+  opacity: 0.7;
+  line-height: 1.5;
+}
