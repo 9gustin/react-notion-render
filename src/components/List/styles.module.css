@@ -6,3 +6,7 @@
 .check {
   margin-right: 10px;
 }
+
+.drop-button{
+  cursor: pointer;
+}
