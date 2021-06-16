@@ -1,5 +1,6 @@
 import React, { Fragment, useMemo } from 'react'
 import { blockEnum } from '../../../../types/BlockTypes'
+import styles from '../../styles.module.css'
 
 import withContentValidation, {
   DropedProps
@@ -24,7 +25,7 @@ function ListItem({
     } else if (type === blockEnum.TOGGLE_LIST && innerChild) {
       return (
         <details>
-          <summary>{children}</summary>
+          <summary className={styles['drop-button']}>{children}</summary>
           {innerChild}
         </details>
       )
