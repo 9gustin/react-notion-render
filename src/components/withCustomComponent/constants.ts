@@ -16,7 +16,7 @@ interface CustomComponent {
 
 export const customComponents: CustomComponent[] = [
   {
-    match: /!\[[^\]]*\]\((.*?)\s*("(?:.*[^"])")?\s*\)/g,
+    match: /!\[[^\]]*\]\((.*?)\s*("(?:.*[^"])")?\s*\)/,
     // eslint-disable-next-line camelcase
     transformProps: ({ plain_text }) => ({
       alt: plain_text.split('![')[1].split(']')[0],
