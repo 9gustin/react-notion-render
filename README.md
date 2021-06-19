@@ -6,7 +6,7 @@
 
 ## Description
 This package **not make calls to Notion API** . The purpose of this library is convert the Notion API response to HTML. The Notion's API return the content of page with an structure of blocks([example](https://github.com/9gustin/react-notion-render/blob/main/example/src/mockedData.json)) and this library resolve that structure. <br />
-**Now you can use [Custom components](#custom-components) to extend supported Notion blocks ;)**
+**Now you can use [Custom components](#custom-components-are-here) to extend supported Notion blocks ;)**
 
 ## Install
 
