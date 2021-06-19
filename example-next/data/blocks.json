@@ -1280,7 +1280,27 @@
       "last_edited_time": "2021-05-23T18:04:00.000Z",
       "has_children": false,
       "type": "paragraph",
-      "paragraph": { "text": [] }
+      "paragraph": {
+        "text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "![my github pic](https://avatars.githubusercontent.com/u/38046239?v=4)#https://github.com/9gustin",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "![my github pic](https://avatars.githubusercontent.com/u/38046239?v=4)#https://github.com/9gustin",
+            "href": null
+          }
+        ]
+      }
     }
   ],
   "next_cursor": null,
