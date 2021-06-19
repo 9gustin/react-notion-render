@@ -5,7 +5,8 @@
 [![NPM](https://img.shields.io/npm/v/@9gustin/react-notion-render.svg)](https://www.npmjs.com/package/@9gustin/react-notion-render) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ## Description
-This package **not make calls to Notion API** . The purpose of this library is convert the Notion API response to HTML. The Notion's API return the content of page with an structure of blocks([example](https://github.com/9gustin/react-notion-render/blob/main/example/src/mockedData.json)) and this library resolve that structure.
+This package **not make calls to Notion API** . The purpose of this library is convert the Notion API response to HTML. The Notion's API return the content of page with an structure of blocks([example](https://github.com/9gustin/react-notion-render/blob/main/example/src/mockedData.json)) and this library resolve that structure. <br />
+Now you can use Custom components to extend supported Notion blocks ;)
 
 ## Install
 
@@ -55,6 +56,24 @@ That is returned by Notion API: <br />
 And that's are the **render** result: <br />
 ![image](https://user-images.githubusercontent.com/38046239/120085382-11c68f00-c0ae-11eb-94da-42ff571507ce.png)
 
+## Custom components! 
+Now Notion API only supports text blocks(like h1, h2, h3, paragraph, lists. [Ref](https://developers.notion.com/reference/block)). Custom components are here for you, it allows you to use other important blocks. <br />
+For now the only custom block are images, but i want to extend this. If have an suggestion you can create an [issue](https://github.com/9gustin/react-notion-render/issues/new) and i will work on it ;)
+
+#### Image 
+This it simple, allows you to use images. The sintax are the same like [Markdown images](https://www.digitalocean.com/community/tutorials/markdown-markdown-images). For it you have to include next text into your notion page as simple text <br />
+
+**Example:**
+```
+![My github profile pic](https://avatars.githubusercontent.com/u/38046239)
+```
+
+**Plus**
+Also you can add a link to image, like an image anchor. This link would be opened when the user click the image. Thats works adding an # with the link after the markdown image.
+```
+![My github profile pic](https://avatars.githubusercontent.com/u/38046239)#https://github.com/9gustin
+```
+So when the user click my image in the blog it will be redirected to my github profile.
 
 ## Giving styles
 To give styles yo may activate a second param of **render** method. That generate classes to all components and text styles.
