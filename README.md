@@ -63,17 +63,22 @@ For now the only custom block are images, but i want to extend this. If have an 
 #### Image 
 This it simple, allows you to use images. The sintax are the same like [Markdown images](https://www.digitalocean.com/community/tutorials/markdown-markdown-images). For it you have to include next text into your notion page as simple text <br />
 
-**Example:**
+**Example:** <br />
 ```
 ![My github profile pic](https://avatars.githubusercontent.com/u/38046239)
 ```
 
-**Plus**
+**Plus** <br />
 Also you can add a link to image, like an image anchor. This link would be opened when the user click the image. Thats works adding an # with the link after the markdown image.
 ```
 ![My github profile pic](https://avatars.githubusercontent.com/u/38046239)#https://github.com/9gustin
 ```
-So when the user click my image in the blog it will be redirected to my github profile.
+So when the user click my image in the blog it will be redirected to my github profile. <br />
+
+**Important** <br />
+The text to image sould be plain text, when you paste a link in Notion he convert to a link. You should convert it to plain text with the "Remove link" button. Like there:
+![image](https://user-images.githubusercontent.com/38046239/122657679-46bd8300-d13c-11eb-9736-8c67e81a9ba7.png)
+
 
 ## Giving styles
 To give styles yo may activate a second param of **render** method. That generate classes to all components and text styles.
