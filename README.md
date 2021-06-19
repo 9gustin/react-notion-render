@@ -56,7 +56,7 @@ That is returned by Notion API: <br />
 And that's are the **render** result: <br />
 ![image](https://user-images.githubusercontent.com/38046239/120085382-11c68f00-c0ae-11eb-94da-42ff571507ce.png)
 
-## Custom components! 
+## Custom components are here
 Now Notion API only supports text blocks(like h1, h2, h3, paragraph, lists. [Ref](https://developers.notion.com/reference/block)). Custom components are here for you, it allows you to use other important blocks. <br />
 For now the only custom block are images, but i want to extend this. If have an suggestion you can create an [issue](https://github.com/9gustin/react-notion-render/issues/new) and i will work on it ;)
 
