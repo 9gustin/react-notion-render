@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 
 import { ParsedBlock } from '../../types/Block'
 import { blockEnum } from '../../types/BlockTypes'
+
 import StyledText from '../StyledText'
 
 export interface WithContentValidationProps extends ParsedBlock {
@@ -13,6 +14,7 @@ export interface DropedProps extends ParsedBlock {
   checked?: boolean
   innerChild?: React.ReactNode | null
   children?: React.ReactNode | null
+  plainText?: string
 }
 
 function withContentValidation<P extends object>(
@@ -28,11 +30,16 @@ function withContentValidation<P extends object>(
       return null
     }
 
+    const plainText = useMemo(() => 
+      typeContent?.text.map((text) => text.plain_text).join(' ')
+    , [typeContent])
+
     return (
       <Component
         className={withClassNames ? `rnr-${props.type}` : ''}
         checked={typeContent?.checked}
         innerChild={props.block?.render}
+        plainText={plainText}
         {...(props as P)}
       >
         {typeContent?.text.map((text, i) => (
