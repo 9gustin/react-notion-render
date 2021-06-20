@@ -1,7 +1,5 @@
 import React from 'react'
-import Heading1 from '../components/Heading1'
-import Heading2 from '../components/Heading2'
-import Heading3 from '../components/Heading3'
+import Title from '../components/Title'
 import List from '../components/List'
 import Paragraph from '../components/Paragraph'
 import { ParsedBlock } from '../types/Block'
@@ -27,13 +25,7 @@ export function parseBlocks(
   }))
 }
 
-type Component =
-  | typeof Heading1
-  | typeof Heading2
-  | typeof Heading3
-  | typeof List
-  | typeof Paragraph
-  | null
+type Component = typeof Title | typeof List | typeof Paragraph | null
 
 function parseBlock(
   block: ParsedBlock,
@@ -42,20 +34,14 @@ function parseBlock(
   let Component: Component = null
 
   switch (block.type) {
-    case blockEnum.HEADING1: {
-      Component = Heading1
-      break
-    }
-    case blockEnum.HEADING2: {
-      Component = Heading2
-      break
-    }
-    case blockEnum.HEADING3: {
-      Component = Heading3
-      break
-    }
     case blockEnum.PARAGRAPH: {
       Component = Paragraph
+      break
+    }
+    case blockEnum.HEADING1:
+    case blockEnum.HEADING2:
+    case blockEnum.HEADING3: {
+      Component = Title
       break
     }
     case blockEnum.DOTS_LIST:
