@@ -47,14 +47,11 @@ export const getStaticProps = async () => {
 [Single Page](https://github.com/sasigume/notion-to-next-single-page)
 
 ## Example 
-That i see in Notion: <br />
-![image](https://user-images.githubusercontent.com/38046239/120085393-2571f580-c0ae-11eb-87c0-f2977db5ad5e.png)
-<br /><br />
-That is returned by Notion API: <br />
-[mockedData](https://github.com/9gustin/react-notion-render/blob/main/example/src/mockedData.json) 
-<br /><br />
-And that's are the **render** result: <br />
-![image](https://user-images.githubusercontent.com/38046239/120085382-11c68f00-c0ae-11eb-94da-42ff571507ce.png)
+Now we have a live example, you can check it :D
+[Notion Database](https://www.notion.so/9gustin/54d0ff3097694ad08bd21932d598b93d?v=16cf6c15553a4ee6bef406f8b7a14b96)
+[Live example](https://react-notion-render.vercel.app/blog)
+<br />
+And here i added an example with images: [Example](https://react-notion-render.vercel.app/405bee8d-66f0-4777-bc75-da3f962006c1)
 
 ## Custom components are here
 Now Notion API only supports text blocks(like h1, h2, h3, paragraph, lists. [Ref](https://developers.notion.com/reference/block)). Custom components are here for you, it allows you to use other important blocks. <br />
