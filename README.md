@@ -47,8 +47,8 @@ export const getStaticProps = async () => {
 [Single Page](https://github.com/sasigume/notion-to-next-single-page)
 
 ## Example 
-Now we have a live example, you can check it :D
-[Notion Database](https://www.notion.so/9gustin/54d0ff3097694ad08bd21932d598b93d?v=16cf6c15553a4ee6bef406f8b7a14b96)
+Now we have a live example, you can check it :D  <br />
+[Notion Database](https://www.notion.so/9gustin/54d0ff3097694ad08bd21932d598b93d?v=16cf6c15553a4ee6bef406f8b7a14b96)  <br />
 [Live example](https://react-notion-render.vercel.app/blog)
 <br />
 And here i added an example with images: [Example](https://react-notion-render.vercel.app/405bee8d-66f0-4777-bc75-da3f962006c1)
