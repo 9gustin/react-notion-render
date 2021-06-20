@@ -53,6 +53,10 @@ a:hover {
   opacity: 1;
 }
 
+img {
+  max-width: 100%;
+}
+
 :global(.rnr-bold) {
   font-weight: var(--medium-weight);
 }

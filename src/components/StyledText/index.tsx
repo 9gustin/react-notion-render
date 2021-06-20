@@ -1,6 +1,7 @@
 import React, { Fragment, useMemo } from 'react'
 
 import Text from '../../types/Text'
+import withCustomComponent from '../withCustomComponent'
 
 const DEFAULT_COLOR = 'default'
 
@@ -33,4 +34,4 @@ function StyledText({ text, annotations }: Text) {
   )
 }
 
-export default StyledText
+export default withCustomComponent(StyledText)

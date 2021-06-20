@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 import Head from 'next/head'
 import { getDatabase, getPage, getBlocks } from '../lib/notion'
 import Link from 'next/link'
-import { databaseId } from './index.js'
+import { databaseId } from './blog.js'
 
 import { render, StyledText } from '@9gustin/react-notion-render'
 
@@ -31,7 +31,7 @@ export default function Post({ page, blocks }) {
           </h1>
           <section>
             {render(blocks)}
-            <Link href='/'>
+            <Link href='/blog'>
               <a className={styles.back}>← Go home</a>
             </Link>
           </section>
