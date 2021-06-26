@@ -1,34 +1,25 @@
 import React, { Fragment, useMemo } from 'react'
 
 import Text from '../../types/Text'
+import { getClassname } from '../../utils/getClassname'
+import Link from '../Link'
 import withCustomComponent from '../withCustomComponent'
 
-const DEFAULT_COLOR = 'default'
-
 function StyledText({ text, annotations }: Text) {
-  const className = `
-    ${annotations.bold ? 'rnr-bold' : ''}
-    ${annotations.code ? 'rnr-code' : ''}
-    ${annotations.italic ? 'rnr-italic' : ''}
-    ${annotations.strikethrough ? 'rnr-strikethrough' : ''}
-    ${annotations.underline ? 'rnr-underline' : ''}
-    ${annotations.color !== DEFAULT_COLOR ? `rnr-${annotations.color}` : ''}
-  `.trim()
-
+  const cn = getClassname(annotations)
+  
   const renderText = useMemo(
     () =>
       text.link ? (
-        <a href={text.link.url} target='_blank' rel='noreferrer'>
-          {text.content}
-        </a>
+        <Link url={text.link.url} content={text.content} className={cn}/>
       ) : (
         text.content
       ),
     []
   )
 
-  return className ? (
-    <span className={className}>{renderText}</span>
+  return cn ? (
+    <span className={cn}>{renderText}</span>
   ) : (
     <Fragment>{renderText}</Fragment>
   )
