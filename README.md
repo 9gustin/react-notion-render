@@ -62,7 +62,7 @@ The text to custom components sould be plain text, when you paste a link in Noti
 
 
 ### Link
-Now you can use links like Markdown, links now are supported by Notion API, but this add the possibility to made autorreference links, as an index.
+Now you can use links like Markdown, links are supported by Notion API, but this add the possibility to made autorreference links, as an index.
 
 **Example:** <br />
 ```
