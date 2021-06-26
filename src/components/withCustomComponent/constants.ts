@@ -1,10 +1,13 @@
 import React from 'react'
+
 import Text from '../../types/Text'
+import { getClassname } from '../../utils/getClassname'
 
 import Image, { Props as ImageProps } from '../Image'
+import Link, { Props as LinkProps } from '../Link'
 
 type WrappedComponentPropsType = Text
-export type CustomComponentPropsType = ImageProps
+export type CustomComponentPropsType = ImageProps | LinkProps
 
 interface CustomComponent {
   match: RegExp
@@ -24,5 +27,14 @@ export const customComponents: CustomComponent[] = [
       href: plain_text.split('#')[1]
     }),
     component: Image
+  },
+  {
+    match: /[[^\]]*\]\((.*?)\s*("(?:.*[^"])")?\s*\)/,
+    transformProps: ({ plain_text, annotations }) => ({
+      url: plain_text.split('(')[1].split(')')[0],
+      content: plain_text.split('[')[1].split(']')[0],
+      className: getClassname(annotations)
+    }),
+    component: Link
   }
 ]
