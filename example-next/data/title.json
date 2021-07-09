@@ -1,0 +1,24 @@
+{
+  "properties": {
+    "Name": {
+      "id": "title",
+      "type": "title",
+      "title": [
+        {
+          "type": "text",
+          "text": { "content": "Creando un router en React 🛣️", "link": null },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Creando un router en React 🛣️",
+          "href": null
+        }
+      ]
+    }
+  }
+}
