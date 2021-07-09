@@ -6,7 +6,6 @@
 
 ## Description
 This package **not make calls to Notion API** . The purpose of this library is convert the Notion API response to HTML. The Notion's API return the content of page with an structure of blocks([example](https://github.com/9gustin/react-notion-render/blob/main/example-next/data/blocks.json)) and this library resolve that structure. <br />
-**Now you can use [Custom components](#custom-components-are-here) to extend supported Notion blocks ;)**
 
 ## Install
 
@@ -52,7 +51,7 @@ Now we have a live example, you can check it :D  <br />
 <br /><br />
 And here i added an example with images: [Example](https://react-notion-render.vercel.app/405bee8d-66f0-4777-bc75-da3f962006c1)
 
-## Custom components are here
+## Custom components
 Now Notion API only supports text blocks(like h1, h2, h3, paragraph, lists. [Ref](https://developers.notion.com/reference/block)). Custom components are here for you, it allows you to use other important blocks. <br />
 For now the only custom block are images, but i want to extend this. If have an suggestion you can create an [issue](https://github.com/9gustin/react-notion-render/issues/new) and i will work on it ;)
 
