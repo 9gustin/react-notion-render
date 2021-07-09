@@ -1,10 +1,10 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import Head from 'next/head'
 import { getDatabase, getPage, getBlocks } from '../lib/notion'
 import Link from 'next/link'
 import { databaseId } from './blog.js'
 
-import { render, StyledText } from '@9gustin/react-notion-render'
+import { renderBlocks, renderTitle } from '@9gustin/react-notion-render'
 
 import Header from '../components/Header'
 
@@ -25,12 +25,10 @@ export default function Post({ page, blocks }) {
         <Header />
         <article>
           <h1>
-            {page.properties.Name.title.map(({ text, annotations }, index) => (
-              <StyledText key={index} text={text} annotations={annotations} />
-            ))}
+            {renderTitle(page.properties.Name)}
           </h1>
           <section>
-            {render(blocks)}
+            {renderBlocks(blocks)}
             <Link href='/blog'>
               <a className={styles.back}>← Go home</a>
             </Link>
