@@ -1,6 +1,6 @@
 {
   "name": "@9gustin/react-notion-render",
-  "version": "2.2.0",
+  "version": "2.3.0-beta",
   "description": "A library to render notion content",
   "author": "9gustin",
   "keywords": [
