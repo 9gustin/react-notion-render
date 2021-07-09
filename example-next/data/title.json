@@ -6,7 +6,7 @@
       "title": [
         {
           "type": "text",
-          "text": { "content": "Creando un router en React 🛣️", "link": null },
+          "text": { "content": "Mockup Page! ;)", "link": null },
           "annotations": {
             "bold": false,
             "italic": false,
@@ -15,7 +15,7 @@
             "code": false,
             "color": "default"
           },
-          "plain_text": "Creando un router en React 🛣️",
+          "plain_text": "Mockup Page! ;)",
           "href": null
         }
       ]
