@@ -129,6 +129,21 @@ I tried not to add a lot styles to let free to devs, and i added classNames to c
 | rnr-pink | #FE5D9F |
 | rnr-blue | #0eb7e4 |
 
+
+## Render
+
+The package export 3 functions to render:
+
+#### renderTitle
+That function receive a title of an notion page an parse it to text to show in screen.
+
+#### renderBlocks
+That function receive an array of blocks an parse it to components to show in screen.
+
+#### render
+That function now are the same that renderBlocks. I recommend to use renderBlocks. Maybe in the future this render function would change.
+
+
 ## Upgrades:
 If you find a bug, or want to suggest a feature you can create a [New Issue](https://github.com/9gustin/react-notion-render/issues/new) with that and i will analyze, feel free to create issues. Same if you want to contribute with something you can fork this repo and then make an PR with your feature ;)
 
