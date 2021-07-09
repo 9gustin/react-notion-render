@@ -8,12 +8,13 @@ import Block from './types/Block'
 import Text from './types/Text'
 
 import './styles/index.css'
+import renderTitle from './utils/renderTitle'
 
 // Components
 export { Title, Paragraph, List, StyledText }
 
 // Utils
-export { renderBlocks as render, parseBlocks as parser }
+export { renderBlocks as render, renderBlocks, renderTitle, parseBlocks as parser }
 
 // Types
 export { Block, Text }
