@@ -6,7 +6,9 @@ import { idFromString } from '../../../utils/idFromString'
 
 import withContentValidation, { DropedProps } from '../../../hoc/withContentValidation'
 
-function Title({ children, className, plainText, notionType: type }: DropedProps) {
+function Title({ children, className, plainText, config }: DropedProps) {
+  const {notionType: type} = config.block
+
   const renderTitle = useMemo(() => {
     const props = {
       className,
