@@ -1,7 +1,7 @@
 import { blockEnum } from "./BlockTypes";
 import Text from "./Text";
 
-export interface Title {
+interface Title {
   id: 'title';
   type: 'title';
   title: Text[];
@@ -13,7 +13,7 @@ interface BlockTypeContent {
   children?: Block[]
 }
 
-export interface Block {
+interface Block {
   id: string
   type: blockEnum | string
   object: 'block' | 'database' | 'page' | string

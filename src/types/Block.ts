@@ -23,6 +23,7 @@ export class ParsedBlock {
     this.id = initialValues.id
     this.notionType = notionType
 
+    // TODO: Review this ifs
     if (initialValues.type === blockEnum.TITLE && 'title' in initialValues) {
       this.items = null
       this.content = { text: initialValues.title }
@@ -58,6 +59,7 @@ export class ParsedBlock {
         return List
       }
       default: {
+        // TODO: Default text component and use for blockEnum.TITLE:
         return null
       }
     }
