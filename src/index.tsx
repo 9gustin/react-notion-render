@@ -1,20 +1,13 @@
-import Title from './components/Title'
-import List from './components/List'
-import Paragraph from './components/Paragraph'
-import StyledText from './components/StyledText'
-import { parseBlocks } from './utils/parseBlocks'
-import renderBlocks from './utils/renderBlocks'
-import Block from './types/Block'
-import Text from './types/Text'
+export { default as getBlocksToRender } from './utils/getBlocksToRender'
+export { idFromString } from './utils/idFromString'
 
-import './styles/index.css'
-import renderTitle from './utils/renderTitle'
+export { ParsedBlock } from './types/Block'
+export { NotionBlock } from './types/NotionBlock'
+export { blockEnum, UNSUPPORTED_TYPE } from './types/BlockTypes'
+export { default as Text } from './types/Text'
 
-// Components
-export { Title, Paragraph, List, StyledText }
+export { default as Render } from './components/core/Render'
+export { default as RenderText } from './components/core/Text'
 
-// Utils
-export { renderBlocks as render, renderBlocks, renderTitle, parseBlocks as parser }
-
-// Types
-export { Block, Text }
+// TODO: Review styles
+// import './styles/index.css'

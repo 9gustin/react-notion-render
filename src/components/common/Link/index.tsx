@@ -2,17 +2,17 @@ import React from 'react'
 
 export interface Props {
   url: string
-  content: string
+  children: string
   className?: string
 }
 
-function Link({url, content, className}: Props) {
+function Link({url, children, className}: Props) {
   const redirectProps = url.startsWith('#') ? {} : {
     target: '_blank', rel:'noreferrer' 
   }
   return (
     <a href={url} className={className} {...redirectProps}>
-      {content}
+      {children}
     </a>
   )
 }

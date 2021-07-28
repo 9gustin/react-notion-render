@@ -4,7 +4,7 @@ import { getDatabase, getPage, getBlocks } from '../lib/notion'
 import Link from 'next/link'
 import { databaseId } from './blog.js'
 
-import { renderBlocks, renderTitle } from '@9gustin/react-notion-render'
+import { Render } from '@9gustin/react-notion-render'
 
 import Header from '../components/Header'
 
@@ -24,11 +24,10 @@ export default function Post({ page, blocks }) {
       <div className={styles.container}>
         <Header />
         <article>
-          <h1>
-            {renderTitle(page.properties.Name)}
-          </h1>
+          <Render blocks={[page.properties.Name]}/>
           <section>
-            {renderBlocks(blocks)}
+            <Render blocks={blocks}/>
+            {/* {renderBlocks(blocks)} */}
             <Link href='/blog'>
               <a className={styles.back}>← Go home</a>
             </Link>

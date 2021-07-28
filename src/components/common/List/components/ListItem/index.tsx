@@ -1,19 +1,17 @@
 import React, { Fragment, useMemo } from 'react'
-import { blockEnum } from '../../../../types/BlockTypes'
-import styles from '../../styles.module.css'
 
+import { blockEnum } from '../../../../../types/BlockTypes'
 import withContentValidation, {
   DropedProps
-} from '../../../withContentValidation'
+} from '../../../../../hoc/withContentValidation'
+
+import styles from '../../styles.module.css'
+
 import Checkbox from '../Checkbox'
 
-function ListItem({
-  children,
-  className,
-  type,
-  checked,
-  innerChild
-}: DropedProps) {
+function ListItem({ children, config, className, checked }: DropedProps) {
+  const { notionType: type, items } = config.block
+
   const renderChildren = useMemo(() => {
     if (type === blockEnum.CHECK_LIST) {
       return (
@@ -22,16 +20,22 @@ function ListItem({
           {children}
         </Fragment>
       )
-    } else if (type === blockEnum.TOGGLE_LIST && innerChild) {
+    } else if (type === blockEnum.TOGGLE_LIST && items) {
       return (
         <details>
           <summary className={styles['drop-button']}>{children}</summary>
-          {innerChild}
+          {items.map((block) => {
+            const Component = block.getComponent()
+
+            return Component ? (
+              <Component {...config} key={block.id} block={block} />
+            ) : null
+          })}
         </details>
       )
     }
     return children
-  }, [type, children, checked, innerChild])
+  }, [type, children, checked])
 
   return <li className={className}>{renderChildren}</li>
 }
