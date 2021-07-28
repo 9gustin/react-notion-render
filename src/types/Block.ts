@@ -1,3 +1,4 @@
+import DummyText from '../components/common/DummyText'
 import List from '../components/common/List'
 import Paragraph from '../components/common/Paragraph'
 import Title from '../components/common/Title'
@@ -47,7 +48,6 @@ export class ParsedBlock {
       }
       case blockEnum.HEADING1:
       case blockEnum.HEADING2:
-      case blockEnum.TITLE:
       case blockEnum.HEADING3: {
         return Title
       }
@@ -57,8 +57,10 @@ export class ParsedBlock {
       case blockEnum.TOGGLE_LIST: {
         return List
       }
+      case blockEnum.TITLE: {
+        return DummyText
+      }
       default: {
-        // TODO: Default text component and use for blockEnum.TITLE:
         return null
       }
     }
