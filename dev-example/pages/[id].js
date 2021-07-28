@@ -24,9 +24,7 @@ export default function Post({ page, blocks }) {
       <div className={styles.container}>
         <Header />
         <article>
-          <h1>
-            {/* {renderTitle(page.properties.Name)} */}
-          </h1>
+          <Render blocks={[page.properties.Name]}/>
           <section>
             <Render blocks={blocks}/>
             {/* {renderBlocks(blocks)} */}

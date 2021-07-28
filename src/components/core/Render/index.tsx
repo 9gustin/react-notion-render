@@ -1,9 +1,9 @@
 import React, { useMemo } from 'react'
-import Block from '../../../types/Block'
+import { NotionBlock } from '../../../types/NotionBlock'
 import getBlocksToRender from '../../../utils/getBlocksToRender'
 
 interface Props {
-  blocks: Block[]
+  blocks: NotionBlock[]
   defaultStyles?: boolean
   classNames?: boolean
   emptyBlocks?: boolean

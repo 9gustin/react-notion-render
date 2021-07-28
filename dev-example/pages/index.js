@@ -12,7 +12,7 @@ export default function mockedPage() {
         This page is mockuped with data/blocks.json, also you can view{' '}
         <Link href='/blog'>/blog</Link>
       </h3>
-
+      <Render blocks={[title.properties.Name]}/>
       {/* <h1>{renderTitle(title.properties.Name)}</h1> */}
       <article>
         <Render blocks={notionResponse.results} />

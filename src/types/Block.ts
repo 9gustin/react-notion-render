@@ -2,46 +2,19 @@ import List from '../components/common/List'
 import Paragraph from '../components/common/Paragraph'
 import Title from '../components/common/Title'
 import { blockEnum } from './BlockTypes'
+import { NotionBlock } from './NotionBlock'
 import Text from './Text'
-
-interface BlockTypeContent {
-  text: Text[]
-  checked?: boolean
-  children?: Block[]
-}
-
-export default interface Block {
-  id: string
-  type: blockEnum | string
-  object: 'block' | 'database' | 'page' | string
-  // eslint-disable-next-line camelcase
-  created_time: Date | string
-  // eslint-disable-next-line camelcase
-  last_edited_time: Date | string
-  // eslint-disable-next-line camelcase
-  has_children: boolean
-  [blockEnum.HEADING1]?: BlockTypeContent
-  [blockEnum.HEADING2]?: BlockTypeContent
-  [blockEnum.HEADING3]?: BlockTypeContent
-  [blockEnum.PARAGRAPH]?: BlockTypeContent
-  [blockEnum.DOTS_LIST]?: BlockTypeContent
-  [blockEnum.ENUM_LIST]?: BlockTypeContent
-  [blockEnum.CHECK_LIST]?: BlockTypeContent
-  [blockEnum.TOGGLE_LIST]?: BlockTypeContent
-}
-
-export interface BlockContent {
-  text: Text[]
-  checked?: boolean
-}
 
 export class ParsedBlock {
   id: string
   notionType: blockEnum
   items: ParsedBlock[] | null
-  content: BlockContent | null
+  content: null | {
+    text: Text[]
+    checked?: boolean
+  }
 
-  constructor(initialValues: Block, isChild?: boolean) {
+  constructor(initialValues: NotionBlock, isChild?: boolean) {
     const notionType = initialValues.type as blockEnum
     const content = initialValues[notionType]
 
@@ -50,15 +23,19 @@ export class ParsedBlock {
     this.id = initialValues.id
     this.notionType = notionType
 
-    if (this.isList() && !isChild) {
+    if (initialValues.type === blockEnum.TITLE && 'title' in initialValues) {
+      this.items = null
+      this.content = { text: initialValues.title }
+    } else if (this.isList() && !isChild) {
       this.content = null
       this.items = [new ParsedBlock(initialValues, true)]
     } else {
       const { text, checked } = content
 
       this.items =
-        content.children?.map((child: Block) => new ParsedBlock(child, true)) ??
-        null
+        content.children?.map(
+          (child: NotionBlock) => new ParsedBlock(child, true)
+        ) ?? null
       this.content = { text, checked }
     }
   }
@@ -70,6 +47,7 @@ export class ParsedBlock {
       }
       case blockEnum.HEADING1:
       case blockEnum.HEADING2:
+      case blockEnum.TITLE:
       case blockEnum.HEADING3: {
         return Title
       }
@@ -106,7 +84,7 @@ export class ParsedBlock {
     return this.notionType === type
   }
 
-  addItem(block: Block) {
+  addItem(block: NotionBlock) {
     if (!this.items) this.items = []
 
     this.items.push(new ParsedBlock(block, true))

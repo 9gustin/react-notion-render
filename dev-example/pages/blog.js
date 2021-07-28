@@ -2,7 +2,7 @@ import React from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import { getDatabase } from '../lib/notion'
-import { renderTitle } from '@9gustin/react-notion-render'
+import { Render } from '@9gustin/react-notion-render'
 import styles from './index.module.css'
 import Header from '../components/Header'
 
@@ -46,6 +46,8 @@ export default function Home({ posts }) {
                 <h3 className={styles.postTitle}>
                   <Link href={`/${post.id}`}>
                     <a>
+                      <Render blocks={[post.properties.Name]}/>
+                    
                       {/* {renderTitle(post.properties.Name)} */}
                     </a>
                   </Link>

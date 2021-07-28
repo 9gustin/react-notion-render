@@ -1,5 +1,6 @@
-import Block, { ParsedBlock } from '../types/Block'
+import { ParsedBlock } from '../types/Block'
 import { UNSUPPORTED_TYPE } from '../types/BlockTypes'
+import { NotionBlock } from '../types/NotionBlock'
 
 function areRelated(previous: ParsedBlock, current: ParsedBlock) {
   return previous.isList() && previous.equalsType(current.notionType)
@@ -11,7 +12,7 @@ function areRelated(previous: ParsedBlock, current: ParsedBlock) {
  * @param blocks the entire list of blocks
  * @returns
  */
-export default function getBlocksToRender(blocks: Block[]): ParsedBlock[] {
+export default function getBlocksToRender(blocks: NotionBlock[]): ParsedBlock[] {
   const cleanBlocks = blocks.filter(
     ({type}) => type !== UNSUPPORTED_TYPE
   )
