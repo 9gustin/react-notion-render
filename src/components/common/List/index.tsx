@@ -1,12 +1,17 @@
 import React, { useCallback } from 'react'
 
 import { blockEnum } from '../../../types/BlockTypes'
-import withContentValidation, { DropedProps } from '../../../hoc/withContentValidation'
+import withContentValidation, {
+  DropedProps
+} from '../../../hoc/withContentValidation'
+
 import ListItem from './components/ListItem'
 
 import styles from './styles.module.css'
 
-function List({ items, className, notionType: type }: DropedProps) {
+function List({ className, config }: DropedProps) {
+  const { notionType: type, items } = config.block
+
   const cn = `${
     type === blockEnum.CHECK_LIST || type === blockEnum.TOGGLE_LIST
       ? styles['remove-style']
@@ -25,11 +30,7 @@ function List({ items, className, notionType: type }: DropedProps) {
 
   return renderList(
     items?.map((item) => (
-      <ListItem
-        key={item.id}
-        block={item}
-        withClassNames={false}
-      />
+      <ListItem {...config} key={item.id} block={item} />
     ))
   )
 }

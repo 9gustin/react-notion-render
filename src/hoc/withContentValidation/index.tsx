@@ -1,39 +1,44 @@
 import React from 'react'
 
 import { ParsedBlock } from '../../types/Block'
+import Text from '../../types/Text'
 
-import Text from '../../components/core/Text'
+import RenderText from '../../components/core/Text'
 
 export interface WithContentValidationProps {
-  withClassNames: boolean
+  classNames?: boolean
+  emptyBlocks?: boolean
   block: ParsedBlock
 }
 
-export interface DropedProps extends ParsedBlock {
+export interface DropedProps {
   className?: string
-  checked?: boolean
+  checked: boolean
   children: React.ReactNode
-  innerChild?: React.ReactNode | null
-  plainText?: string
+  plainText: string
+  config: WithContentValidationProps
 }
 
-function withContentValidation<P extends object>(
-  Component: React.ComponentType<P>
+function withContentValidation(
+  Component: React.ComponentType<DropedProps>
 ): React.FC<WithContentValidationProps> {
-  return ({ withClassNames, block }: WithContentValidationProps) => {
+  return ({ classNames, emptyBlocks, block }: WithContentValidationProps) => {
+    const plainText = block.content?.text
+      .map((text: any) => text.plain_text)
+      .join(' ') ?? ''
 
-    const plainText = block.content?.text.map((text: any) => text.plain_text).join(' ')
+    const defaultContent = emptyBlocks ? '' : null
 
     return (
       <Component
-        className={withClassNames ? `rnr-${block.notionType}` : ''}
-        checked={block.content?.checked}
+        className={classNames ? `rnr-${block.notionType}` : undefined}
+        checked={Boolean(block.content?.checked)}
         plainText={plainText}
-        {...(block as P)}
+        config={{classNames, emptyBlocks, block }}
       >
-        {block.content?.text.map((text: any, i: any) => (
-          <Text key={i} {...text} />
-        )) ?? null}
+        {block.content?.text.map((text: Text, index: number) => (
+          <RenderText key={index} {...text} />
+        )) ?? defaultContent}
       </Component>
     )
   }

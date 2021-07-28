@@ -1,20 +1,17 @@
 import React, { Fragment, useMemo } from 'react'
-import { blockEnum } from '../../../../../types/BlockTypes'
-import styles from '../../styles.module.css'
 
+import { blockEnum } from '../../../../../types/BlockTypes'
 import withContentValidation, {
   DropedProps
 } from '../../../../../hoc/withContentValidation'
+
+import styles from '../../styles.module.css'
+
 import Checkbox from '../Checkbox'
 
-function ListItem({
-  children,
-  items,
-  className,
-  notionType: type,
-  checked,
-  innerChild
-}: DropedProps) {
+function ListItem({ children, config, className, checked }: DropedProps) {
+  const { notionType: type, items } = config.block
+
   const renderChildren = useMemo(() => {
     if (type === blockEnum.CHECK_LIST) {
       return (
@@ -31,18 +28,14 @@ function ListItem({
             const Component = block.getComponent()
 
             return Component ? (
-              <Component
-                key={block.id}
-                withClassNames={Boolean(false)}
-                block={block}
-              />
+              <Component {...config} key={block.id} block={block} />
             ) : null
           })}
         </details>
       )
     }
     return children
-  }, [type, children, checked, innerChild])
+  }, [type, children, checked])
 
   return <li className={className}>{renderChildren}</li>
 }
