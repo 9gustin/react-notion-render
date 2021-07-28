@@ -1,39 +1,21 @@
 import React from 'react'
-import Title from '../components/Title'
-import List from '../components/List'
-import Paragraph from '../components/Paragraph'
+
+import Title from '../components/common/Title'
+import List from '../components/common/List'
+import Paragraph from '../components/common/Paragraph'
+
 import { ParsedBlock } from '../types/Block'
 import { blockEnum } from '../types/BlockTypes'
 
-export function parseBlocks(
-  blocks: ParsedBlock[],
-  withClassNames: boolean
-): ParsedBlock[] {
-  const blocksWithChildrens = blocks.map((block) => ({
-    ...block,
-    items: block.items?.map((item) => ({
-      ...item,
-      render: item.children
-        ? item.children.map((child) => parseBlock(child, withClassNames))
-        : null
-    }))
-  }))
-
-  return blocksWithChildrens.map((block) => ({
-    ...block,
-    render: parseBlock(block, withClassNames)
-  }))
-}
-
 type Component = typeof Title | typeof List | typeof Paragraph | null
 
-function parseBlock(
+export function parseBlock(
   block: ParsedBlock,
-  withClassNames: boolean
+  withClassNames?: boolean
 ): React.ReactNode {
   let Component: Component = null
 
-  switch (block.type) {
+  switch (block.notionType) {
     case blockEnum.PARAGRAPH: {
       Component = Paragraph
       break
@@ -53,8 +35,8 @@ function parseBlock(
   }
 
   return Component ? (
-    <Component key={block.id} withClassNames={withClassNames} {...block} />
+    <Component key={block.id} withClassNames={Boolean(withClassNames)} block={block} />
   ) : (
-    ''
+    <React.Fragment />
   )
 }

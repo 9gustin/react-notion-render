@@ -1,17 +1,17 @@
 import React, { useMemo } from 'react'
 
-import styles from '../../styles/index.module.css'
-import { blockEnum } from '../../types/BlockTypes'
-import { idFromString } from '../../utils/idFromString'
+import styles from '../../../styles/index.module.css'
+import { blockEnum } from '../../../types/BlockTypes'
+import { idFromString } from '../../../utils/idFromString'
 
-import withContentValidation, { DropedProps } from '../withContentValidation'
+import withContentValidation, { DropedProps } from '../../../hoc/withContentValidation'
 
-function Title({ children, className, plainText, type }: DropedProps) {
+function Title({ children, className, plainText, notionType: type }: DropedProps) {
   const renderTitle = useMemo(() => {
     const props = {
       className,
       children,
-      id: idFromString(plainText!)
+      id: idFromString(plainText || '')
     }
 
     if (type === blockEnum.HEADING2) {

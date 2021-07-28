@@ -46,7 +46,7 @@ export default function Home({ posts }) {
                 <h3 className={styles.postTitle}>
                   <Link href={`/${post.id}`}>
                     <a>
-                      {renderTitle(post.properties.Name)}
+                      {/* {renderTitle(post.properties.Name)} */}
                     </a>
                   </Link>
                 </h3>

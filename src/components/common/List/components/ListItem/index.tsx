@@ -1,16 +1,16 @@
 import React, { Fragment, useMemo } from 'react'
-import { blockEnum } from '../../../../types/BlockTypes'
+import { blockEnum } from '../../../../../types/BlockTypes'
 import styles from '../../styles.module.css'
 
 import withContentValidation, {
   DropedProps
-} from '../../../withContentValidation'
+} from '../../../../../hoc/withContentValidation'
 import Checkbox from '../Checkbox'
 
 function ListItem({
   children,
   className,
-  type,
+  notionType: type,
   checked,
   innerChild
 }: DropedProps) {

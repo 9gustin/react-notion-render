@@ -1,13 +1,8 @@
 import Block, { ParsedBlock } from '../types/Block'
-import { blockEnum } from '../types/BlockTypes'
+import { UNSUPPORTED_TYPE } from '../types/BlockTypes'
 
-function isList(type?: blockEnum | string) {
-  return (
-    type === blockEnum.TOGGLE_LIST ||
-    type === blockEnum.DOTS_LIST ||
-    type === blockEnum.CHECK_LIST ||
-    type === blockEnum.ENUM_LIST
-  )
+function areRelated(previous: ParsedBlock, current: ParsedBlock) {
+  return previous.isList() && previous.equalsType(current.notionType)
 }
 
 /**
@@ -18,7 +13,7 @@ function isList(type?: blockEnum | string) {
  */
 export default function getBlocksToRender(blocks: Block[]): ParsedBlock[] {
   const cleanBlocks = blocks.filter(
-    (block) => block.type !== blockEnum.UNSUPPORTED
+    ({type}) => type !== UNSUPPORTED_TYPE
   )
 
   if (!cleanBlocks.length) return []
@@ -26,26 +21,13 @@ export default function getBlocksToRender(blocks: Block[]): ParsedBlock[] {
   const returnBlocks: ParsedBlock[] = []
 
   for (let i = 0; i < cleanBlocks.length; i++) {
-    if (isList(cleanBlocks[i].type)) {
-      if (
-        returnBlocks[returnBlocks.length - 1]?.items?.length &&
-        returnBlocks[returnBlocks.length - 1].type === cleanBlocks[i].type
-      ) {
-        // eslint-disable-next-line no-unused-expressions
-        returnBlocks[returnBlocks.length - 1].items?.push(cleanBlocks[i])
-      } else {
-        returnBlocks.push({
-          id: cleanBlocks[i].id,
-          type: cleanBlocks[i].type as blockEnum,
-          items: [cleanBlocks[i]]
-        })
-      }
+    const previousBlock = returnBlocks[returnBlocks.length - 1]
+    const block = new ParsedBlock(cleanBlocks[i])
+
+    if (previousBlock && areRelated(previousBlock, block)) {
+      previousBlock.addItem(cleanBlocks[i])
     } else {
-      returnBlocks.push({
-        id: cleanBlocks[i].id,
-        type: cleanBlocks[i].type as blockEnum,
-        block: cleanBlocks[i]
-      })
+      returnBlocks.push(block)
     }
   }
 

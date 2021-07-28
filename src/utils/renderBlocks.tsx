@@ -7,6 +7,7 @@ export default function renderBlocks(
   apiBlocks: Block[],
   withClassNames: boolean = false
 ): React.ReactNode {
+  console.log(apiBlocks)
   const blocks = useMemo(() => {
     if (!apiBlocks) return []
 
@@ -15,8 +16,8 @@ export default function renderBlocks(
         ...rest,
         items: items?.map((item) => ({
           ...item,
-          children: item[item.type].children
-            ? getBlocksToRender(item[item.type].children)
+          children: item[item.notionType].children
+            ? getBlocksToRender(item[item.notionType].children)
             : null
         }))
       })

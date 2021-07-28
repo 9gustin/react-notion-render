@@ -7,5 +7,6 @@ export enum blockEnum {
   DOTS_LIST = 'bulleted_list_item',
   ENUM_LIST = 'numbered_list_item',
   CHECK_LIST = 'to_do',
-  UNSUPPORTED = 'unsupported'
 }
+
+export const UNSUPPORTED_TYPE = 'unsupported'

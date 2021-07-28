@@ -1,20 +1,16 @@
 import { blockEnum } from './BlockTypes'
 import Text from './Text'
 
-type blockObject = 'block' | 'database' | 'page'
-
-type id = string
-
-export interface BlockTypeContent {
+interface BlockTypeContent {
   text: Text[]
   checked?: boolean
   children?: Block[]
 }
 
 export default interface Block {
-  id: id
+  id: string
   type: blockEnum | string
-  object: blockObject | string
+  object: 'block' | 'database' | 'page' | string
   // eslint-disable-next-line camelcase
   created_time: Date | string
   // eslint-disable-next-line camelcase
@@ -29,15 +25,65 @@ export default interface Block {
   [blockEnum.ENUM_LIST]?: BlockTypeContent
   [blockEnum.CHECK_LIST]?: BlockTypeContent
   [blockEnum.TOGGLE_LIST]?: BlockTypeContent
-  [blockEnum.UNSUPPORTED]?: {}
-  render?: React.ReactNode
-  children?: ParsedBlock[] | null
 }
 
-export interface ParsedBlock {
-  id: id
-  type: blockEnum
-  block?: Block
-  items?: Block[]
-  render?: React.ReactNode
+export interface BlockContent {
+  text: Text[]
+  checked?: boolean
+}
+
+export class ParsedBlock {
+  id: string
+  notionType: blockEnum
+  items: ParsedBlock[] | null
+  content: BlockContent | null
+
+  constructor(initialValues: Block, isChild?: boolean) {
+    const notionType = initialValues.type as blockEnum
+    const content = initialValues[notionType]
+
+    if (!notionType || !content) return
+
+    this.id = initialValues.id
+    this.notionType = notionType
+
+    if (this.isList() && !isChild) {
+      this.content = null
+      this.items = [new ParsedBlock(initialValues, true)]
+    } else {
+      const { text, checked } = content
+
+      this.items =
+        content.children?.map((child: Block) => new ParsedBlock(child, true)) ??
+        null
+      this.content = { text, checked }
+    }
+  }
+
+  getType() {
+    switch (this.notionType) {
+      case blockEnum.TOGGLE_LIST:
+      case blockEnum.DOTS_LIST:
+      case blockEnum.CHECK_LIST:
+      case blockEnum.ENUM_LIST:
+        return 'LIST'
+
+      default:
+        return 'ELEMENT'
+    }
+  }
+
+  isList() {
+    return this.getType() === 'LIST'
+  }
+
+  equalsType(type: blockEnum) {
+    return this.notionType === type
+  }
+
+  addItem(block: Block) {
+    if (!this.items) this.items = []
+
+    this.items.push(new ParsedBlock(block, true))
+  }
 }
