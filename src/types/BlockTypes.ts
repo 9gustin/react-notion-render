@@ -6,7 +6,7 @@ export enum blockEnum {
   TOGGLE_LIST = 'toggle',
   DOTS_LIST = 'bulleted_list_item',
   ENUM_LIST = 'numbered_list_item',
-  CHECK_LIST = 'to_do',
+  CHECK_LIST = 'to_do'
 }
 
 export const UNSUPPORTED_TYPE = 'unsupported'
