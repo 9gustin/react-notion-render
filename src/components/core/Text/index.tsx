@@ -1,4 +1,4 @@
-import React, { Fragment, useMemo } from 'react'
+import React, { Fragment } from 'react'
 
 import Text from '../../../types/Text'
 import { getClassname } from '../../../utils/getClassname'
@@ -7,15 +7,11 @@ import withCustomComponent from '../../../hoc/withCustomComponent'
 
 function Text({ text, annotations }: Text) {
   const cn = getClassname(annotations)
-  
-  const renderText = useMemo(
-    () =>
-      text.link ? (
-        <Link url={text.link.url} children={text.content} className={cn}/>
-      ) : (
-        text.content
-      ),
-    []
+
+  const renderText = text.link ? (
+    <Link url={text.link.url} children={text.content} className={cn} />
+  ) : (
+    text.content
   )
 
   return cn ? (
