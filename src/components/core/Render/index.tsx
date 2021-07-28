@@ -11,7 +11,8 @@ interface Props {
 
 function Render({
   blocks,
-  classNames
+  classNames,
+  emptyBlocks
 }: Props) {
   if (!blocks || !blocks.length) return <div />
 
@@ -25,7 +26,8 @@ function Render({
         return Component ? (
           <Component
             key={block.id}
-            withClassNames={Boolean(classNames)}
+            classNames={Boolean(classNames)}
+            emptyBlocks={emptyBlocks}
             block={block}
           />
         ) : null
