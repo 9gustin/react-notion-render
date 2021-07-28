@@ -28,7 +28,6 @@ function withContentValidation<P extends object>(
       <Component
         className={withClassNames ? `rnr-${block.notionType}` : ''}
         checked={block.content?.checked}
-        // innerChild={props.block?.render}
         plainText={plainText}
         {...(block as P)}
       >

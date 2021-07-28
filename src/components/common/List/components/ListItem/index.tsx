@@ -9,6 +9,7 @@ import Checkbox from '../Checkbox'
 
 function ListItem({
   children,
+  items,
   className,
   notionType: type,
   checked,
@@ -22,11 +23,21 @@ function ListItem({
           {children}
         </Fragment>
       )
-    } else if (type === blockEnum.TOGGLE_LIST && innerChild) {
+    } else if (type === blockEnum.TOGGLE_LIST && items) {
       return (
         <details>
           <summary className={styles['drop-button']}>{children}</summary>
-          {innerChild}
+          {items.map((block) => {
+            const Component = block.getComponent()
+
+            return Component ? (
+              <Component
+                key={block.id}
+                withClassNames={Boolean(false)}
+                block={block}
+              />
+            ) : null
+          })}
         </details>
       )
     }

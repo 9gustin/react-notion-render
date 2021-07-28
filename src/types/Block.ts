@@ -1,3 +1,6 @@
+import List from '../components/common/List'
+import Paragraph from '../components/common/Paragraph'
+import Title from '../components/common/Title'
 import { blockEnum } from './BlockTypes'
 import Text from './Text'
 
@@ -57,6 +60,28 @@ export class ParsedBlock {
         content.children?.map((child: Block) => new ParsedBlock(child, true)) ??
         null
       this.content = { text, checked }
+    }
+  }
+
+  getComponent() {
+    switch (this.notionType) {
+      case blockEnum.PARAGRAPH: {
+        return Paragraph
+      }
+      case blockEnum.HEADING1:
+      case blockEnum.HEADING2:
+      case blockEnum.HEADING3: {
+        return Title
+      }
+      case blockEnum.DOTS_LIST:
+      case blockEnum.ENUM_LIST:
+      case blockEnum.CHECK_LIST:
+      case blockEnum.TOGGLE_LIST: {
+        return List
+      }
+      default: {
+        return null
+      }
     }
   }
 
