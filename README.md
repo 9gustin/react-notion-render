@@ -136,7 +136,7 @@ This is independient to the prop **useStyles**, you can combinate them or use se
 The Render component has two more props that you can use.
 
 #### Custom title url
-With this package you can pin the titles in the url to share it. For example, if you have a title like **My Title** and you click it, the url looks like **url.com#my-title**. The function that parse the text it's [here](https://github.com/9gustin/react-notion-render/blob/version3/src/utils/slugify.ts), you can check it. But if you want some diferent conversion you can pass a custom slugify function. In case that you want to separate characthers by _ instead of - yo can pass the **slugifyFn** prop:
+With this package you can pin the titles in the url to share it. For example, if you have a title like **My Title** and you click it, the url looks like **url.com#my-title**. The function that parse the text it's [here](https://github.com/9gustin/react-notion-render/blob/main/src/utils/slugify.ts), you can check it. But if you want some diferent conversion you can pass a custom slugify function. In case that you want to separate characthers by _ instead of - yo can pass the **slugifyFn** prop:
 ```jsx
 <Render blocks={blocks} slugifyFn={text => text.replace(/[^a-zA-Z0-9]/g,'_')} />
 ```
@@ -168,7 +168,7 @@ Index:
 [2. Component Based](#component-based)
 [3. About React](#about-react)
 ```
-The link be maded with the slugifyFn, you can [check the default](https://github.com/9gustin/react-notion-render/blob/version3/src/utils/slugify.ts), or [pass a custom](#custom-title-url).
+The link be maded with the slugifyFn, you can [check the default](https://github.com/9gustin/react-notion-render/blob/main/src/utils/slugify.ts), or [pass a custom](#custom-title-url).
 
 #### Image 
 This it simple, allows you to use images(includes GIF's). The sintax are the same like [Markdown images](https://www.digitalocean.com/community/tutorials/markdown-markdown-images). For it you have to include next text into your notion page as simple text <br />
