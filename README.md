@@ -133,7 +133,20 @@ This is independient to the prop **useStyles**, you can combinate them or use se
 | rnr-blue | #0eb7e4 |
 
 ### ...moreProps
+The Render component has two more props that you can use.
 
+#### Custom title url
+With this package you can pin the titles in the url to share it. For example, if you have a title like **My Title** and you click it, the url looks like **url.com#my-title**. The function that parse the text it's [here](https://github.com/9gustin/react-notion-render/blob/version3/src/utils/slugify.ts), you can check it. But if you want some diferent conversion you can pass a custom slugify function. In case that you want to separate characthers by _ instead of - yo can pass the **slugifyFn** prop:
+```tsx
+<Render blocks={blocks} slugifyFn={text => text.replace(/[^a-zA-Z0-9]/g,'_')} />
+```
+Or whatever you want, slugifyFn should receive and return a string.
+
+#### Preserve empty blocks
+Now by default the Render component discard the empty blocks that you put in your notion page. If you want to preserve you can pass the prop **emptyBlocks** and it be rendered.
+```tsx
+<Render blocks={blocks} emptyBlocks />
+```
 
 ## Custom components
 Now Notion API only supports text blocks(like h1, h2, h3, paragraph, lists. [Ref](https://developers.notion.com/reference/block)). Custom components are here for you, it allows you to use other important blocks. <br />
