@@ -11,11 +11,8 @@
   ],
   "license": "MIT",
   "repository": "9gustin/react-notion-render",
-  "homepage": "https://rnr.9gustin.com/blog",
-  "bugs": {
-    "url": "https://github.com/9gustin/react-notion-render/issues",
-    "email": "vazquezfagustin@gmail.com"
-  },
+  "homepage": "https://github.com/9gustin/react-notion-render/",
+  "bugs": "https://github.com/9gustin/react-notion-render/issues",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "module": "dist/index.modern.js",
