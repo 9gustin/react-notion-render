@@ -3,8 +3,11 @@
 
 <p>A library to render notion pages </p>
 </div>
+<hr />
 
-[![NPM](https://img.shields.io/npm/v/@9gustin/react-notion-render.svg)](https://www.npmjs.com/package/@9gustin/react-notion-render) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![NPM](https://img.shields.io/npm/v/@9gustin/react-notion-render.svg)](https://www.npmjs.com/package/@9gustin/react-notion-render) 
+![npm](https://img.shields.io/npm/dw/@9gustin/react-notion-render)
+![PR](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
 
 ## Table of contents
 
