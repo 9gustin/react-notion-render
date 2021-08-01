@@ -30,6 +30,7 @@ export const customComponents: CustomComponent[] = [
   },
   {
     match: /[[^\]]*\]\((.*?)\s*("(?:.*[^"])")?\s*\)/,
+    // eslint-disable-next-line camelcase
     transformProps: ({ plain_text, annotations }) => ({
       url: plain_text.split('(')[1].split(')')[0],
       children: plain_text.split('[')[1].split(']')[0],
