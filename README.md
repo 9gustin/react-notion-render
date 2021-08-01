@@ -8,10 +8,11 @@
 [![NPM](https://img.shields.io/npm/v/@9gustin/react-notion-render.svg)](https://www.npmjs.com/package/@9gustin/react-notion-render) 
 ![npm](https://img.shields.io/npm/dw/@9gustin/react-notion-render)
 ![PR](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
+![Stars](https://img.shields.io/github/stars/9gustin/react-notion-render.svg?style=social)
 
 ## Table of contents
  - [Description](#description)
- - Installation
+ - [Installation](#installation)
  - Examples
  - Usage
    - Custom Components
@@ -21,7 +22,7 @@
 
 The purpose of this library is convert the Notion API response to HTML. The Notion's API return the content of page with an structure of blocks([example](https://github.com/9gustin/react-notion-render/blob/main/example-next/data/blocks.json)) and this library resolve that structure. This package **not make calls to Notion API** . <br />
 
-## Install
+## Installation
 
 ```bash
 npm i @9gustin/react-notion-render
