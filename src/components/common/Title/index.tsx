@@ -1,6 +1,5 @@
 import React, { useMemo } from 'react'
 
-import styles from '../../../styles/index.module.css'
 import { blockEnum } from '../../../types/BlockTypes'
 import { idFromString } from '../../../utils/idFromString'
 
@@ -25,7 +24,7 @@ function Title({ children, className, plainText, config }: DropedProps) {
     return <h1 {...props} />
   }, [className, children, plainText])
 
-  return <a href={`#${idFromString(plainText!)}`} className={styles.title}>{renderTitle}</a>
+  return <a href={`#${idFromString(plainText!)}`} className="title">{renderTitle}</a>
 }
 
 export default withContentValidation(Title)

@@ -26,7 +26,7 @@ export default function Post({ page, blocks }) {
         <article>
           <Render blocks={[page.properties.Name]}/>
           <section>
-            <Render blocks={blocks}/>
+            <Render blocks={blocks} emptyBlocks useStyles/>
             {/* {renderBlocks(blocks)} */}
             <Link href='/blog'>
               <a className={styles.back}>← Go home</a>
