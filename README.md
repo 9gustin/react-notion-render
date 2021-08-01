@@ -169,7 +169,7 @@ Index:
 The link be maded with the slugifyFn, you can [check the default](https://github.com/9gustin/react-notion-render/blob/version3/src/utils/slugify.ts), or [pass a custom](#custom-title-url).
 
 #### Image 
-This it simple, allows you to use images. The sintax are the same like [Markdown images](https://www.digitalocean.com/community/tutorials/markdown-markdown-images). For it you have to include next text into your notion page as simple text <br />
+This it simple, allows you to use images(includes GIF's). The sintax are the same like [Markdown images](https://www.digitalocean.com/community/tutorials/markdown-markdown-images). For it you have to include next text into your notion page as simple text <br />
 
 **Example:** <br />
 ```
