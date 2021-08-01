@@ -57,7 +57,7 @@ export const getStaticProps = async () => {
 
 ### Blog with Notion as CMS
 
-I've maded a template to blog page, that use this package and allows you have a blog using notion as CMS.
+I've maded a template to blog page, that use this package and allows you have a blog using notion as CMS. <br />
 
 📎 Repo: [@9gustin/notion-blog-nextjs](https://github.com/9gustin/notion-blog-nextjs)  <br />
 📚 Notion Database: [notion/notion-blog-nextjs](https://9gustin.notion.site/a30378a9a7a74a398a17b733136a70d4?v=db951035b8c44968ae226f2c2d358529)  <br />
@@ -66,7 +66,7 @@ I've maded a template to blog page, that use this package and allows you have a 
 **Note**: My personal blog now it's using this template. Url: [9gustin.com](https://9gustin.com)
 
 ### Notion page to single page
-This example it's not maded by me, but i show you what package can do. This is a single page which use this package to render content
+This example it's not maded by me, but i show you what package can do. This is a single page which use this package to render content <br />
 📎 Repo: [sasigume/notion-to-next-single-page](https://github.com/sasigume/notion-to-next-single-page)
 
 ## Custom components
