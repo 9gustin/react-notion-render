@@ -1,8 +1,12 @@
-# react-notion-render
+<div align="center">
+<h1>React Notion Render</h1>
 
-> A library to render notion pages 
+<p>A library to render notion pages </p>
+</div>
 
 [![NPM](https://img.shields.io/npm/v/@9gustin/react-notion-render.svg)](https://www.npmjs.com/package/@9gustin/react-notion-render) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+
+## Table of contents
 
 ## Description
 This package **not make calls to Notion API** . The purpose of this library is convert the Notion API response to HTML. The Notion's API return the content of page with an structure of blocks([example](https://github.com/9gustin/react-notion-render/blob/main/example-next/data/blocks.json)) and this library resolve that structure. <br />
