@@ -212,7 +212,7 @@ const MyComponent = ({blocks, titleBlock}) => {
     <div>
       ...some stuff
       <h1>
-        <Render blocks={[titleBlock]} useStyles />
+        <Render blocks={[titleBlock]} />
       </h1>
       <Render blocks={blocks} useStyles />
     </div>
