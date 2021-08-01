@@ -1,6 +1,6 @@
 {
   "name": "@9gustin/react-notion-render",
-  "version": "2.3.0",
+  "version": "3.0.0",
   "description": "A library to render notion content",
   "author": "9gustin",
   "keywords": [
@@ -11,11 +11,8 @@
   ],
   "license": "MIT",
   "repository": "9gustin/react-notion-render",
-  "homepage": "https://rnr.9gustin.com/blog",
-  "bugs":{
-    "url" : "https://github.com/9gustin/react-notion-render/issues",
-    "email" : "vazquezfagustin@gmail.com"
-  },
+  "homepage": "https://github.com/9gustin/react-notion-render/",
+  "bugs": "https://github.com/9gustin/react-notion-render/issues",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "module": "dist/index.modern.js",
@@ -26,14 +23,15 @@
   "scripts": {
     "build": "microbundle-crl --no-compress --format modern,cjs",
     "start": "microbundle-crl watch --no-compress --format modern,cjs",
+    "dev": "npm-run-all --parallel start dev-example",
+    "dev-example": "cd dev-example && npm run dev -- -p 3001",
     "prepare": "run-s build",
     "test": "run-s test:unit test:lint test:build",
     "test:build": "run-s build",
     "test:lint": "eslint src/**/*.ts src/**/*.tsx",
     "test:unit": "cross-env CI=1 react-scripts test --env=jsdom",
     "test:watch": "react-scripts test --env=jsdom",
-    "predeploy": "cd example && npm install && npm run build",
-    "deploy": "gh-pages -d example/build"
+    "lint": "eslint src/**/*.ts src/**/*.tsx"
   },
   "peerDependencies": {
     "react": "^17.0.2"
@@ -51,19 +49,15 @@
     "babel-eslint": "^10.0.3",
     "cross-env": "^7.0.2",
     "eslint": "^7.28.0",
-    "eslint-config-prettier": "^8.3.0",
     "eslint-config-standard": "^16.0.3",
     "eslint-config-standard-react": "^11.0.1",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-node": "^11.0.0",
-    "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-promise": "^5.1.0",
     "eslint-plugin-react": "^7.17.0",
     "eslint-plugin-standard": "^5.0.0",
-    "gh-pages": "^3.2.1",
     "microbundle-crl": "^0.13.10",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.0.4",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "^4.0.3",

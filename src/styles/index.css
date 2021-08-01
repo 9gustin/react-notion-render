@@ -16,99 +16,108 @@
   --color-blue: #0eb7e4;
   --color-purple: #a842ec;
   --color-pink: #FE5D9F;
-  --color-link: #060080;
+  --color-link: #4e71da;
 }
 
-*{
+:global(.rnr-container) *{
   font-size: var(--font-size-primary);
   font-weight: var(--normal-weight);
 }
 
-h1,
-h1 > * {
+:global(.rnr-container) h1,
+:global(.rnr-container) h1 > * {
   font-size: var(--font-size-display-text);
   font-weight: var(--medium-weight);
 }
 
-h2,
-h2 > * {
+:global(.rnr-container) h2,
+:global(.rnr-container) h2 > * {
   font-size: var(--font-size-title);
   font-weight: var(--medium-weight);
 }
 
-h3,
-h3 > * {
+:global(.rnr-container) h3,
+:global(.rnr-container) h3 > * {
   font-size: var(--font-size-sub-title);
 }
 
-a,
-:any-link {
+:global(.rnr-container) a,
+:global(.rnr-container) :any-link {
   color: var(--color-link);
   opacity: .8;
   transition: opacity .3s;
 }
 
-a:focus,
-a:hover {
+:global(.rnr-container) a:focus,
+:global(.rnr-container) a:hover {
   opacity: 1;
 }
 
-img {
+:global(.rnr-container) img {
   max-width: 100%;
 }
 
-:global(.rnr-bold) {
+:global(.rnr-container) :any-link:global(.title) {
+  color: inherit;
+  text-decoration: none;
+}
+
+:global(.rnr-container) :global(.rnr-empty-block) {
+  height: var(--font-size-primary);;
+}
+
+:global(.rnr-container) :global(.rnr-bold) {
   font-weight: var(--medium-weight);
 }
 
-:global(.rnr-italic) {
+:global(.rnr-container) :global(.rnr-italic) {
   font-style: italic;
 }
 
-:global(.rnr-strikethrough) {
+:global(.rnr-container) :global(.rnr-strikethrough) {
   text-decoration: line-through;
 }
 
-:global(.rnr-underline)	{
+:global(.rnr-container) :global(.rnr-underline)	{
   text-decoration: underline;
 }
 
-:global(.rnr-underline.rnr-strikethrough) {
+:global(.rnr-container) :global(.rnr-underline.rnr-strikethrough) {
   text-decoration: underline line-through;
 }
 
-:global(.rnr-red) {
+:global(.rnr-container) :global(.rnr-red) {
   color: var(--color-red)
 }
 
-:global(.rnr-gray) {
+:global(.rnr-container) :global(.rnr-gray) {
   color: var(--color-gray)
 }
 
-:global(.rnr-brown) {
+:global(.rnr-container) :global(.rnr-brown) {
   color: var(--color-brown)
 }
 
-:global(.rnr-orange) {
+:global(.rnr-container) :global(.rnr-orange) {
   color: var(--color-orange)
 }
 
-:global(.rnr-yellow) {
+:global(.rnr-container) :global(.rnr-yellow) {
   color: var(--color-yellow)
 }
 
-:global(.rnr-green) {
+:global(.rnr-container) :global(.rnr-green) {
   color: var(--color-green)
 }
 
-:global(.rnr-blue) {
+:global(.rnr-container) :global(.rnr-blue) {
   color: var(--color-blue)
 }
 
-:global(.rnr-purple) {
+:global(.rnr-container) :global(.rnr-purple) {
   color: var(--color-purple)
 }
 
-:global(.rnr-pink) {
+:global(.rnr-container) :global(.rnr-pink) {
   color: var(--color-pink)
 }

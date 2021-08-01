@@ -1,4 +1,4 @@
-import Text from "../types/Text";
+import Text from '../types/Text'
 
 const DEFAULT_COLOR = 'default'
 

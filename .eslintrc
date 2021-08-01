@@ -3,9 +3,6 @@
   "extends": [
     "standard",
     "standard-react",
-    "plugin:prettier/recommended",
-    "prettier/standard",
-    "prettier/react",
     "plugin:@typescript-eslint/eslint-recommended"
   ],
   "env": {
@@ -30,6 +27,8 @@
     "react/jsx-fragments": 0,
     "react/no-unused-prop-types": 0,
     "import/export": 0,
-    "no-unused-vars": 0
+    "no-unused-vars": 0,
+    "no-useless-escape": 0,
+    "no-use-before-define": 0
   }
 }
