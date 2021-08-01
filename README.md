@@ -80,11 +80,11 @@ If you followed the [basic example](#basic-example), tou take count that the pag
 This package give you default styles, colors, text styles(blod, italic) and some little things, if you want use have to add two things:
 
 First import the stylesheet
-```tsx
+```jsx
 import '@9gustin/react-notion-render/dist/index.css'
 ```
 And then add to the Render the prop **useStyles**, like that:
-```tsx
+```jsx
 <Render blocks={blocks} useStyles />
 ```
 
@@ -93,7 +93,7 @@ And it's all, now the page looks some better, i tried to not manipulate that sty
 #### Using your own styles
 If you want to add styles by your own, you can use the prop **classNames**, this props gives classes to the elements, it make more easier to identify them. For example to paragraphs give the class "rnr-paragraph", and you can add this class in your CSS and give styles.
 
-```tsx
+```jsx
 <Render blocks={blocks} classNames />
 ```
 This is independient to the prop **useStyles**, you can combinate them or use separated.
@@ -137,14 +137,14 @@ The Render component has two more props that you can use.
 
 #### Custom title url
 With this package you can pin the titles in the url to share it. For example, if you have a title like **My Title** and you click it, the url looks like **url.com#my-title**. The function that parse the text it's [here](https://github.com/9gustin/react-notion-render/blob/version3/src/utils/slugify.ts), you can check it. But if you want some diferent conversion you can pass a custom slugify function. In case that you want to separate characthers by _ instead of - yo can pass the **slugifyFn** prop:
-```tsx
+```jsx
 <Render blocks={blocks} slugifyFn={text => text.replace(/[^a-zA-Z0-9]/g,'_')} />
 ```
 Or whatever you want, slugifyFn should receive and return a string.
 
 #### Preserve empty blocks
 Now by default the Render component discard the empty blocks that you put in your notion page. If you want to preserve you can pass the prop **emptyBlocks** and it be rendered.
-```tsx
+```jsx
 <Render blocks={blocks} emptyBlocks />
 ```
 
@@ -185,6 +185,42 @@ So when the user click my image in the blog it will be redirected to my github p
 
 ## Migrating from v2 to v3
 
+In v2 we use render as a function (we have render, renderBlocks and renderTitle). So when use it should use like that:
+```jsx
+import { renderBlocks, renderTitle } from '@9gustin/react-notion-render'
+
+const MyComponent = ({blocks, titleBlock}) => {
+  return (
+    <div>
+      ...some stuff
+      <h1>
+        {renderTitle(titleBlock)}
+      </h1>  
+      {renderBlocks(blocks)}
+    </div>
+  )
+}
+```
+
+
+Now we do like that:
+```jsx
+import { Render } from '@9gustin/react-notion-render'
+
+const MyComponent = ({blocks, titleBlock}) => {
+  return (
+    <div>
+      ...some stuff
+      <h1>
+        <Render blocks={[titleBlock]}/>
+      </h1>
+      <Render blocks={blocks}/>
+    </div>
+  )
+}
+```
+Now the Render component supports page content blocks and title blocks. <br />
+The concept of the **Render** are that receive blocks and parse it to React.ReactNode(or Elements), and in there use React Hooks. So it was a function but only can be used into components. And then it corresponds to be a Component.
 
 ## Contributions:
 If you find a bug, or want to suggest a feature you can create a [New Issue](https://github.com/9gustin/react-notion-render/issues/new) and will be analized. **Contributions of any kind welcome!**
