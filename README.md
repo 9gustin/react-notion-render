@@ -148,6 +148,8 @@ Now by default the Render component discard the empty blocks that you put in you
 <Render blocks={blocks} emptyBlocks />
 ```
 
+The empty blocks contain the class "**rnr-empty-block**", this class has default styles (with **useStyles**) but you can apply your own styles.
+
 ### Custom components
 Now Notion API only supports text blocks, like h1, h2, h3, paragraph, lists([Notion Doc.](https://developers.notion.com/reference/block)). Custom components are here for you, it allows you to use other important blocks. <br />
 
