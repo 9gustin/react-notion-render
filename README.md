@@ -13,18 +13,17 @@
 ## Table of contents
  - [Description](#description)
  - [Installation](#installation)
- - Examples
-   - Basic example
-   - Blog with Notion as CMS
-   - Single page
- - Notion API Relation
+ - [Examples](#examples)
+   - [Basic example](#basic-example)
+   - [Blog with Notion as CMS](#blog-with-notion-as-cms)
+   - [Notion page to single page](#notion-page-to-single-page)
  - Usage
    - Custom Components
    - Giving Styles
 
 ## Description
 
-When we want to retrieve the content of a Notion page, using the Notion API we will obtain a complex block structure(like [this example](https://github.com/9gustin/react-notion-render/blob/main/example-next/data/blocks.json)). This package solves that structure and takes care of rendering that response.
+When we want to [retrieve the content of a Notion page](https://developers.notion.com/docs/working-with-page-content), using the Notion API we will obtain a complex block structure(like [this example](https://github.com/9gustin/react-notion-render/blob/main/example-next/data/blocks.json)). This package solves that structure and takes care of rendering that response.
 
 ## Installation
 
@@ -38,37 +37,37 @@ npm i @9gustin/react-notion-render
 I would use the package [@notionhq/client](https://www.npmjs.com/package/@notionhq/client) to get data from the Notion API and take this example of [Notion Service](https://github.com/samuelkraft/notion-blog-nextjs/blob/master/lib/notion.js) also you can fetch the data from the api. This example take pages of an database an render the first of list. This example is an Page in Next.js.
 
 ```jsx
-import { Render } from '@9gustin/react-notion-render';
-import { getBlocks, getDatabase } from '../services/notion';
+import { Render } from '@9gustin/react-notion-render'
+import { getBlocks, getDatabase } from '../services/notion'
 
 export default ({blocks}) => <Render blocks={blocks} />
 
 export const getStaticProps = async () => {
-  const DATABASE_ID = '54d0ff3097694ad08bd21932d598b93d';
-  const database = await getDatabase(DATABASE_ID);
-  const blocks = await getBlocks(database[0].id);
+  const DATABASE_ID = '54d0ff3097694ad08bd21932d598b93d'
+  const database = await getDatabase(DATABASE_ID)
+  const blocks = await getBlocks(database[0].id)
 
   return {
     props: {
       blocks
     }
-  };
-};
+  }
+}
 ```
 
-## Notion API Reference
-[Retrieve block children](https://developers.notion.com/reference/get-block-children) <br />
-[Working with page content](https://developers.notion.com/docs/working-with-page-content)
+### Blog with Notion as CMS
 
-## Live examples: 
-[Blog](https://github.com/9gustin/notion-blog-nextjs/tree/9blog) <br />
-[Single Page](https://github.com/sasigume/notion-to-next-single-page)
+I've maded a template to blog page, that use this package and allows you have a blog using notion as CMS.
 
-## Example 
-Now we have a live example, you can check it :D  <br />
-[Live example](https://react-notion-render.vercel.app/blog)
-<br /><br />
-And here i added an example with images: [Example](https://react-notion-render.vercel.app/405bee8d-66f0-4777-bc75-da3f962006c1)
+📎 Repo: [@9gustin/notion-blog-nextjs](https://github.com/9gustin/notion-blog-nextjs)  <br />
+📚 Notion Database: [notion/notion-blog-nextjs](https://9gustin.notion.site/a30378a9a7a74a398a17b733136a70d4?v=db951035b8c44968ae226f2c2d358529)  <br />
+✨Web: [blog-template](https://blog-template.9gustin.com)  <br />
+
+**Note**: My personal blog now it's using this template. Url: [9gustin.com](https://9gustin.com)
+
+### Notion page to single page
+This example it's not maded by me, but i show you what package can do. This is a single page which use this package to render content
+📎 Repo: [sasigume/notion-to-next-single-page](https://github.com/sasigume/notion-to-next-single-page)
 
 ## Custom components
 Now Notion API only supports text blocks(like h1, h2, h3, paragraph, lists. [Ref](https://developers.notion.com/reference/block)). Custom components are here for you, it allows you to use other important blocks. <br />
