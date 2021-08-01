@@ -4,16 +4,13 @@ import getBlocksToRender from '../../../utils/getBlocksToRender'
 
 interface Props {
   blocks: NotionBlock[]
-  defaultStyles?: boolean
+  useStyles?: boolean
   classNames?: boolean
   emptyBlocks?: boolean
+  slugifyFn?: (text: string) => string
 }
 
-function Render({
-  blocks,
-  classNames,
-  emptyBlocks
-}: Props) {
+function Render({ blocks, classNames, emptyBlocks, useStyles, slugifyFn }: Props) {
   if (!blocks || !blocks.length) return <div />
 
   const renderBlocks = getBlocksToRender(blocks)
@@ -23,19 +20,28 @@ function Render({
       renderBlocks.map((block) => {
         const Component = block.getComponent()
 
-        return Component ? (
+        return Component
+          ? (
           <Component
             key={block.id}
             classNames={Boolean(classNames)}
             emptyBlocks={emptyBlocks}
             block={block}
+            slugifyFn={slugifyFn}
           />
-        ) : null
+            )
+          : null
       }),
     [blocks]
   )
 
-  return <React.Fragment>{render}</React.Fragment>
+  return useStyles
+    ? (
+    <div className='rnr-container'>{render}</div>
+      )
+    : (
+    <React.Fragment>{render}</React.Fragment>
+      )
 }
 
 export default Render

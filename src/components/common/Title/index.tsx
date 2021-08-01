@@ -1,19 +1,25 @@
 import React, { useMemo } from 'react'
 
-import styles from '../../../styles/index.module.css'
 import { blockEnum } from '../../../types/BlockTypes'
-import { idFromString } from '../../../utils/idFromString'
 
-import withContentValidation, { DropedProps } from '../../../hoc/withContentValidation'
+import withContentValidation, {
+  DropedProps
+} from '../../../hoc/withContentValidation'
 
-function Title({ children, className, plainText, config }: DropedProps) {
-  const {notionType: type} = config.block
+function Title({
+  children,
+  className,
+  plainText,
+  config,
+  slugifyFn
+}: DropedProps) {
+  const { notionType: type } = config.block
 
   const renderTitle = useMemo(() => {
     const props = {
       className,
       children,
-      id: idFromString(plainText || '')
+      id: slugifyFn(plainText || '')
     }
 
     if (type === blockEnum.HEADING2) {
@@ -25,7 +31,11 @@ function Title({ children, className, plainText, config }: DropedProps) {
     return <h1 {...props} />
   }, [className, children, plainText])
 
-  return <a href={`#${idFromString(plainText!)}`} className={styles.title}>{renderTitle}</a>
+  return (
+    <a href={`#${slugifyFn(plainText)}`} className='title'>
+      {renderTitle}
+    </a>
+  )
 }
 
 export default withContentValidation(Title)

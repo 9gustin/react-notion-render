@@ -6,10 +6,12 @@ export interface Props {
   className?: string
 }
 
-function Link({url, children, className}: Props) {
-  const redirectProps = url.startsWith('#') ? {} : {
-    target: '_blank', rel:'noreferrer' 
-  }
+function Link({ url, children, className }: Props) {
+  const redirectProps = url.startsWith('#')
+    ? {}
+    : {
+        target: '_blank', rel: 'noreferrer'
+      }
   return (
     <a href={url} className={className} {...redirectProps}>
       {children}

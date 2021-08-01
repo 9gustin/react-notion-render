@@ -26,7 +26,9 @@ export default function Post({ page, blocks }) {
         <article>
           <Render blocks={[page.properties.Name]}/>
           <section>
-            <Render blocks={blocks}/>
+            <Render blocks={blocks} emptyBlocks useStyles slugifyFn={(t) => {
+              return t.replace(/[^a-zA-Z0-9]/g,'_');
+            }}/>
             {/* {renderBlocks(blocks)} */}
             <Link href='/blog'>
               <a className={styles.back}>← Go home</a>

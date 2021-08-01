@@ -1,5 +1,5 @@
-import { blockEnum } from "./BlockTypes";
-import Text from "./Text";
+import { blockEnum } from './BlockTypes'
+import Text from './Text'
 
 interface Title {
   id: 'title';
