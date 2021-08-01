@@ -17,9 +17,11 @@
    - [Basic example](#basic-example)
    - [Blog with Notion as CMS](#blog-with-notion-as-cms)
    - [Notion page to single page](#notion-page-to-single-page)
- - Usage
-   - Custom Components
-   - Giving Styles
+ - [Usage](#usage)
+   - [Giving Styles](#giving-styles)
+   - [...moreProps](#moreprops)
+   - [Custom Components](#custom-components)
+ - [Migrating from v2 to v3](#migrating-from-v2-to-v3)
 
 ## Description
 
@@ -69,6 +71,70 @@ I've maded a template to blog page, that use this package and allows you have a 
 This example it's not maded by me, but i show you what package can do. This is a single page which use this package to render content <br />
 📎 Repo: [sasigume/notion-to-next-single-page](https://github.com/sasigume/notion-to-next-single-page)
 
+## Usage
+
+### Giving styles
+If you followed the [basic example](#basic-example), tou take count that the page are rendered without styles, only pure text. To solve that we can use the Render props, like  the following cases
+
+#### Using default styles
+This package give you default styles, colors, text styles(blod, italic) and some little things, if you want use have to add two things:
+
+First import the stylesheet
+```tsx
+import '@9gustin/react-notion-render/dist/index.css'
+```
+And then add to the Render the prop **useStyles**, like that:
+```tsx
+<Render blocks={blocks} useStyles />
+```
+
+And it's all, now the page looks some better, i tried to not manipulate that styles so much to preserve generic styles.
+
+#### Using your own styles
+If you want to add styles by your own, you can use the prop **classNames**, this props gives classes to the elements, it make more easier to identify them. For example to paragraphs give the class "rnr-paragraph", and you can add this class in your CSS and give styles.
+
+```tsx
+<Render blocks={blocks} classNames />
+```
+This is independient to the prop **useStyles**, you can combinate them or use separated.
+
+**Components Reference**  <br />
+
+| ClassName          | Notion Reference    | HTML Tag                                         |
+| ------------------ | ------------------- | ------------------------------------------------ |
+| rnr-heading_1 | Heading 1 | h1 |
+| rnr-heading_2 | Heading 2 | h2 |
+| rnr-heading_3 | Heading 3 | h3 |
+| rnr-paragraph | Paragraph | p |
+| rnr-to_do | To-do List | ul |
+| rnr-bulleted_list_item | Bulleted List | ul |
+| rnr-numbered_list_item | Numered List | ol |
+| rnr-toggle | Toggle List | ul |
+
+**Text Styles**  <br />
+| ClassName          | Notion Reference    |
+| ------------------ | ------------------- | 
+| rnr-bold | Bold |
+| rnr-italic | Italicize |
+| rnr-strikethrough | Strike Through |
+| rnr-underline | Underline |
+
+**Text colors**  <br />
+| ClassName          | HEX |
+| ------------------ | --- | 
+| rnr-red | #ff2525 |
+| rnr-gray | #979797 |
+| rnr-brown | #816868 |
+| rnr-orange | #FE9920 |
+| rnr-yellow | #F1DB4B |
+| rnr-green | #22ae65 |
+| rnr-purple | #a842ec |
+| rnr-pink | #FE5D9F |
+| rnr-blue | #0eb7e4 |
+
+### ...moreProps
+
+
 ## Custom components
 Now Notion API only supports text blocks(like h1, h2, h3, paragraph, lists. [Ref](https://developers.notion.com/reference/block)). Custom components are here for you, it allows you to use other important blocks. <br />
 For now the only custom block are images, but i want to extend this. If have an suggestion you can create an [issue](https://github.com/9gustin/react-notion-render/issues/new) and i will work on it ;)
@@ -105,60 +171,7 @@ Also you can add a link to image, like an image anchor. This link would be opene
 ```
 So when the user click my image in the blog it will be redirected to my github profile. <br />
 
-## Giving styles
-To give styles yo may activate a second param of **render** method. That generate classes to all components and text styles.
-```tsx
-render(blocks, true)
-```
-I tried not to add a lot styles to let free to devs, and i added classNames to components to you take that and give styles. I named classes starting to **rnr-** (rnr like 'React-Notion-Render') and the notion name of component / style. Then i go to list the name of classNames and their reference. This classes not has styles, for that should be easy to you give styles.
-
-##### Components
-
-| ClassName          | Notion Reference    | HTML Tag                                         |
-| ------------------ | ------------------- | ------------------------------------------------ |
-| rnr-heading_1 | Heading 1 | h1 |
-| rnr-heading_2 | Heading 2 | h2 |
-| rnr-heading_3 | Heading 3 | h3 |
-| rnr-paragraph | Paragraph | p |
-| rnr-to_do | To-do List | ul |
-| rnr-bulleted_list_item | Bulleted List | ul |
-| rnr-numbered_list_item | Numered List | ol |
-| rnr-toggle | Toggle List | ul |
-
-#### Text Styles
-| ClassName          | Notion Reference    |
-| ------------------ | ------------------- | 
-| rnr-bold | Bold |
-| rnr-italic | Italicize |
-| rnr-strikethrough | Strike Through |
-| rnr-underline | Underline |
-
-#### Text colors
-| ClassName          | HEX |
-| ------------------ | --- | 
-| rnr-red | #ff2525 |
-| rnr-gray | #979797 |
-| rnr-brown | #816868 |
-| rnr-orange | #FE9920 |
-| rnr-yellow | #F1DB4B |
-| rnr-green | #22ae65 |
-| rnr-purple | #a842ec |
-| rnr-pink | #FE5D9F |
-| rnr-blue | #0eb7e4 |
-
-
-## Render
-
-The package export 3 functions to render:
-
-#### renderTitle
-That function receive a title of an notion page an parse it to text to show in screen.
-
-#### renderBlocks
-That function receive an array of blocks an parse it to components to show in screen.
-
-#### render
-That function now are the same that renderBlocks. I recommend to use renderBlocks. Maybe in the future this render function would change.
+## Migrating from v2 to v3
 
 
 ## Contributions:
