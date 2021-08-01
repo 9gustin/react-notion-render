@@ -25,7 +25,6 @@ export const customComponents: CustomComponent[] = [
       alt: plain_text.split('![')[1].split(']')[0],
       src: plain_text.split('(')[1].split(')')[0],
       href: plain_text.substr(plain_text.indexOf('#')).replace('#', '')
-      // href: plain_text.split('#')[1]
     }),
     component: Image
   },
