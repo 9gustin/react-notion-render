@@ -14,13 +14,17 @@
  - [Description](#description)
  - [Installation](#installation)
  - Examples
+   - Basic example
+   - Blog with Notion as CMS
+   - Single page
+ - Notion API Relation
  - Usage
    - Custom Components
    - Giving Styles
 
 ## Description
 
-The purpose of this library is convert the Notion API response to HTML. The Notion's API return the content of page with an structure of blocks([example](https://github.com/9gustin/react-notion-render/blob/main/example-next/data/blocks.json)) and this library resolve that structure. This package **not make calls to Notion API** . <br />
+When we want to retrieve the content of a Notion page, using the Notion API we will obtain a complex block structure(like [this example](https://github.com/9gustin/react-notion-render/blob/main/example-next/data/blocks.json)). This package solves that structure and takes care of rendering that response.
 
 ## Installation
 
@@ -28,20 +32,20 @@ The purpose of this library is convert the Notion API response to HTML. The Noti
 npm i @9gustin/react-notion-render
 ```
 
-## Usage
-I would use the package [@notionhq/client](https://www.npmjs.com/package/@notionhq/client) to get data fron the Notion API and take this example of [Notion Service](https://github.com/samuelkraft/notion-blog-nextjs/blob/master/lib/notion.js) also you can fetch the data from the api. This example take pages of an database an render the first of list. This example is an Page in Next.js.
+## Examples
+
+### Basic example
+I would use the package [@notionhq/client](https://www.npmjs.com/package/@notionhq/client) to get data from the Notion API and take this example of [Notion Service](https://github.com/samuelkraft/notion-blog-nextjs/blob/master/lib/notion.js) also you can fetch the data from the api. This example take pages of an database an render the first of list. This example is an Page in Next.js.
 
 ```jsx
-import { render } from '@9gustin/react-notion-render';
-import '@9gustin/react-notion-render/dist/index.css'
+import { Render } from '@9gustin/react-notion-render';
 import { getBlocks, getDatabase } from '../services/notion';
 
-export default ({blocks}) => render(blocks);
-
-const MY_DATABASE = '54d0ff3097694ad08bd21932d598b93d';
+export default ({blocks}) => <Render blocks={blocks} />
 
 export const getStaticProps = async () => {
-  const database = await getDatabase(MY_DATABASE);
+  const DATABASE_ID = '54d0ff3097694ad08bd21932d598b93d';
+  const database = await getDatabase(DATABASE_ID);
   const blocks = await getBlocks(database[0].id);
 
   return {
