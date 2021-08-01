@@ -20,8 +20,7 @@ function List({ className, config }: DropedProps) {
 
   const renderList = useCallback(
     (children: React.ReactNode) => {
-      if (type === blockEnum.ENUM_LIST)
-        return <ol className={cn}>{children}</ol>
+      if (type === blockEnum.ENUM_LIST) { return <ol className={cn}>{children}</ol> }
 
       return <ul className={cn}>{children}</ul>
     },

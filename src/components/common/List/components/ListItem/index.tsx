@@ -27,9 +27,11 @@ function ListItem({ children, config, className, checked }: DropedProps) {
           {items.map((block) => {
             const Component = block.getComponent()
 
-            return Component ? (
+            return Component
+              ? (
               <Component {...config} key={block.id} block={block} />
-            ) : null
+                )
+              : null
           })}
         </details>
       )

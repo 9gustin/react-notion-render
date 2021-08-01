@@ -40,7 +40,8 @@ function withContentValidation(
       return null
     }
 
-    return hasContent ? (
+    return hasContent
+      ? (
       <Component
         className={classNames ? `rnr-${block.notionType}` : undefined}
         checked={Boolean(block.content?.checked)}
@@ -56,9 +57,10 @@ function withContentValidation(
           <RenderText key={index} {...text} />
         ))}
       </Component>
-    ) : (
+        )
+      : (
       <EmptyBlock />
-    )
+        )
   }
 }
 

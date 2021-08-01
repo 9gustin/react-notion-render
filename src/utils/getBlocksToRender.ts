@@ -14,7 +14,7 @@ function areRelated(previous: ParsedBlock, current: ParsedBlock) {
  */
 export default function getBlocksToRender(blocks: NotionBlock[]): ParsedBlock[] {
   const cleanBlocks = blocks.filter(
-    ({type}) => type !== UNSUPPORTED_TYPE
+    ({ type }) => type !== UNSUPPORTED_TYPE
   )
 
   if (!cleanBlocks.length) return []
