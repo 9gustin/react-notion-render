@@ -1,5 +1,5 @@
 export { default as getBlocksToRender } from './utils/getBlocksToRender'
-export { idFromString } from './utils/idFromString'
+export { slugify as rnrSlugify } from './utils/slugify'
 
 export { ParsedBlock } from './types/Block'
 export { NotionBlock } from './types/NotionBlock'

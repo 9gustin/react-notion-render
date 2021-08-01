@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react'
 
 import { blockEnum } from '../../../types/BlockTypes'
-import { idFromString } from '../../../utils/idFromString'
+import { slugify } from '../../../utils/slugify'
 
 import withContentValidation, { DropedProps } from '../../../hoc/withContentValidation'
 
@@ -12,7 +12,7 @@ function Title({ children, className, plainText, config }: DropedProps) {
     const props = {
       className,
       children,
-      id: idFromString(plainText || '')
+      id: slugify(plainText || '')
     }
 
     if (type === blockEnum.HEADING2) {
@@ -24,7 +24,7 @@ function Title({ children, className, plainText, config }: DropedProps) {
     return <h1 {...props} />
   }, [className, children, plainText])
 
-  return <a href={`#${idFromString(plainText!)}`} className="title">{renderTitle}</a>
+  return <a href={`#${slugify(plainText!)}`} className="title">{renderTitle}</a>
 }
 
 export default withContentValidation(Title)
