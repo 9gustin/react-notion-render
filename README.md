@@ -10,9 +10,16 @@
 ![PR](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
 
 ## Table of contents
+ - [Description](#description)
+ - Installation
+ - Examples
+ - Usage
+   - Custom Components
+   - Giving Styles
 
 ## Description
-This package **not make calls to Notion API** . The purpose of this library is convert the Notion API response to HTML. The Notion's API return the content of page with an structure of blocks([example](https://github.com/9gustin/react-notion-render/blob/main/example-next/data/blocks.json)) and this library resolve that structure. <br />
+
+The purpose of this library is convert the Notion API response to HTML. The Notion's API return the content of page with an structure of blocks([example](https://github.com/9gustin/react-notion-render/blob/main/example-next/data/blocks.json)) and this library resolve that structure. This package **not make calls to Notion API** . <br />
 
 ## Install
 
@@ -150,8 +157,8 @@ That function receive an array of blocks an parse it to components to show in sc
 That function now are the same that renderBlocks. I recommend to use renderBlocks. Maybe in the future this render function would change.
 
 
-## Upgrades:
-If you find a bug, or want to suggest a feature you can create a [New Issue](https://github.com/9gustin/react-notion-render/issues/new) with that and i will analyze, feel free to create issues. Same if you want to contribute with something you can fork this repo and then make an PR with your feature ;)
+## Contributions:
+If you find a bug, or want to suggest a feature you can create a [New Issue](https://github.com/9gustin/react-notion-render/issues/new) and will be analized. **Contributions of any kind welcome!**
 
 ## License
 
