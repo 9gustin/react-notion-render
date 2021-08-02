@@ -24,15 +24,17 @@ function ListItem({ children, config, className, checked }: DropedProps) {
       return (
         <details>
           <summary className={styles['drop-button']}>{children}</summary>
-          {items.map((block) => {
-            const Component = block.getComponent()
+          <div className={styles['drop-children']}>
+            {items.map((block) => {
+              const Component = block.getComponent()
 
-            return Component
-              ? (
-              <Component {...config} key={block.id} block={block} />
-                )
-              : null
-          })}
+              return Component
+                ? (
+                <Component {...config} key={block.id} block={block} />
+                  )
+                : null
+            })}
+          </div>
         </details>
       )
     }

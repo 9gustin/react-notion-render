@@ -7,6 +7,11 @@
   margin-right: 10px;
 }
 
+.drop-children {
+  margin-left: 20px;
+}
+
 .drop-button{
   cursor: pointer;
+  margin-left: 0;
 }
