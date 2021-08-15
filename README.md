@@ -25,7 +25,7 @@
 
 ## Description
 
-When we want to [retrieve the content of a Notion page](https://developers.notion.com/docs/working-with-page-content), using the Notion API we will obtain a complex block structure(like [this example](https://github.com/9gustin/react-notion-render/blob/main/example-next/data/blocks.json)). This package solves that structure and takes care of rendering that response.
+When we want to [retrieve the content of a Notion page](https://developers.notion.com/docs/working-with-page-content), using the Notion API we will obtain a complex block structure(like [this example](https://github.com/9gustin/react-notion-render/blob/main/dev-example/data/blocks.json)). This package solves that structure and takes care of rendering that response.
 
 ## Installation
 
