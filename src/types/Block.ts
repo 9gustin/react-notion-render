@@ -73,14 +73,25 @@ export class ParsedBlock {
       case blockEnum.CHECK_LIST:
       case blockEnum.ENUM_LIST:
         return 'LIST'
-
+      case blockEnum.HEADING1:
+      case blockEnum.HEADING2:
+      case blockEnum.HEADING3:
+        return 'TITLE'
       default:
         return 'ELEMENT'
     }
   }
 
+  getPlainText() {
+    return this.content?.text.map((text: Text) => text.plain_text).join(' ') ?? ''
+  }
+
   isList() {
     return this.getType() === 'LIST'
+  }
+
+  isTitle(): unknown {
+    return this.getType() === 'TITLE'
   }
 
   equalsType(type: blockEnum) {
