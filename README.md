@@ -202,9 +202,9 @@ const MyTableOfContents = ({blocks}) => {
       Table of contents:
       <ul>
         {
-          indexGenerator(blocks).map(({ id, plainText }) => (
+          indexGenerator(blocks).map(({ id, plainText, type }) => (
             <li key={id}>
-              {plainText}
+              {plainText} - {type}
             </li>
           ))
         }
