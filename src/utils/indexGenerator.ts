@@ -8,8 +8,8 @@ export function indexGenerator(blocks: NotionBlock[]) {
 
   return titles.map((title) => ({
     id: title.id,
-    title: title.notionType,
+    type: title.notionType,
     text: title.content?.text,
     plainText: title.getPlainText()
-  }))
+  })) ?? []
 }

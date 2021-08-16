@@ -4,7 +4,7 @@ import { getDatabase, getPage, getBlocks } from '../lib/notion'
 import Link from 'next/link'
 import { databaseId } from './blog.js'
 
-import { Render } from '@9gustin/react-notion-render'
+import { Render, indexGenerator } from '@9gustin/react-notion-render'
 
 import Header from '../components/Header'
 
@@ -14,6 +14,9 @@ export default function Post({ page, blocks }) {
   if (!page || !blocks) {
     return <div />
   }
+
+  const blocksIndex = indexGenerator(blocks)
+
   return (
     <>
       <Head>
@@ -23,11 +26,21 @@ export default function Post({ page, blocks }) {
 
       <div className={styles.container}>
         <Header />
+        Temas:
+        <ul>
+          {
+            blocksIndex.map(({ id, plainText }) => (
+              <li key={id}>
+                {plainText}
+              </li>
+            ))
+          }
+        </ul>
         <article>
           <Render blocks={[page.properties.Name]}/>
           <section>
             <Render blocks={blocks} emptyBlocks useStyles slugifyFn={(t) => {
-              return t.replace(/[^a-zA-Z0-9]/g,'_');
+              return t.replace(/[^a-zA-Z0-9]/g, '_')
             }}/>
             {/* {renderBlocks(blocks)} */}
             <Link href='/blog'>
