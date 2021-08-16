@@ -21,6 +21,7 @@
    - [Giving Styles](#giving-styles)
    - [...moreProps](#moreprops)
    - [Custom Components](#custom-components)
+   - [Display the table of contents](#display-the-table-of-contents)
  - [Migrating from v2 to v3](#migrating-from-v2-to-v3)
 
 ## Description
@@ -184,6 +185,40 @@ Also you can add a link to image, like an image anchor. This link would be opene
 ![My github profile pic](https://avatars.githubusercontent.com/u/38046239)#https://github.com/9gustin
 ```
 So when the user click my image in the blog it will be redirected to my github profile. <br />
+
+### Display the table of contents
+
+Now we exporting the **indexGenerator** function, with that you can show a table of contents of your page content. This function receive a list of blocks and return only the title blocks. The structure of the result it's like:
+
+![image](https://user-images.githubusercontent.com/38046239/129499362-28448241-3bf9-47b7-8629-d40d7e90a447.png)
+
+you can use it like that:
+```jsx
+import { indexGenerator, rnrSlugify } from '@9gustin/react-notion-render'
+
+const TableOfContents = ({blocks}) => {
+  return (
+    <>
+      Table of contents:
+      <ul>
+        {
+          indexGenerator(blocks).map(({ id, plainText, type }) => (
+            <li key={id}>
+              <a href={`#${rnrSlugify(plainText)}`}>
+                {plainText} - {type}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </>
+  )
+}
+
+export default TableOfContents
+
+```
+if you want to add links use **rnrSlugify** or your [custom slugify function](#custom-title-url) to generate the href.
 
 ## Migrating from v2 to v3
 

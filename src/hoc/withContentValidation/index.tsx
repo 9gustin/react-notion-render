@@ -32,8 +32,7 @@ function withContentValidation(
     block,
     slugifyFn
   }: WithContentValidationProps) => {
-    const plainText =
-      block.content?.text.map((text: Text) => text.plain_text).join(' ') ?? ''
+    const plainText = block.getPlainText()
     const hasContent = plainText.trim() !== '' || block.items?.length
 
     if (!hasContent && !emptyBlocks) {

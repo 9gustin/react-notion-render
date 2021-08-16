@@ -7,6 +7,7 @@ import { databaseId } from './blog.js'
 import { Render } from '@9gustin/react-notion-render'
 
 import Header from '../components/Header'
+import MyTableOfContents from '../components/TableOfContents'
 
 import styles from './index.module.css'
 
@@ -14,6 +15,7 @@ export default function Post({ page, blocks }) {
   if (!page || !blocks) {
     return <div />
   }
+
   return (
     <>
       <Head>
@@ -23,13 +25,13 @@ export default function Post({ page, blocks }) {
 
       <div className={styles.container}>
         <Header />
+        <MyTableOfContents blocks={blocks} />
         <article>
           <Render blocks={[page.properties.Name]}/>
           <section>
             <Render blocks={blocks} emptyBlocks useStyles slugifyFn={(t) => {
-              return t.replace(/[^a-zA-Z0-9]/g,'_');
+              return t.replace(/[^a-zA-Z0-9]/g, '_')
             }}/>
-            {/* {renderBlocks(blocks)} */}
             <Link href='/blog'>
               <a className={styles.back}>← Go home</a>
             </Link>

@@ -2,6 +2,7 @@ import './styles/index.css'
 
 export { default as getBlocksToRender } from './utils/getBlocksToRender'
 export { slugify as rnrSlugify } from './utils/slugify'
+export { indexGenerator } from './utils/indexGenerator'
 
 export { ParsedBlock } from './types/Block'
 export { NotionBlock } from './types/NotionBlock'
