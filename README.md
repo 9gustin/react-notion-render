@@ -21,6 +21,7 @@
    - [Giving Styles](#giving-styles)
    - [...moreProps](#moreprops)
    - [Custom Components](#custom-components)
+   - [Display the table of contents](#display-the-table-of-contents)
  - [Migrating from v2 to v3](#migrating-from-v2-to-v3)
 
 ## Description
