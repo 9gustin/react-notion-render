@@ -185,6 +185,34 @@ Also you can add a link to image, like an image anchor. This link would be opene
 ```
 So when the user click my image in the blog it will be redirected to my github profile. <br />
 
+### Display the table of contents
+
+Now we exporting the **indexGenerator** function, with that you can show a table of contents of your page content. This function receive a list of blocks and return only the title blocks. The structure of the result it's like:
+
+![image](https://user-images.githubusercontent.com/38046239/129499362-28448241-3bf9-47b7-8629-d40d7e90a447.png)
+
+you can use it like that:
+```jsx
+const MyTableOfContents = ({blocks}) => {
+  return (
+    <>
+      Table of contents:
+      <ul>
+        {
+          indexGenerator(blocks).map(({ id, plainText }) => (
+            <li key={id}>
+              {plainText}
+            </li>
+          ))
+        }
+      </ul>
+    </>
+  )
+}
+
+```
+
+
 ## Migrating from v2 to v3
 
 In v2 we use render as a function (we have render, renderBlocks and renderTitle). So when use it should use like that:
