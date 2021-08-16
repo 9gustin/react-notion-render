@@ -194,6 +194,8 @@ Now we exporting the **indexGenerator** function, with that you can show a table
 
 you can use it like that:
 ```jsx
+import { indexGenerator } from '@9gustin/react-notion-render'
+
 const MyTableOfContents = ({blocks}) => {
   return (
     <>
