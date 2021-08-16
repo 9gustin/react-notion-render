@@ -194,9 +194,9 @@ Now we exporting the **indexGenerator** function, with that you can show a table
 
 you can use it like that:
 ```jsx
-import { indexGenerator } from '@9gustin/react-notion-render'
+import { indexGenerator, rnrSlugify } from '@9gustin/react-notion-render'
 
-const MyTableOfContents = ({blocks}) => {
+const TableOfContents = ({blocks}) => {
   return (
     <>
       Table of contents:
@@ -204,7 +204,9 @@ const MyTableOfContents = ({blocks}) => {
         {
           indexGenerator(blocks).map(({ id, plainText, type }) => (
             <li key={id}>
-              {plainText} - {type}
+              <a href={`#${rnrSlugify(plainText)}`}>
+                {plainText} - {type}
+              </a>
             </li>
           ))
         }
@@ -213,8 +215,10 @@ const MyTableOfContents = ({blocks}) => {
   )
 }
 
-```
+export default TableOfContents
 
+```
+if you want to add links use **rnrSlugify** or your [custom slugify function](#custom-title-url) to generate the href.
 
 ## Migrating from v2 to v3
 
