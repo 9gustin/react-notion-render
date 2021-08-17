@@ -5,9 +5,10 @@ import { getClassname } from '../../utils/getClassname'
 
 import Image, { Props as ImageProps } from '../../components/common/Image'
 import Link, { Props as LinkProps } from '../../components/common/Link'
+import Video, { Props as VideoProps } from '../../components/common/Video'
 
 type WrappedComponentPropsType = Text
-export type CustomComponentPropsType = ImageProps | LinkProps
+export type CustomComponentPropsType = ImageProps | LinkProps | VideoProps
 
 interface CustomComponent {
   match: RegExp
@@ -18,6 +19,16 @@ interface CustomComponent {
 }
 
 export const customComponents: CustomComponent[] = [
+  {
+    match: /-\[[^\]]*\]\((.*?)\s*("(?:.*[^"])")?\s*\)/,
+    // eslint-disable-next-line camelcase
+    transformProps: ({ plain_text }) => ({
+      title: plain_text.split('-[')[1].split(']')[0],
+      src: plain_text.split('(')[1].split(')')[0],
+      player: plain_text.indexOf('#') < 0 ? undefined : plain_text.substr(plain_text.indexOf('#')).replace('#', '')
+    }),
+    component: Video
+  },
   {
     match: /!\[[^\]]*\]\((.*?)\s*("(?:.*[^"])")?\s*\)/,
     // eslint-disable-next-line camelcase
