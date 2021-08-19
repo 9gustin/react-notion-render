@@ -186,6 +186,39 @@ Also you can add a link to image, like an image anchor. This link would be opene
 ```
 So when the user click my image in the blog it will be redirected to my github profile. <br />
 
+### Video
+You can embed Videos. You have 3 ways to embed a video.
+
+- Local
+- Youtube
+- Google Drive
+
+| Player | Description | Syntax | Example |
+| ---- | -------------- | ------ | --------- |
+| Local | Search in public folder | ` -[title](url) ` | ` -[Local](/loremVideo.mp4) ` |
+| Youtube | Youtube reproductor with share url | ` -[title](url)#youtube ` | ` -[Youtube](https://youtu.be/aA7si7AmPkY)#youtube ` |
+| Google Drive | Google drive reproductor with share url | ` -[title](url)#googleDrive ` | ` -[GoogleDrive](https://drive.google.com/file/d/1BmIxtck_9FuMfZOKfJDQK_WvIl8cDV11/view?usp=sharing)#googleDrive ` |
+
+**How can i get Youtube video share url?:** <br />
+![youtubeStep1](https://user-images.githubusercontent.com/66853369/129779275-119a1dbb-0f38-485b-875c-1b7139e52e60.png)
+![youtubeStep2](https://user-images.githubusercontent.com/66853369/129779323-7141628d-761b-4e86-9609-5e4c8d308dc0.png)
+
+**How can i get Google Drive video share url?:** <br />
+Open the video
+<br />
+![image](https://user-images.githubusercontent.com/66853369/129779942-240ace25-32f7-4a17-bd8f-a84b7a280fab.png)
+<br />
+Click the 3 points icon then click Share
+<br />
+![image](https://user-images.githubusercontent.com/66853369/129780037-02f88faa-29e0-4b45-98e2-9982a1c45552.png)
+<br />
+Copy the ilnk
+<br />
+![image](https://user-images.githubusercontent.com/66853369/129780383-06e92d89-4e6c-46ce-be83-f6fea97c916a.png)
+
+
+
+
 ### Display the table of contents
 
 Now we exporting the **indexGenerator** function, with that you can show a table of contents of your page content. This function receive a list of blocks and return only the title blocks. The structure of the result it's like:
