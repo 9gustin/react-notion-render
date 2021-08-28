@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import { Render } from '@9gustin/react-notion-render'
 
-import notionResponse from '../data/blocks.json'
+import notionResponse from '../data/new-blocks.json'
 import title from '../data/title.json'
 
 export default function mockedPage() {
