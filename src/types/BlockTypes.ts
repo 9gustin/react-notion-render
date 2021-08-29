@@ -7,7 +7,13 @@ export enum blockEnum {
   DOTS_LIST = 'bulleted_list_item',
   ENUM_LIST = 'numbered_list_item',
   CHECK_LIST = 'to_do',
-  TITLE = 'title'
+  TITLE = 'title',
+  VIDEO = 'video',
+  IMAGE = 'image',
+  EMBED = 'embed',
+  FILE = 'file',
+  PDF = 'pdf',
+  BOOKMARK = 'bookmark',
 }
 
 export const UNSUPPORTED_TYPE = 'unsupported'

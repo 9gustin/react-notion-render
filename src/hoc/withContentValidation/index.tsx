@@ -1,10 +1,9 @@
 import React from 'react'
 
 import { ParsedBlock } from '../../types/Block'
-import Text from '../../types/Text'
 
-import RenderText from '../../components/core/Text'
 import EmptyBlock from '../../components/common/EmptyBlock'
+import { getDefaultProps, getMediaProps } from './constants'
 import { slugify } from '../../utils/slugify'
 
 export interface WithContentValidationProps {
@@ -21,45 +20,51 @@ export interface DropedProps {
   plainText: string
   config: WithContentValidationProps
   slugifyFn: (text: string) => string
+  media?: {
+    alt: string
+    src: string
+    player?: string
+  }
 }
 
 function withContentValidation(
   Component: React.ComponentType<DropedProps>
 ): React.FC<WithContentValidationProps> {
   return ({
-    classNames,
     emptyBlocks,
-    block,
-    slugifyFn
+    slugifyFn,
+    classNames,
+    ...props
   }: WithContentValidationProps) => {
-    const plainText = block.getPlainText()
-    const hasContent = plainText.trim() !== '' || block.items?.length
+    let returnedProps: DropedProps = {
+      checked: false,
+      children: null,
+      plainText: '',
+      slugifyFn: slugifyFn ?? slugify,
+      className: classNames ? `rnr-${props.block.notionType}` : undefined,
+      config: {
+        classNames: classNames,
+        block: props.block,
+        emptyBlocks
+      }
+    }
+
+    if (props.block.isMedia()) {
+      returnedProps.media = getMediaProps(props)
+    } else {
+      returnedProps = { ...returnedProps, ...getDefaultProps(props) }
+    }
+
+    const hasContent =
+      returnedProps.plainText.trim() !== '' ||
+      returnedProps.config.block.items?.length ||
+      returnedProps.media
 
     if (!hasContent && !emptyBlocks) {
       return null
     }
 
-    return hasContent
-      ? (
-      <Component
-        className={classNames ? `rnr-${block.notionType}` : undefined}
-        checked={Boolean(block.content?.checked)}
-        plainText={plainText}
-        slugifyFn={slugifyFn ?? slugify}
-        config={{
-          classNames,
-          emptyBlocks,
-          block
-        }}
-      >
-        {block.content?.text.map((text: Text, index: number) => (
-          <RenderText key={index} {...text} />
-        ))}
-      </Component>
-        )
-      : (
-      <EmptyBlock />
-        )
+    return hasContent ? <Component {...returnedProps} /> : <EmptyBlock />
   }
 }
 
