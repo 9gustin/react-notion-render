@@ -2,7 +2,7 @@ import React from 'react'
 
 export interface Props {
   url: string
-  children: string
+  children: React.ReactNode
   className?: string
 }
 
