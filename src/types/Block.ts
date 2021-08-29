@@ -5,6 +5,7 @@ import List from '../components/common/List'
 import Paragraph from '../components/common/Paragraph'
 import Title from '../components/common/Title'
 import Video from '../components/common/Video/wrappedVideo'
+import Image from '../components/common/Image/wrappedImage'
 import { blockEnum } from './BlockTypes'
 import { NotionBlock } from './NotionBlock'
 import Text from './Text'
@@ -90,6 +91,9 @@ export class ParsedBlock {
       case blockEnum.TITLE: {
         return DummyText
       }
+      case blockEnum.IMAGE: {
+        return Image
+      }
       default: {
         return null
       }
@@ -106,7 +110,6 @@ export class ParsedBlock {
     } else if (this.isMedia() && this.content?.type) {
       url = this.content[this.content.type]?.url
     }
-
     return url || null
   }
 
