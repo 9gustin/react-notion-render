@@ -23,6 +23,7 @@ export interface DropedProps {
   media?: {
     alt: string
     src: string
+    href?: string
     name?: string
     extension?: string
     player?: string
