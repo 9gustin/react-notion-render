@@ -113,7 +113,6 @@ This is independient to the prop **useStyles**, you can combinate them or use se
 | rnr-toggle | Toggle List | ul |
 | rnr-image | Image | a |
 | rnr-video | Video | external: **iframe**, notion uploaded video: **video** |
-| rnr-image | Image | a |
 | rnr-file | File | a |
 | rnr-embed | Embed | iframe |
 | rnr-pdf | PDF | iframe |
