@@ -1,4 +1,5 @@
 import React from 'react'
+import Embed from '../Embed'
 
 const MATCHERS = [
   {
@@ -28,22 +29,28 @@ export function getPlayer(src: string, alt: string, className?: string) {
 
   if (!match) return null
 
-  return PLAYERS[match.name](match.getUrl ? match.getUrl(src) : src, alt, className)
+  return PLAYERS[match.name](
+    match.getUrl ? match.getUrl(src) : src,
+    alt,
+    className
+  )
 }
 
 const PLAYERS = {
   youtube: (url: string, title: string, className?: string) => (
-    <iframe
-      src={url}
-      title={title}
-      frameBorder='0'
+    <Embed
+      media={{ alt: title, src: url }}
+      className={className}
       allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
       allowFullScreen
-      className={className}
     />
   ),
   googleDrive: (url: string, title: string, className?: string) => (
-    <iframe title={title} src={url} allow='autoplay' className={className} />
+    <Embed
+      media={{ alt: title, src: url }}
+      className={className}
+      allow='autoplay'
+    />
   )
 }
 
