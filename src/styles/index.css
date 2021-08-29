@@ -24,6 +24,10 @@
   font-weight: var(--normal-weight);
 }
 
+:global(.rnr-container) > :global(.block){
+  display: block;
+}
+
 :global(.rnr-container) h1,
 :global(.rnr-container) h1 > * {
   font-size: var(--font-size-display-text);

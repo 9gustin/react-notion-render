@@ -10,7 +10,14 @@ export function getMediaProps (props: WithContentValidationProps) {
 
   if (!url) return undefined
 
+  const urlParts = url.match(/\/?([^/.]*)\.?([^/]*)$/)
+
+  const name = urlParts?.[1] ?? ''
+  const extension = urlParts?.[2].split('?')[0] ?? ''
+
   return {
+    name,
+    extension,
     alt: block.getPlainText(),
     src: url
   }

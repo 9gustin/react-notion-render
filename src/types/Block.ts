@@ -1,4 +1,5 @@
 import DummyText from '../components/common/DummyText'
+import File from '../components/common/File'
 import List from '../components/common/List'
 import Paragraph from '../components/common/Paragraph'
 import Title from '../components/common/Title'
@@ -68,6 +69,9 @@ export class ParsedBlock {
       }
       case blockEnum.VIDEO: {
         return Video
+      }
+      case blockEnum.FILE: {
+        return File
       }
       case blockEnum.TITLE: {
         return DummyText
