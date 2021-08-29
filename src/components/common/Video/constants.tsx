@@ -23,26 +23,27 @@ const MATCHERS = [
   }
 ]
 
-export function getPlayer(src: string, alt: string) {
+export function getPlayer(src: string, alt: string, className?: string) {
   const match = MATCHERS.find((option) => option.REGEXP.test(src))
 
   if (!match) return null
 
-  return PLAYERS[match.name](match.getUrl ? match.getUrl(src) : src, alt)
+  return PLAYERS[match.name](match.getUrl ? match.getUrl(src) : src, alt, className)
 }
 
 const PLAYERS = {
-  youtube: (url: string, title: string) => (
+  youtube: (url: string, title: string, className?: string) => (
     <iframe
       src={url}
       title={title}
       frameBorder='0'
       allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
       allowFullScreen
+      className={className}
     />
   ),
-  googleDrive: (url: string, title: string) => (
-    <iframe title={title} src={url} allow='autoplay' />
+  googleDrive: (url: string, title: string, className?: string) => (
+    <iframe title={title} src={url} allow='autoplay' className={className} />
   )
 }
 

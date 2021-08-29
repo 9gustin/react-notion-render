@@ -14,7 +14,7 @@ export default function mockedPage() {
       </h3>
       <Render blocks={[title.properties.Name]}/>
       <article>
-        <Render blocks={notionResponse.results} />
+        <Render blocks={notionResponse.results} classNames/>
       </article>
     </div>
   )
