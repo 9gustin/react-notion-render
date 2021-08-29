@@ -24,7 +24,7 @@ function Embed({
     <iframe
       src={src}
       title={alt}
-      className={className}
+      className={`block ${className}`}
       frameBorder={frameBorder ?? '0'}
       allow={allow}
       allowFullScreen={allowFullScreen}
