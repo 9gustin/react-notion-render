@@ -9,7 +9,13 @@ export type Props = {
   allowFullScreen?: boolean
 }
 
-function Embed({ media, className, ...iframeProps }: Props) {
+function Embed({
+  media,
+  className,
+  frameBorder,
+  allow,
+  allowFullScreen
+}: Props) {
   if (!media) return null
 
   const { src, alt } = media
@@ -19,8 +25,9 @@ function Embed({ media, className, ...iframeProps }: Props) {
       src={src}
       title={alt}
       className={className}
-      frameBorder="0"
-      {...iframeProps}
+      frameBorder={frameBorder ?? '0'}
+      allow={allow}
+      allowFullScreen={allowFullScreen}
     />
   )
 }
