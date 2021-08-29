@@ -1,4 +1,5 @@
 import DummyText from '../components/common/DummyText'
+import Embed from '../components/common/Embed/wrappedEmbed'
 import File from '../components/common/File'
 import List from '../components/common/List'
 import Paragraph from '../components/common/Paragraph'
@@ -23,6 +24,7 @@ export class ParsedBlock {
     file?: {
       url: string
     }
+    url?: string
   }
 
   constructor(initialValues: NotionBlock, isChild?: boolean) {
@@ -41,13 +43,21 @@ export class ParsedBlock {
       this.content = null
       this.items = [new ParsedBlock(initialValues, true)]
     } else {
-      const { text, checked, caption, type, external, file } = content
+      const { text, checked, caption, type, external, file, url } = content
 
       this.items =
         content.children?.map(
           (child: NotionBlock) => new ParsedBlock(child, true)
         ) ?? null
-      this.content = { text: text ?? [], checked, caption, type, external, file }
+      this.content = {
+        text: text ?? [],
+        checked,
+        caption,
+        type,
+        external,
+        file,
+        url
+      }
     }
   }
 
@@ -73,6 +83,10 @@ export class ParsedBlock {
       case blockEnum.FILE: {
         return File
       }
+      case blockEnum.PDF:
+      case blockEnum.EMBED: {
+        return Embed
+      }
       case blockEnum.TITLE: {
         return DummyText
       }
@@ -83,9 +97,17 @@ export class ParsedBlock {
   }
 
   getUrl() {
-    if (!this.content?.type || !this.isMedia()) return null
+    if (!this.content) return null
 
-    return this.content[this.content.type]?.url || null
+    let url = null
+
+    if (this.isEmbed()) {
+      url = this.content.url
+    } else if (this.isMedia() && this.content?.type) {
+      url = this.content[this.content.type]?.url
+    }
+
+    return url || null
   }
 
   getType() {
@@ -103,6 +125,7 @@ export class ParsedBlock {
       case blockEnum.VIDEO:
       case blockEnum.IMAGE:
       case blockEnum.PDF:
+      case blockEnum.EMBED:
         return 'MEDIA'
       default:
         return 'ELEMENT'
@@ -110,7 +133,9 @@ export class ParsedBlock {
   }
 
   getPlainText() {
-    const textComponent = this.isMedia() ? this.content?.caption : this.content?.text
+    const textComponent = this.isMedia()
+      ? this.content?.caption
+      : this.content?.text
 
     return textComponent?.map((text: Text) => text.plain_text).join(' ') ?? ''
   }
@@ -119,12 +144,16 @@ export class ParsedBlock {
     return this.getType() === 'LIST'
   }
 
-  isTitle(): unknown {
+  isTitle() {
     return this.getType() === 'TITLE'
   }
 
-  isMedia(): unknown {
+  isMedia() {
     return this.getType() === 'MEDIA'
+  }
+
+  isEmbed() {
+    return this.getType() === 'MEDIA' && this.notionType === blockEnum.EMBED
   }
 
   equalsType(type: blockEnum) {
