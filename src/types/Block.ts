@@ -2,6 +2,7 @@ import DummyText from '../components/common/DummyText'
 import List from '../components/common/List'
 import Paragraph from '../components/common/Paragraph'
 import Title from '../components/common/Title'
+import Video from '../components/common/Video/wrappedVideo'
 import { blockEnum } from './BlockTypes'
 import { NotionBlock } from './NotionBlock'
 import Text from './Text'
@@ -13,6 +14,14 @@ export class ParsedBlock {
   content: null | {
     text: Text[]
     checked?: boolean
+    caption?: Text[]
+    type?: 'external' | 'file'
+    external?: {
+      url: string
+    }
+    file?: {
+      url: string
+    }
   }
 
   constructor(initialValues: NotionBlock, isChild?: boolean) {
@@ -31,13 +40,13 @@ export class ParsedBlock {
       this.content = null
       this.items = [new ParsedBlock(initialValues, true)]
     } else {
-      const { text, checked } = content
+      const { text, checked, caption, type, external, file } = content
 
       this.items =
         content.children?.map(
           (child: NotionBlock) => new ParsedBlock(child, true)
         ) ?? null
-      this.content = { text, checked }
+      this.content = { text: text ?? [], checked, caption, type, external, file }
     }
   }
 
@@ -57,6 +66,9 @@ export class ParsedBlock {
       case blockEnum.TOGGLE_LIST: {
         return List
       }
+      case blockEnum.VIDEO: {
+        return Video
+      }
       case blockEnum.TITLE: {
         return DummyText
       }
@@ -64,6 +76,12 @@ export class ParsedBlock {
         return null
       }
     }
+  }
+
+  getUrl() {
+    if (!this.content?.type || !this.isMedia()) return null
+
+    return this.content[this.content.type]?.url || null
   }
 
   getType() {
@@ -77,6 +95,11 @@ export class ParsedBlock {
       case blockEnum.HEADING2:
       case blockEnum.HEADING3:
         return 'TITLE'
+      case blockEnum.FILE:
+      case blockEnum.VIDEO:
+      case blockEnum.IMAGE:
+      case blockEnum.PDF:
+        return 'MEDIA'
       default:
         return 'ELEMENT'
     }
@@ -92,6 +115,10 @@ export class ParsedBlock {
 
   isTitle(): unknown {
     return this.getType() === 'TITLE'
+  }
+
+  isMedia(): unknown {
+    return this.getType() === 'MEDIA'
   }
 
   equalsType(type: blockEnum) {

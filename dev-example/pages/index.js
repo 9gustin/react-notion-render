@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import { Render } from '@9gustin/react-notion-render'
 
-import notionResponse from '../data/new-blocks.json'
+import notionResponse from '../data/mockVideos.json'
 import title from '../data/title.json'
 
 export default function mockedPage() {
@@ -13,7 +13,6 @@ export default function mockedPage() {
         <Link href='/blog'>/blog</Link>
       </h3>
       <Render blocks={[title.properties.Name]}/>
-      {/* <h1>{renderTitle(title.properties.Name)}</h1> */}
       <article>
         <Render blocks={notionResponse.results} />
       </article>
