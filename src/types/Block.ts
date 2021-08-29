@@ -143,15 +143,15 @@ export class ParsedBlock {
     return this.getType() === 'LIST'
   }
 
-  isTitle(): unknown {
+  isTitle() {
     return this.getType() === 'TITLE'
   }
 
-  isMedia(): unknown {
+  isMedia() {
     return this.getType() === 'MEDIA'
   }
 
-  isEmbed(): unknown {
+  isEmbed() {
     return this.getType() === 'MEDIA' && this.notionType === blockEnum.EMBED
   }
 
