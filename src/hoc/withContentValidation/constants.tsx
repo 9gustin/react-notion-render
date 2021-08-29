@@ -8,9 +8,6 @@ export function getMediaProps (props: WithContentValidationProps) {
   const { block } = props
   const url = block.getUrl()
 
-  console.log(url)
-  console.log(block)
-
   if (!url) return undefined
 
   const urlParts = url.match(/\/?([^/.]*)\.?([^/]*)$/)
