@@ -83,6 +83,7 @@ export class ParsedBlock {
       case blockEnum.FILE: {
         return File
       }
+      case blockEnum.PDF:
       case blockEnum.EMBED: {
         return Embed
       }
