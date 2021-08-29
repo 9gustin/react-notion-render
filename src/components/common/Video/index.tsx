@@ -1,22 +1,26 @@
 import React from 'react'
-import PLAYERS from './constants'
+import { DropedProps } from '../../../hoc/withContentValidation'
+import { getPlayer } from './constants'
 
-export interface Props {
-  title: string
-  src: string
-  player?: string
+export type Props = {
+  className?: string
+  media?: DropedProps['media']
 }
 
-function Video({ src, title, player }: Props) {
-  if (player) {
-    return PLAYERS[player]?.(src, title) || <h1>Error: {player} not found</h1>
-  }
+function Video({ media, className }: Props) {
+  if (!media) return null
+
+  const { src, alt } = media
+
+  const player = getPlayer(src, alt, className)
+
   return (
-      <video controls>
-          <source src={src}
-            type="video/mp4" />
-            {title}
+    player ?? (
+      <video className={className} controls>
+        <source src={src} type='video/mp4' />
+        {alt}
       </video>
+    )
   )
 }
 
