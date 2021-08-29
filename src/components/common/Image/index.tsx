@@ -1,15 +1,17 @@
 import React from 'react'
+import { DropedProps } from '../../../hoc/withContentValidation'
 
 export interface Props {
-  src: string
-  alt: string
-  href?: string
+  className?: string
+  media?: DropedProps['media']
 }
 
-function Image({ src, alt, href }: Props) {
+function Image({ className, media }: Props) {
+  if (!media) return null
+  const { src, alt, href } = media
   return (
-    <a href={href || src} target='_blank' rel='noreferrer'>
-      <img src={src} alt={alt} />
+    <a className={className} href={href} target='_blank' rel='noreferrer'>
+      <img src={src || href} alt={alt} />
     </a>
   )
 }

@@ -35,9 +35,11 @@ export const customComponents: CustomComponent[] = [
     match: /!\[[^\]]*\]\((.*?)\s*("(?:.*[^"])")?\s*\)/,
     // eslint-disable-next-line camelcase
     transformProps: ({ plain_text }) => ({
-      alt: plain_text.split('![')[1].split(']')[0],
-      src: plain_text.split('(')[1].split(')')[0],
-      href: plain_text.indexOf('#') < 0 ? undefined : plain_text.substr(plain_text.indexOf('#')).replace('#', '')
+      media: {
+        alt: plain_text.split('![')[1].split(']')[0],
+        src: plain_text.split('(')[1].split(')')[0],
+        href: plain_text.indexOf('#') < 0 ? undefined : plain_text.substr(plain_text.indexOf('#')).replace('#', '')
+      }
     }),
     component: Image
   },
