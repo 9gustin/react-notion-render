@@ -11,7 +11,7 @@ export function getMediaProps (props: WithContentValidationProps) {
   if (!url) return undefined
 
   return {
-    alt: 'alt',
+    alt: block.getPlainText(),
     src: url
   }
 }

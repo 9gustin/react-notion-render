@@ -106,7 +106,9 @@ export class ParsedBlock {
   }
 
   getPlainText() {
-    return this.content?.text.map((text: Text) => text.plain_text).join(' ') ?? ''
+    const textComponent = this.isMedia() ? this.content?.caption : this.content?.text
+
+    return textComponent?.map((text: Text) => text.plain_text).join(' ') ?? ''
   }
 
   isList() {
