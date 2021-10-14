@@ -14,6 +14,8 @@ export enum blockEnum {
   FILE = 'file',
   PDF = 'pdf',
   BOOKMARK = 'bookmark',
+  CALLOUT = 'callout',
+  QUOTE = 'quote',
 }
 
 export const UNSUPPORTED_TYPE = 'unsupported'
