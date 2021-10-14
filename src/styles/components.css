@@ -1,0 +1,19 @@
+/* 
+  Global styles for the components, only when are in rnr-container
+*/
+
+/* Callout */
+:global(.rnr-container) :global(.rnr-callout) {
+  background-color: var(--light-color);
+  display: flex;
+  gap: 16px;
+  margin: var(--spacing) 0;
+  padding: 14px;
+}
+
+/* Quote */
+:global(.rnr-container) :global(.rnr-quote) {
+  border-left: 4px solid var(--color-link);
+  margin: var(--spacing) 0;
+  padding-left: var(--children-spacing);
+}

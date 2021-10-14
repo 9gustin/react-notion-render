@@ -1,4 +1,5 @@
 import './styles/index.css'
+import './styles/components.css'
 
 export { default as getBlocksToRender } from './utils/getBlocksToRender'
 export { slugify as rnrSlugify } from './utils/slugify'

@@ -1,6 +1,6 @@
 .remove-style {
   list-style: none;
-  padding-left: 15px;
+  padding-left: 12px;
 }
 
 .check {
@@ -8,7 +8,7 @@
 }
 
 .drop-children {
-  margin-left: 20px;
+  margin-left: calc(var(--children-spacing) - 12px)
 }
 
 .drop-button{
