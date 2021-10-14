@@ -111,7 +111,13 @@ This is independient to the prop **useStyles**, you can combinate them or use se
 | rnr-bulleted_list_item | Bulleted List | ul |
 | rnr-numbered_list_item | Numered List | ol |
 | rnr-toggle | Toggle List | ul |
+| rnr-image | Image | a |
 | rnr-video | Video | external: **iframe**, notion uploaded video: **video** |
+| rnr-file | File | a |
+| rnr-embed | Embed | iframe |
+| rnr-pdf | PDF | iframe |
+| rnr-callout | Callout | div |
+| rnr-quote | Quote | blockquote |
 
 **Text Styles**  <br />
 | ClassName          | Notion Reference    |

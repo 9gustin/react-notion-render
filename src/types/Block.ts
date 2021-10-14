@@ -6,6 +6,8 @@ import Paragraph from '../components/common/Paragraph'
 import Title from '../components/common/Title'
 import Video from '../components/common/Video/wrappedVideo'
 import Image from '../components/common/Image/wrappedImage'
+import Quote from '../components/common/Quote'
+import Callout from '../components/common/Callout'
 import { blockEnum } from './BlockTypes'
 import { NotionBlock } from './NotionBlock'
 import Text from './Text'
@@ -26,6 +28,10 @@ export class ParsedBlock {
       url: string
     }
     url?: string
+    icon?: {
+      type: 'emoji'
+      emoji: string
+    }
   }
 
   constructor(initialValues: NotionBlock, isChild?: boolean) {
@@ -44,7 +50,7 @@ export class ParsedBlock {
       this.content = null
       this.items = [new ParsedBlock(initialValues, true)]
     } else {
-      const { text, checked, caption, type, external, file, url } = content
+      const { text, checked, caption, type, external, file, url, icon } = content
 
       this.items =
         content.children?.map(
@@ -57,7 +63,8 @@ export class ParsedBlock {
         type,
         external,
         file,
-        url
+        url,
+        icon
       }
     }
   }
@@ -93,6 +100,12 @@ export class ParsedBlock {
       }
       case blockEnum.IMAGE: {
         return Image
+      }
+      case blockEnum.CALLOUT: {
+        return Callout
+      }
+      case blockEnum.QUOTE: {
+        return Quote
       }
       default: {
         return null

@@ -10,38 +10,38 @@ interface Props {
   slugifyFn?: (text: string) => string
 }
 
-function Render({ blocks, classNames, emptyBlocks, useStyles, slugifyFn }: Props) {
+function Render({
+  blocks,
+  classNames,
+  emptyBlocks,
+  useStyles,
+  slugifyFn
+}: Props) {
   if (!blocks || !blocks.length) return <div />
 
-  const renderBlocks = getBlocksToRender(blocks)
+  const render = useMemo(() => {
+    const renderBlocks = getBlocksToRender(blocks)
 
-  const render = useMemo(
-    () =>
-      renderBlocks.map((block) => {
-        const Component = block.getComponent()
+    return renderBlocks.map((block) => {
+      const Component = block.getComponent()
 
-        return Component
-          ? (
-          <Component
-            key={block.id}
-            classNames={Boolean(classNames)}
-            emptyBlocks={emptyBlocks}
-            block={block}
-            slugifyFn={slugifyFn}
-          />
-            )
-          : null
-      }),
-    [blocks]
-  )
+      return Component ? (
+        <Component
+          key={block.id}
+          classNames={Boolean(classNames)}
+          emptyBlocks={emptyBlocks}
+          block={block}
+          slugifyFn={slugifyFn}
+        />
+      ) : null
+    })
+  }, [blocks])
 
-  return useStyles
-    ? (
+  return useStyles ? (
     <div className='rnr-container'>{render}</div>
-      )
-    : (
+  ) : (
     <React.Fragment>{render}</React.Fragment>
-      )
+  )
 }
 
 export default Render
