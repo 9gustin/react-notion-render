@@ -116,6 +116,8 @@ This is independient to the prop **useStyles**, you can combinate them or use se
 | rnr-file | File | a |
 | rnr-embed | Embed | iframe |
 | rnr-pdf | PDF | iframe |
+| rnr-callout | Callout | div |
+| rnr-quote | Quote | blockquote |
 
 **Text Styles**  <br />
 | ClassName          | Notion Reference    |
