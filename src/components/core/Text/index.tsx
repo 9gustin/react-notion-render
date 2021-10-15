@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import React, { Fragment } from 'react'
 
 import Text from '../../../types/Text'
@@ -5,14 +6,24 @@ import { getClassname } from '../../../utils/getClassname'
 import Link from '../../common/Link'
 import withCustomComponent from '../../../hoc/withCustomComponent'
 
-function Text({ text, annotations }: Text) {
-  if (!text) return null
-
+function Text({ text, annotations, type, href, plain_text }: Text) {
   const cn = getClassname(annotations)
+
+  if (type === 'mention') {
+    return (
+      <a className={`rnr-mention ${cn}`} href={href ?? undefined}>
+        {plain_text}
+      </a>
+    )
+  } else if (!text) {
+    return null
+  }
 
   const renderText = text.link
     ? (
-    <Link url={text.link.url} children={text.content} className={cn} />
+    <Link url={text.link.url} className={cn}>
+      {text.content}
+    </Link>
       )
     : (
         text.content
@@ -28,3 +39,4 @@ function Text({ text, annotations }: Text) {
 }
 
 export default withCustomComponent(Text)
+/* eslint-enable camelcase */

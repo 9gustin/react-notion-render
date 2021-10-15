@@ -1,4 +1,4 @@
-type textTypes = 'text' | string
+type textTypes = 'text' | 'mention' | string
 
 type Link = {
   url: string
