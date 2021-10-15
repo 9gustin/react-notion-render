@@ -6,6 +6,8 @@ import Link from '../../common/Link'
 import withCustomComponent from '../../../hoc/withCustomComponent'
 
 function Text({ text, annotations }: Text) {
+  if (!text) return null
+
   const cn = getClassname(annotations)
 
   const renderText = text.link

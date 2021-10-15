@@ -6,7 +6,7 @@ type Link = {
 
 export default interface Text {
   type: textTypes
-  text: {
+  text?: {
     content: string
     link: Link | null
   }
