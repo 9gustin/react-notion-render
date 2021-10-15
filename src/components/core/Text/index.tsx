@@ -11,7 +11,7 @@ function Text({ text, annotations, type, href, plain_text }: Text) {
 
   if (type === 'mention') {
     return (
-      <a className={`rnr-mention ${cn}`} href={href ?? undefined}>
+      <a className={`rnr-mention ${cn}`} href={href}>
         {plain_text}
       </a>
     )

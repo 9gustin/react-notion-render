@@ -20,5 +20,5 @@ export default interface Text {
   }
   // eslint-disable-next-line camelcase
   plain_text: string
-  href: string | null
+  href?: string
 }
