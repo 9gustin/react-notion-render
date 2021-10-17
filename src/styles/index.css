@@ -17,6 +17,10 @@
   --color-purple: #a842ec;
   --color-pink: #FE5D9F;
   --color-link: #4e71da;
+  --light-color: rgba(0,0,0,.2);
+
+  --children-spacing: 25px;
+  --spacing: 10px;
 }
 
 :global(.rnr-container) *{
@@ -67,7 +71,7 @@
 }
 
 :global(.rnr-container) :global(.rnr-empty-block) {
-  height: var(--font-size-primary);;
+  height: var(--spacing);
 }
 
 :global(.rnr-container) :global(.rnr-bold) {
