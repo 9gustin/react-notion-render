@@ -1,4 +1,4 @@
-type textTypes = 'text' | string
+type textTypes = 'text' | 'mention' | string
 
 type Link = {
   url: string
@@ -6,7 +6,7 @@ type Link = {
 
 export default interface Text {
   type: textTypes
-  text: {
+  text?: {
     content: string
     link: Link | null
   }
@@ -20,5 +20,5 @@ export default interface Text {
   }
   // eslint-disable-next-line camelcase
   plain_text: string
-  href: string | null
+  href?: string
 }
