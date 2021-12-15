@@ -11,6 +11,7 @@ import Callout from '../components/common/Callout'
 import { blockEnum } from './BlockTypes'
 import { NotionBlock } from './NotionBlock'
 import Text from './Text'
+import Divider from '../components/common/Divider'
 
 export class ParsedBlock {
   id: string
@@ -106,6 +107,9 @@ export class ParsedBlock {
       }
       case blockEnum.QUOTE: {
         return Quote
+      }
+      case blockEnum.DIVIDER: {
+        return Divider
       }
       default: {
         return null
