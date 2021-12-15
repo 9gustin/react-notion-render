@@ -266,7 +266,7 @@ Most common block types are supported. We happily accept pull requests to add su
 | iframe	| ✅ |
 | Video	| ✅ |
 | File	| ✅ |
-| Divider	| ? |
+| Divider	| ✅ |
 | Link	| ✅ |	
 | Code | ❌ |
 | Web Bookmark |	❌ |	
