@@ -22,7 +22,7 @@
    - [...moreProps](#moreprops)
    - [Custom Components](#custom-components)
    - [Display the table of contents](#display-the-table-of-contents)
- - [Migrating from v2 to v3](#migrating-from-v2-to-v3)
+ - [Contributions](#contributions)
 
 ## Description
 
@@ -250,6 +250,34 @@ if you want to add links use **rnrSlugify** or your [custom slugify function](#c
 
 ## Contributions:
 If you find a bug, or want to suggest a feature you can create a [New Issue](https://github.com/9gustin/react-notion-render/issues/new) and will be analized. **Contributions of any kind welcome!**
+
+### Running the dev example
+In the repo we have a dev example, with this you can test what you are developing.
+
+Clone repo and install package dependencies
+
+```
+git clone https://github.com/9gustin/react-notion-render.git
+cd react-notion-render
+npm install
+```
+
+Run dev example to test added features. The example are in next.js, so have to install this dependency into dev-example folder.
+```
+cd dev-example
+npm install
+```
+
+Starting the dev example
+To run the dev example we must be in the root of the project, in the package.json we have the `dev` command, that starts package compiler and dev example together.
+```
+cd .. //if we be inside of /dev-example
+npm run dev
+```
+
+And voila. The app are running in port 3001 because a config in my pc, if you have problems with this you can change it in package.json, `dev-example` command
+
+### Project structure
 
 ## License
 
