@@ -256,21 +256,21 @@ In the repo we have a dev example, with this you can test what you are developin
 
 Clone repo and install package dependencies
 
-```
+```BASH
 git clone https://github.com/9gustin/react-notion-render.git
 cd react-notion-render
 npm install
 ```
 
 Run dev example to test added features. The example are in next.js, so have to install this dependency into dev-example folder.
-```
+```BASH
 cd dev-example
 npm install
 ```
 
 Starting the dev example
 To run the dev example we must be in the root of the project, in the package.json we have the `dev` command, that starts package compiler and dev example together.
-```
+```BASH
 cd .. //if we be inside of /dev-example
 npm run dev
 ```
@@ -278,6 +278,21 @@ npm run dev
 And voila. The app are running in port 3001 because a config in my pc, if you have problems with this you can change it in package.json, `dev-example` command
 
 ### Project structure
+
+- dev-example -> App maded with next.js, this app have the output of `src` as a package. You can test what are you developing here.
+- src -> the package `@9gustin/react-notion-render`
+  - components -> React components
+    - common -> here are the "simple components", like all notion components and generic components(Link for example).
+    - core -> here are the logic components, the core of the package
+      - Render -> Render are the package exported component, the entry point of the package. It receives a list of blocks and render it.
+      - Text -> The text in notion are complex, this component contemplate text variants, like bold, italic. Also contemplate links.
+  - hoc -> Higher order components / in there we apply some logic rules.
+    -  withContentValidation -> This HOC it's a filter before to pass the `Notion block` to the common components. almost every components are wrapped by this, and this objetive it's simplify props that the component would receive, applying package rules.
+    -  withCustomComponent -> The package supports [custom components](#custom-components). This HOC make it possible. before to render text validate if the text are a custom component and render it.
+  - styles -> package styles. We just use plain css, the objective it's not apply much style, just the necessary. We use :global() to avoid compile problems with the className
+  - types -> Types of the package
+  - utils -> Common functions
+  - index.tsx -> All that the package exports outside
 
 ## License
 
