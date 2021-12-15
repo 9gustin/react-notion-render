@@ -248,45 +248,6 @@ export default TableOfContents
 ```
 if you want to add links use **rnrSlugify** or your [custom slugify function](#custom-title-url) to generate the href.
 
-## Migrating from v2 to v3
-
-In v2 we use render as a function (we have render, renderBlocks and renderTitle). So when use it should use like that:
-```jsx
-import { renderBlocks, renderTitle } from '@9gustin/react-notion-render'
-
-const MyComponent = ({blocks, titleBlock}) => {
-  return (
-    <div>
-      ...some stuff
-      <h1>
-        {renderTitle(titleBlock)}
-      </h1>  
-      {renderBlocks(blocks)}
-    </div>
-  )
-}
-```
-
-
-Now we do like that:
-```jsx
-import { Render } from '@9gustin/react-notion-render'
-
-const MyComponent = ({blocks, titleBlock}) => {
-  return (
-    <div>
-      ...some stuff
-      <h1>
-        <Render blocks={[titleBlock]} />
-      </h1>
-      <Render blocks={blocks} useStyles />
-    </div>
-  )
-}
-```
-Now the Render component supports page content blocks and title blocks. <br />
-The concept of the **Render** are that receive blocks and parse it to React.ReactNode(or Elements), and in there use React Hooks. So it was a function but only can be used into components. And then it corresponds to be a Component.
-
 ## Contributions:
 If you find a bug, or want to suggest a feature you can create a [New Issue](https://github.com/9gustin/react-notion-render/issues/new) and will be analized. **Contributions of any kind welcome!**
 
