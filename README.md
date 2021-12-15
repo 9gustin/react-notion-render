@@ -262,7 +262,6 @@ Most common block types are supported. We happily accept pull requests to add su
 | Numbered List	| ✅ |
 | Quote	| ✅ |	
 | Callout	| ✅ |	
-| Column	| ? |
 | iframe	| ✅ |
 | Video	| ✅ |
 | File	| ✅ |
