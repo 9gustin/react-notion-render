@@ -22,6 +22,7 @@
    - [...moreProps](#moreprops)
    - [Custom Components](#custom-components)
    - [Display the table of contents](#display-the-table-of-contents)
+ - [Supported blocks](#supported-blocks)
  - [Contributions](#contributions)
 
 ## Description
@@ -247,6 +248,31 @@ export default TableOfContents
 
 ```
 if you want to add links use **rnrSlugify** or your [custom slugify function](#custom-title-url) to generate the href.
+
+## Supported blocks
+Most common block types are supported. We happily accept pull requests to add support for the missing blocks.
+
+| Block | Supported |
+|---------|-------------|
+| Text	| ✅ |
+| Heading	| ✅ |
+| Image	| ✅ |
+| Image Caption	| ? |
+| Bulleted List	| ✅ |
+| Numbered List	| ✅ |
+| Quote	| ✅ |	
+| Callout	| ✅ |	
+| Column	| ? |
+| iframe	| ✅ |
+| Video	| ✅ |
+| Divider	| ? |
+| Link	| ✅ |	
+| Code | ❌ |
+| Web Bookmark |	? |	
+| Toggle List	| ✅ |	
+| Page Links	| ✅ |	
+| Checkbox	| ✅ (read-only) |
+| Table Of Contents	| ✅ [indexGenerator](#display-the-table-of-contents) |
 
 ## Contributions:
 If you find a bug, or want to suggest a feature you can create a [New Issue](https://github.com/9gustin/react-notion-render/issues/new) and will be analized. **Contributions of any kind welcome!**
