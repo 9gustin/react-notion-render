@@ -257,7 +257,7 @@ Most common block types are supported. We happily accept pull requests to add su
 | Text	| ✅ |
 | Heading	| ✅ |
 | Image	| ✅ |
-| Image Caption	| ? |
+| Image Caption	| ✅ |
 | Bulleted List	| ✅ |
 | Numbered List	| ✅ |
 | Quote	| ✅ |	
@@ -265,10 +265,11 @@ Most common block types are supported. We happily accept pull requests to add su
 | Column	| ? |
 | iframe	| ✅ |
 | Video	| ✅ |
+| File	| ✅ |
 | Divider	| ? |
 | Link	| ✅ |	
 | Code | ❌ |
-| Web Bookmark |	? |	
+| Web Bookmark |	❌ |	
 | Toggle List	| ✅ |	
 | Page Links	| ✅ |	
 | Checkbox	| ✅ (read-only) |
