@@ -16,6 +16,7 @@ export enum blockEnum {
   BOOKMARK = 'bookmark',
   CALLOUT = 'callout',
   QUOTE = 'quote',
+  DIVIDER = 'divider',
 }
 
 export const UNSUPPORTED_TYPE = 'unsupported'

@@ -22,7 +22,8 @@
    - [...moreProps](#moreprops)
    - [Custom Components](#custom-components)
    - [Display the table of contents](#display-the-table-of-contents)
- - [Migrating from v2 to v3](#migrating-from-v2-to-v3)
+ - [Supported blocks](#supported-blocks)
+ - [Contributions](#contributions)
 
 ## Description
 
@@ -248,47 +249,79 @@ export default TableOfContents
 ```
 if you want to add links use **rnrSlugify** or your [custom slugify function](#custom-title-url) to generate the href.
 
-## Migrating from v2 to v3
+## Supported blocks
+Most common block types are supported. We happily accept pull requests to add support for the missing blocks.
 
-In v2 we use render as a function (we have render, renderBlocks and renderTitle). So when use it should use like that:
-```jsx
-import { renderBlocks, renderTitle } from '@9gustin/react-notion-render'
-
-const MyComponent = ({blocks, titleBlock}) => {
-  return (
-    <div>
-      ...some stuff
-      <h1>
-        {renderTitle(titleBlock)}
-      </h1>  
-      {renderBlocks(blocks)}
-    </div>
-  )
-}
-```
-
-
-Now we do like that:
-```jsx
-import { Render } from '@9gustin/react-notion-render'
-
-const MyComponent = ({blocks, titleBlock}) => {
-  return (
-    <div>
-      ...some stuff
-      <h1>
-        <Render blocks={[titleBlock]} />
-      </h1>
-      <Render blocks={blocks} useStyles />
-    </div>
-  )
-}
-```
-Now the Render component supports page content blocks and title blocks. <br />
-The concept of the **Render** are that receive blocks and parse it to React.ReactNode(or Elements), and in there use React Hooks. So it was a function but only can be used into components. And then it corresponds to be a Component.
+| Block | Supported |
+|---------|-------------|
+| Text	| ✅ |
+| Heading	| ✅ |
+| Image	| ✅ |
+| Image Caption	| ✅ |
+| Bulleted List	| ✅ |
+| Numbered List	| ✅ |
+| Quote	| ✅ |	
+| Callout	| ✅ |	
+| iframe	| ✅ |
+| Video	| ✅ |
+| File	| ✅ |
+| Divider	| ✅ |
+| Link	| ✅ |	
+| Code | ❌ |
+| Web Bookmark |	❌ |	
+| Toggle List	| ✅ |	
+| Page Links	| ✅ |	
+| Checkbox	| ✅ (read-only) |
+| Table Of Contents	| ✅ [indexGenerator](#display-the-table-of-contents) |
 
 ## Contributions:
 If you find a bug, or want to suggest a feature you can create a [New Issue](https://github.com/9gustin/react-notion-render/issues/new) and will be analized. **Contributions of any kind welcome!**
+
+### Running the dev example
+In the repo we have a dev example, with this you can test what you are developing.
+
+Clone repo and install package dependencies
+
+```BASH
+git clone https://github.com/9gustin/react-notion-render.git
+cd react-notion-render
+npm install
+```
+
+Run dev example to test added features. The example are in next.js, so have to install this dependency into dev-example folder.
+```BASH
+cd dev-example
+npm install
+```
+
+Starting the dev example
+To run the dev example we must be in the root of the project, in the package.json we have the `dev` command, that starts package compiler and dev example together.
+```BASH
+cd .. //if we be inside of /dev-example
+npm run dev
+```
+
+And voila. The app are running in port 3001 because a config in my pc, if you have problems with this you can change it in package.json, `dev-example` command
+
+### Project structure
+
+| Directory | Description
+| ---------- | ----------- |
+`dev-example` | App maded with next.js, this app have the output of `src` as a package. You can test what are you developing here.
+`src` | the package `@9gustin/react-notion-render`
+`src/components` | React components
+`src/components/common` | here are the "simple components", like all notion components and generic components(Link for example).
+`src/components/core` | here are the logic components, the core of the package
+`src/components/core/Render` | Render are the package exported component, the entry point of the package. It receives a list of blocks and render it.
+`src/components/core/Text` | The text in notion are complex, this component contemplate text variants, like bold, italic. Also contemplate links.
+`src/hoc` | Higher order components / in there we apply some logic rules.
+`src/hoc/withContentValidation` | This HOC it's a filter before to pass the `Notion block` to the common components. almost every components are wrapped by this, and this objetive it's simplify props that the component would receive, applying package rules.
+`src/hoc/withCustomComponent` | The package supports [custom components](#custom-components). This HOC make it possible. before to render text validate if the text are a custom component and render it.
+`src/styles` | package styles. We just use plain css, the objective it's not apply much style, just the necessary. We use :global() to avoid compile problems with the className
+`src/types` | Types of the package
+`src/utils` | Common functions
+`src/index.tsx` | All that the package exports outside
+
 
 ## License
 
