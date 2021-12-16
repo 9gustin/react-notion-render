@@ -305,20 +305,23 @@ And voila. The app are running in port 3001 because a config in my pc, if you ha
 
 ### Project structure
 
-- dev-example -> App maded with next.js, this app have the output of `src` as a package. You can test what are you developing here.
-- src -> the package `@9gustin/react-notion-render`
-  - components -> React components
-    - common -> here are the "simple components", like all notion components and generic components(Link for example).
-    - core -> here are the logic components, the core of the package
-      - Render -> Render are the package exported component, the entry point of the package. It receives a list of blocks and render it.
-      - Text -> The text in notion are complex, this component contemplate text variants, like bold, italic. Also contemplate links.
-  - hoc -> Higher order components / in there we apply some logic rules.
-    -  withContentValidation -> This HOC it's a filter before to pass the `Notion block` to the common components. almost every components are wrapped by this, and this objetive it's simplify props that the component would receive, applying package rules.
-    -  withCustomComponent -> The package supports [custom components](#custom-components). This HOC make it possible. before to render text validate if the text are a custom component and render it.
-  - styles -> package styles. We just use plain css, the objective it's not apply much style, just the necessary. We use :global() to avoid compile problems with the className
-  - types -> Types of the package
-  - utils -> Common functions
-  - index.tsx -> All that the package exports outside
+| Directory | Description
+| ---------- | ----------- |
+`dev-example` | App maded with next.js, this app have the output of `src` as a package. You can test what are you developing here.
+`src` | the package `@9gustin/react-notion-render`
+`src/components` | React components
+`src/components/common` | here are the "simple components", like all notion components and generic components(Link for example).
+`src/components/core` | here are the logic components, the core of the package
+`src/components/core/Render` | Render are the package exported component, the entry point of the package. It receives a list of blocks and render it.
+`src/components/core/Text` | The text in notion are complex, this component contemplate text variants, like bold, italic. Also contemplate links.
+`src/hoc` | Higher order components / in there we apply some logic rules.
+`src/hoc/withContentValidation` | This HOC it's a filter before to pass the `Notion block` to the common components. almost every components are wrapped by this, and this objetive it's simplify props that the component would receive, applying package rules.
+`src/hoc/withCustomComponent` | The package supports [custom components](#custom-components). This HOC make it possible. before to render text validate if the text are a custom component and render it.
+`src/styles` | package styles. We just use plain css, the objective it's not apply much style, just the necessary. We use :global() to avoid compile problems with the className
+`src/types` | Types of the package
+`src/utils` | Common functions
+`src/index.tsx` | All that the package exports outside
+
 
 ## License
 
