@@ -16,6 +16,8 @@ export default function Post({ page, blocks }) {
     return <div />
   }
 
+  console.log(JSON.stringify(blocks))
+
   return (
     <>
       <Head>
