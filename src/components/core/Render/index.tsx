@@ -8,6 +8,7 @@ interface Props {
   classNames?: boolean
   emptyBlocks?: boolean
   slugifyFn?: (text: string) => string
+  simpleTitles?: boolean
 }
 
 function Render({
@@ -15,7 +16,8 @@ function Render({
   classNames,
   emptyBlocks,
   useStyles,
-  slugifyFn
+  slugifyFn,
+  simpleTitles
 }: Props) {
   if (!blocks || !blocks.length) return <div />
 
@@ -33,6 +35,7 @@ function Render({
           emptyBlocks={emptyBlocks}
           block={block}
           slugifyFn={slugifyFn}
+          simpleTitles={simpleTitles}
         />
           )
         : null

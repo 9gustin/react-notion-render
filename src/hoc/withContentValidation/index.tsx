@@ -11,6 +11,7 @@ export interface WithContentValidationProps {
   emptyBlocks?: boolean
   block: ParsedBlock
   slugifyFn?: (text: string) => string
+  simpleTitles?: boolean
 }
 
 export interface DropedProps {
@@ -19,7 +20,7 @@ export interface DropedProps {
   children: React.ReactNode
   plainText: string
   config: WithContentValidationProps
-  slugifyFn: (text: string) => string
+  slugifyFn: ((text: string) => string) | null
   media?: {
     alt: string
     src: string
@@ -37,13 +38,14 @@ function withContentValidation(
     emptyBlocks,
     slugifyFn,
     classNames,
+    simpleTitles,
     ...props
   }: WithContentValidationProps) => {
     let returnedProps: DropedProps = {
       checked: false,
       children: null,
       plainText: '',
-      slugifyFn: slugifyFn ?? slugify,
+      slugifyFn: simpleTitles ? null : (slugifyFn ?? slugify),
       className: classNames ? `rnr-${props.block.notionType}` : undefined,
       config: {
         classNames: classNames,
