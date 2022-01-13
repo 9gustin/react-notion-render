@@ -19,7 +19,7 @@ function Title({
     const props = {
       className,
       children,
-      id: slugifyFn(plainText || '')
+      ...(slugifyFn ? { id: slugifyFn(plainText || '') } : {})
     }
 
     if (type === blockEnum.HEADING2) {
@@ -31,11 +31,13 @@ function Title({
     return <h1 {...props} />
   }, [className, children, plainText])
 
-  return (
+  return slugifyFn
+    ? (
     <a href={`#${slugifyFn(plainText)}`} className='title'>
       {renderTitle}
     </a>
-  )
+      )
+    : renderTitle
 }
 
 export default withContentValidation(Title)
