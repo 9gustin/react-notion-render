@@ -12,6 +12,7 @@ import { blockEnum } from './BlockTypes'
 import { NotionBlock } from './NotionBlock'
 import Text from './Text'
 import Divider from '../components/common/Divider'
+import Code from '../components/common/Code'
 
 export class ParsedBlock {
   id: string
@@ -32,7 +33,8 @@ export class ParsedBlock {
     icon?: {
       type: 'emoji'
       emoji: string
-    }
+    },
+    language?: string
   }
 
   constructor(initialValues: NotionBlock, isChild?: boolean) {
@@ -51,7 +53,7 @@ export class ParsedBlock {
       this.content = null
       this.items = [new ParsedBlock(initialValues, true)]
     } else {
-      const { text, checked, caption, type, external, file, url, icon } = content
+      const { text, checked, caption, type, external, file, url, icon, language } = content
 
       this.items =
         content.children?.map(
@@ -65,7 +67,8 @@ export class ParsedBlock {
         external,
         file,
         url,
-        icon
+        icon,
+        language
       }
     }
   }
@@ -110,6 +113,9 @@ export class ParsedBlock {
       }
       case blockEnum.DIVIDER: {
         return Divider
+      }
+      case blockEnum.CODE: {
+        return Code
       }
       default: {
         return null

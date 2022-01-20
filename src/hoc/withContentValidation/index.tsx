@@ -21,6 +21,7 @@ export interface DropedProps {
   plainText: string
   config: WithContentValidationProps
   slugifyFn: ((text: string) => string) | null
+  language?: string
   media?: {
     alt: string
     src: string
