@@ -289,6 +289,9 @@ npm install
 ```
 
 Run dev example to test added features. The example are in next.js, so have to install this dependency into dev-example folder.
+<br />
+**IMPORTANT:** Install dependencies of dev-example with `npm install`, not with `yarn`. This is because the dev-example uses parent node_modules (with file:../node_modules) and if install it with yarn it has problems with sub dependencies.
+
 ```BASH
 cd dev-example
 npm install
