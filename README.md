@@ -149,7 +149,11 @@ With this package you can pin the titles in the url to share it. For example, if
 ```jsx
 <Render blocks={blocks} slugifyFn={text => text.replace(/[^a-zA-Z0-9]/g,'_')} />
 ```
-Or whatever you want, slugifyFn should receive and return a string.
+Or whatever you want, slugifyFn should receive and return a string. <br />
+If you dont want this functionality you can disable it with the prop **simpleTitles**:
+```jsx
+<Render blocks={blocks} simpleTitles />
+```
 
 #### Preserve empty blocks
 Now by default the Render component discard the empty blocks that you put in your notion page. If you want to preserve you can pass the prop **emptyBlocks** and it be rendered.
