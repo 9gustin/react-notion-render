@@ -2,7 +2,7 @@ import React from 'react'
 import withContentValidation, { DropedProps } from '../../../hoc/withContentValidation'
 import { slugify } from '../../../utils/slugify'
 
-function Code({ className, plainText, language }: DropedProps) {
+function Code({ className, children, language }: DropedProps) {
   let cn = className
 
   if (language) {
@@ -10,7 +10,7 @@ function Code({ className, plainText, language }: DropedProps) {
   }
 
   return (
-    <pre><code className={cn}>{plainText}</code></pre>
+    <pre><code className={cn}>{children}</code></pre>
   )
 }
 
