@@ -149,7 +149,11 @@ With this package you can pin the titles in the url to share it. For example, if
 ```jsx
 <Render blocks={blocks} slugifyFn={text => text.replace(/[^a-zA-Z0-9]/g,'_')} />
 ```
-Or whatever you want, slugifyFn should receive and return a string.
+Or whatever you want, slugifyFn should receive and return a string. <br />
+If you dont want this functionality you can disable it with the prop **simpleTitles**:
+```jsx
+<Render blocks={blocks} simpleTitles />
+```
 
 #### Preserve empty blocks
 Now by default the Render component discard the empty blocks that you put in your notion page. If you want to preserve you can pass the prop **emptyBlocks** and it be rendered.
@@ -289,6 +293,9 @@ npm install
 ```
 
 Run dev example to test added features. The example are in next.js, so have to install this dependency into dev-example folder.
+<br />
+**IMPORTANT:** Install dependencies of dev-example with `npm install`, not with `yarn`. This is because the dev-example uses parent node_modules (with file:../node_modules) and if install it with yarn it has problems with sub dependencies.
+
 ```BASH
 cd dev-example
 npm install
