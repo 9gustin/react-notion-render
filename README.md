@@ -271,7 +271,7 @@ Most common block types are supported. We happily accept pull requests to add su
 | File	| ✅ |
 | Divider	| ✅ |
 | Link	| ✅ |	
-| Code | ❌ |
+| Code | ✅ |
 | Web Bookmark |	❌ |	
 | Toggle List	| ✅ |	
 | Page Links	| ✅ |	
@@ -301,7 +301,15 @@ cd dev-example
 npm install
 ```
 
-Starting the dev example
+Add .env file with your notion token and run the example. <br/>
+Inside of dev-example folder you find a .env.example file with the structure of .env file. Steps:
+1. Go to [notion.so/my-integrations](https://www.notion.so/my-integrations) and generate a new integration, copy the `Internal Integration Token` and paste it into the .env file wit the key `NOTION_TOKEN`.
+2. Go to your notion, create a database that you want to use as example. Enter in it and copy the database id from url. `https://www.notion.so/YOUR_PROFILE/DATABASE_ID?v=RANDOM`
+3. Share the database with the integration.
+
+More detail in [developers.notion.com/docs/getting-started](https://developers.notion.com/docs/getting-started)
+
+Starting the dev example <br />
 To run the dev example we must be in the root of the project, in the package.json we have the `dev` command, that starts package compiler and dev example together.
 ```BASH
 cd .. //if we be inside of /dev-example
