@@ -31,7 +31,7 @@ export default function Post({ page, blocks }) {
           <section>
             <Render blocks={blocks} emptyBlocks classNames useStyles slugifyFn={(t) => {
               return t.replace(/[^a-zA-Z0-9]/g, '_')
-            }} simpleTitles/>
+            }}/>
             <Link href='/blog'>
               <a className={styles.back}>← Go home</a>
             </Link>

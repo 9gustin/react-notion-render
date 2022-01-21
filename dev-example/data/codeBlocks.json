@@ -1,0 +1,189 @@
+[
+  {
+    "object": "block",
+    "id": "5240d96c-3253-449d-8c8b-8bf9a18b79a4",
+    "created_time": "2022-01-20T18:44:00.000Z",
+    "last_edited_time": "2022-01-20T18:45:00.000Z",
+    "has_children": false,
+    "archived": false,
+    "type": "paragraph",
+    "paragraph": {
+      "text": [
+        {
+          "type": "text",
+          "text": { "content": "CSS Code", "link": null },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "CSS Code",
+          "href": null
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "7737e38a-3905-481e-a192-a96a4cd9fd1b",
+    "created_time": "2022-01-20T18:43:00.000Z",
+    "last_edited_time": "2022-01-20T18:44:00.000Z",
+    "has_children": false,
+    "archived": false,
+    "type": "code",
+    "code": {
+      "caption": [],
+      "text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');\n/* @import url('https://fonts.googleapis.com/css2?family=Karla&display=swap'); */\n\n:root {\n  --bg-color: #0D1117;\n  --text-color: #F2F2F2;\n  --bg-secondary-color: #BFBFBF;\n  --theme-color: #1DAF54;\n\n  --size: 1rem;\n  --size-sm: .9rem;\n  --size-xs: .8rem;\n\n  --family:'Montserrat', sans-serif;\n  /* --family:'Karla', sans-serif; */\n}\n\nbody {\n  background-color: var(--bg-color);\n  color: var(--text-color);\n  font-family: var(--family);\n  overflow: hidden;\n}\n\nbutton {\n  background-color: var(--theme-color);\n  border: none;\n  border-radius: 10px;\n  color: var(--text-color);\n  min-height: 40px;\n  max-width: 400px;\n  width: 100%;\n}",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');\n/* @import url('https://fonts.googleapis.com/css2?family=Karla&display=swap'); */\n\n:root {\n  --bg-color: #0D1117;\n  --text-color: #F2F2F2;\n  --bg-secondary-color: #BFBFBF;\n  --theme-color: #1DAF54;\n\n  --size: 1rem;\n  --size-sm: .9rem;\n  --size-xs: .8rem;\n\n  --family:'Montserrat', sans-serif;\n  /* --family:'Karla', sans-serif; */\n}\n\nbody {\n  background-color: var(--bg-color);\n  color: var(--text-color);\n  font-family: var(--family);\n  overflow: hidden;\n}\n\nbutton {\n  background-color: var(--theme-color);\n  border: none;\n  border-radius: 10px;\n  color: var(--text-color);\n  min-height: 40px;\n  max-width: 400px;\n  width: 100%;\n}",
+          "href": null
+        }
+      ],
+      "language": "css"
+    }
+  },
+  {
+    "object": "block",
+    "id": "f4e9a408-a0d4-470e-b8c0-b55420422be7",
+    "created_time": "2022-01-20T18:44:00.000Z",
+    "last_edited_time": "2022-01-20T18:45:00.000Z",
+    "has_children": false,
+    "archived": false,
+    "type": "paragraph",
+    "paragraph": {
+      "text": [
+        {
+          "type": "text",
+          "text": { "content": "JS Code", "link": null },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "JS Code",
+          "href": null
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "4294a3d8-bc13-4d38-a359-64ae87e71523",
+    "created_time": "2022-01-20T18:45:00.000Z",
+    "last_edited_time": "2022-01-20T18:45:00.000Z",
+    "has_children": false,
+    "archived": false,
+    "type": "code",
+    "code": {
+      "caption": [],
+      "text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "import React from \"react\";\n\nconst Button = ({\n  children,\n  handleClick,\n  variant = \"default\",\n  type = \"button\",\n}) => (\n  <button type={type} onClick={handleClick}>\n    {children}\n  </button>\n);\n\nexport default Button;",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "import React from \"react\";\n\nconst Button = ({\n  children,\n  handleClick,\n  variant = \"default\",\n  type = \"button\",\n}) => (\n  <button type={type} onClick={handleClick}>\n    {children}\n  </button>\n);\n\nexport default Button;",
+          "href": null
+        }
+      ],
+      "language": "javascript"
+    }
+  },
+  {
+    "object": "block",
+    "id": "595a2f03-7d4b-4b7f-b794-dde8fd692c45",
+    "created_time": "2022-01-20T18:44:00.000Z",
+    "last_edited_time": "2022-01-20T18:46:00.000Z",
+    "has_children": false,
+    "archived": false,
+    "type": "paragraph",
+    "paragraph": {
+      "text": [
+        {
+          "type": "text",
+          "text": { "content": "TS code ", "link": null },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "TS code ",
+          "href": null
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "4b48005d-005d-47a8-8bff-a96bc1f1d96c",
+    "created_time": "2022-01-20T18:45:00.000Z",
+    "last_edited_time": "2022-01-20T18:46:00.000Z",
+    "has_children": false,
+    "archived": false,
+    "type": "code",
+    "code": {
+      "caption": [],
+      "text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "import React, { PropsWithChildren } from \"react\";\n\ntype Props = PropsWithChildren<{\n  type?: React.ButtonHTMLAttributes<HTMLButtonElement>[\"type\"];\n  size?: \"small\" | \"large\";\n  handleClick?: (e?: React.MouseEvent<HTMLButtonElement>) => void;\n  variant?: \"default\" | \"secondary\" | \"error\";\n}>;\n\nconst Button = ({\n  children,\n  handleClick,\n  variant = \"default\",\n  type = \"button\",\n}: Props) => (\n  <button type={type} onClick={handleClick}>\n    {children}\n  </button>\n);\n\nexport default Button;",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "import React, { PropsWithChildren } from \"react\";\n\ntype Props = PropsWithChildren<{\n  type?: React.ButtonHTMLAttributes<HTMLButtonElement>[\"type\"];\n  size?: \"small\" | \"large\";\n  handleClick?: (e?: React.MouseEvent<HTMLButtonElement>) => void;\n  variant?: \"default\" | \"secondary\" | \"error\";\n}>;\n\nconst Button = ({\n  children,\n  handleClick,\n  variant = \"default\",\n  type = \"button\",\n}: Props) => (\n  <button type={type} onClick={handleClick}>\n    {children}\n  </button>\n);\n\nexport default Button;",
+          "href": null
+        }
+      ],
+      "language": "typescript"
+    }
+  },
+  {
+    "object": "block",
+    "id": "97c562a3-f413-440c-96a3-56d850d1d86a",
+    "created_time": "2022-01-20T18:46:00.000Z",
+    "last_edited_time": "2022-01-20T18:46:00.000Z",
+    "has_children": false,
+    "archived": false,
+    "type": "paragraph",
+    "paragraph": { "text": [] }
+  }
+]

@@ -9,9 +9,9 @@
   },
   "dependencies": {
     "@9gustin/react-notion-render": "file:..",
-    "react": "file:../node_modules/react",
-    "react-dom": "file:../node_modules/react-dom",
     "@notionhq/client": "^0.1.8",
-    "next": "10.2.3"
+    "next": "10.2.3",
+    "react": "file:../node_modules/react",
+    "react-dom": "file:../node_modules/react-dom"
   }
 }

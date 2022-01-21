@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropsWithChildren } from 'react'
 
 import { ParsedBlock } from '../../types/Block'
 
@@ -14,13 +14,13 @@ export interface WithContentValidationProps {
   simpleTitles?: boolean
 }
 
-export interface DropedProps {
+export type DropedProps = PropsWithChildren<{
   className?: string
   checked: boolean
-  children: React.ReactNode
   plainText: string
   config: WithContentValidationProps
   slugifyFn: ((text: string) => string) | null
+  language?: string
   media?: {
     alt: string
     src: string
@@ -29,7 +29,7 @@ export interface DropedProps {
     extension?: string
     player?: string
   }
-}
+}>
 
 function withContentValidation(
   Component: React.ComponentType<DropedProps>
