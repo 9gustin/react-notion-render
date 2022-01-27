@@ -153,6 +153,8 @@ export class ParsedBlock {
       case blockEnum.PDF:
       case blockEnum.EMBED:
         return 'MEDIA'
+      case blockEnum.SYNCED_BLOCK:
+        return 'CONTAINER'
       default:
         return 'ELEMENT'
     }
@@ -180,6 +182,10 @@ export class ParsedBlock {
 
   isEmbed() {
     return this.getType() === 'MEDIA' && this.notionType === blockEnum.EMBED
+  }
+
+  isContainer() {
+    return this.getType() === 'CONTAINER'
   }
 
   equalsType(type: blockEnum) {

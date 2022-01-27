@@ -17,7 +17,8 @@ export enum blockEnum {
   CALLOUT = 'callout',
   QUOTE = 'quote',
   DIVIDER = 'divider',
-  CODE = 'code'
+  CODE = 'code',
+  SYNCED_BLOCK = 'synced_block',
 }
 
 export const UNSUPPORTED_TYPE = 'unsupported'
