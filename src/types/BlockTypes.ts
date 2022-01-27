@@ -19,6 +19,7 @@ export enum blockEnum {
   DIVIDER = 'divider',
   CODE = 'code',
   SYNCED_BLOCK = 'synced_block',
+  TABLE_OF_CONTENTS = 'table_of_contents',
 }
 
 export const UNSUPPORTED_TYPE = 'unsupported'

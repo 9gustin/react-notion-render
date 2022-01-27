@@ -13,6 +13,7 @@ import { NotionBlock } from './NotionBlock'
 import Text from './Text'
 import Divider from '../components/common/Divider'
 import Code from '../components/common/Code'
+import TableOfContents from '../components/common/TableOfContents'
 
 export class ParsedBlock {
   id: string
@@ -116,6 +117,9 @@ export class ParsedBlock {
       }
       case blockEnum.CODE: {
         return Code
+      }
+      case blockEnum.TABLE_OF_CONTENTS: {
+        return TableOfContents
       }
       default: {
         return null
