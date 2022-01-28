@@ -17,3 +17,21 @@
   margin: var(--spacing) 0;
   padding-left: var(--children-spacing);
 }
+
+/* Table of contents */
+:global(.rnr-container) :global(.rnr-table_of_contents) {
+  list-style: none;
+  padding: 0;
+}
+
+:global(.rnr-container) :global(.rnr-table_of_contents) > li {
+  padding: 3px 0;
+}
+
+:global(.rnr-container) :global(.rnr-table_of_contents) > :global(.rnr-heading_2) {
+  margin-left: 30px;
+}
+
+:global(.rnr-container) :global(.rnr-table_of_contents) > :global(.rnr-heading_3) {
+  margin-left: 60px;
+}

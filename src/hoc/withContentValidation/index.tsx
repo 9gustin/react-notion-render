@@ -1,10 +1,11 @@
 import React, { PropsWithChildren } from 'react'
 
-import { ParsedBlock } from '../../types/Block'
+import { ParsedBlock, SimpleBlock } from '../../types/Block'
 
 import EmptyBlock from '../../components/common/EmptyBlock'
 import { getDefaultProps, getMediaProps } from './constants'
 import { slugify } from '../../utils/slugify'
+import { blockTypeClassname } from '../../utils/getClassname'
 
 export interface WithContentValidationProps {
   classNames?: boolean
@@ -12,6 +13,7 @@ export interface WithContentValidationProps {
   block: ParsedBlock
   slugifyFn?: (text: string) => string
   simpleTitles?: boolean
+  index?: SimpleBlock[]
 }
 
 export type DropedProps = PropsWithChildren<{
@@ -29,6 +31,7 @@ export type DropedProps = PropsWithChildren<{
     extension?: string
     player?: string
   }
+  index?: SimpleBlock[]
 }>
 
 function withContentValidation(
@@ -41,12 +44,17 @@ function withContentValidation(
     simpleTitles,
     ...props
   }: WithContentValidationProps) => {
+    const hasContent = props.block.hasContent()
+    if (!hasContent && !emptyBlocks) {
+      return null
+    }
+
     let returnedProps: DropedProps = {
       checked: false,
       children: null,
       plainText: '',
       slugifyFn: simpleTitles ? null : (slugifyFn ?? slugify),
-      className: classNames ? `rnr-${props.block.notionType}` : undefined,
+      className: classNames ? blockTypeClassname(props.block.notionType) : undefined,
       config: {
         classNames: classNames,
         block: props.block,
@@ -58,15 +66,6 @@ function withContentValidation(
       returnedProps.media = getMediaProps(props)
     } else {
       returnedProps = { ...returnedProps, ...getDefaultProps(props) }
-    }
-
-    const hasContent =
-      returnedProps.plainText.trim() !== '' ||
-      returnedProps.config.block.items?.length ||
-      returnedProps.media
-
-    if (!hasContent && !emptyBlocks) {
-      return null
     }
 
     return hasContent ? <Component {...returnedProps} /> : <EmptyBlock />

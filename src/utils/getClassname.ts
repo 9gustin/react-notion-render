@@ -1,3 +1,4 @@
+import { blockEnum } from '..'
 import Text from '../types/Text'
 
 const DEFAULT_COLOR = 'default'
@@ -11,4 +12,8 @@ export function getClassname(annotations: Text['annotations']) {
   ${annotations.underline ? 'rnr-underline' : ''}
   ${annotations.color !== DEFAULT_COLOR ? `rnr-${annotations.color}` : ''}
 `.trim()
+}
+
+export function blockTypeClassname(notionType: blockEnum) {
+  return `rnr-${notionType}`
 }

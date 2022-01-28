@@ -192,6 +192,10 @@ export class ParsedBlock {
     return this.getType() === 'CONTAINER'
   }
 
+  isTableOfContents() {
+    return this.notionType === blockEnum.TABLE_OF_CONTENTS
+  }
+
   equalsType(type: blockEnum) {
     return this.notionType === type
   }
@@ -201,4 +205,18 @@ export class ParsedBlock {
 
     this.items.push(new ParsedBlock(block, true))
   }
+
+  hasContent() {
+    return this.getPlainText().trim() !== '' ||
+    this.items?.length ||
+    this.isTableOfContents()
+  }
 }
+
+export type SimpleBlock = {
+  id: string;
+  type: blockEnum;
+  text: Text[] | undefined;
+  plainText: string;
+  subItems?: SimpleBlock[];
+};

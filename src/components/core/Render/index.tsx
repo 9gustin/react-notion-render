@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react'
 import { NotionBlock } from '../../../types/NotionBlock'
 import getBlocksToRender from '../../../utils/getBlocksToRender'
+import { indexGenerator } from '../../../utils/indexGenerator'
 
 interface Props {
   blocks: NotionBlock[]
@@ -23,6 +24,7 @@ function Render({
 
   const render = useMemo(() => {
     const renderBlocks = getBlocksToRender(blocks)
+    const index = indexGenerator(blocks)
 
     return renderBlocks.map((block) => {
       const Component = block.getComponent()
@@ -36,6 +38,7 @@ function Render({
           block={block}
           slugifyFn={slugifyFn}
           simpleTitles={simpleTitles}
+          index={index}
         />
           )
         : null
