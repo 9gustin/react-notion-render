@@ -45,3 +45,11 @@
   border: 1px solid var(--color-gray);
   padding: 5px;
 }
+
+:global(.rnr-container) :global(.has-column-header) tr:first-child > td {
+  background-color: var(--light-color);
+}
+
+:global(.rnr-container) :global(.has-row-header) tr > td:first-child {
+  background-color: var(--light-color);
+}
