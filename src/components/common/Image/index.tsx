@@ -10,7 +10,7 @@ function Image({ className, media }: Props) {
   if (!media) return null
   const { src, alt, href } = media
 
-  const img = <img className={className} src={src || href} alt={alt} />
+  const img = <img className={className} src={src} alt={alt} />
 
   return href
     ? (
