@@ -119,6 +119,13 @@ This is independient to the prop **useStyles**, you can combinate them or use se
 | rnr-pdf | PDF | iframe |
 | rnr-callout | Callout | div |
 | rnr-quote | Quote | blockquote |
+| rnr-divider | Divider | hr |
+| rnr-code | Code | pre > code |
+| rnr-table_of_contents | Table of contents | ul |
+| rnr-table_of_contents | Table of contents | ul |
+| rnr-table | Table | table |
+| rnr-table_row | Table row | tr |
+
 
 **Text Styles**  <br />
 | ClassName          | Notion Reference    |
