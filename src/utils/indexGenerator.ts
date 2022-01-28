@@ -3,8 +3,15 @@ import { NotionBlock } from '../types/NotionBlock'
 
 export function indexGenerator(blocks: NotionBlock[]): SimpleBlock[] {
   const parsedBlocks = blocks.map(block => new ParsedBlock(block))
+  const titles = []
 
-  const titles = parsedBlocks.filter(block => block.isTitle())
+  for (let i = 0; i < parsedBlocks.length; i++) {
+    if (parsedBlocks[i].isTitle()) {
+      titles.push(parsedBlocks[i])
+    } else if (parsedBlocks[i].isContainer() && parsedBlocks[i].items) {
+      titles.push(...parsedBlocks[i].items!.filter(block => block.isTitle()))
+    }
+  }
 
   return titles.map((title) => ({
     id: title.id,
