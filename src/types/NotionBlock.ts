@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import { blockEnum } from './BlockTypes'
 import Text from './Text'
 
@@ -17,11 +18,8 @@ interface Block {
   id: string
   type: blockEnum | string
   object: 'block' | 'database' | 'page' | string
-  // eslint-disable-next-line camelcase
   created_time: Date | string
-  // eslint-disable-next-line camelcase
   last_edited_time: Date | string
-  // eslint-disable-next-line camelcase
   has_children: boolean
   [blockEnum.HEADING1]?: BlockTypeContent
   [blockEnum.HEADING2]?: BlockTypeContent
@@ -31,6 +29,14 @@ interface Block {
   [blockEnum.ENUM_LIST]?: BlockTypeContent
   [blockEnum.CHECK_LIST]?: BlockTypeContent
   [blockEnum.TOGGLE_LIST]?: BlockTypeContent
+  [blockEnum.TABLE]?: BlockTypeContent & {
+    has_column_header: boolean
+    has_row_header: boolean
+    table_width: number
+  }
+  [blockEnum.TABLE_ROW]?: BlockTypeContent & {
+    cells: Text[];
+  }
 }
 
 export type NotionBlock = Block | Title

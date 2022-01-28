@@ -35,3 +35,13 @@
 :global(.rnr-container) :global(.rnr-table_of_contents) > :global(.rnr-heading_3) {
   margin-left: 60px;
 }
+
+/* Table */
+:global(.rnr-container) :global(.rnr-table) {
+  border-collapse: collapse;
+}
+
+:global(.rnr-container) :global(.rnr-table) td {
+  border: 1px solid var(--color-gray);
+  padding: 5px;
+}

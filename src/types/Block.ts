@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import DummyText from '../components/common/DummyText'
 import Embed from '../components/common/Embed/wrappedEmbed'
 import File from '../components/common/File'
@@ -14,6 +15,7 @@ import Text from './Text'
 import Divider from '../components/common/Divider'
 import Code from '../components/common/Code'
 import TableOfContents from '../components/common/TableOfContents'
+import Table from '../components/common/Table'
 
 export class ParsedBlock {
   id: string
@@ -34,8 +36,11 @@ export class ParsedBlock {
     icon?: {
       type: 'emoji'
       emoji: string
-    },
+    }
     language?: string
+    hasColumnHeader?: boolean
+    hasRowHeader?: boolean
+    cells?: (Text[])[]
   }
 
   constructor(initialValues: NotionBlock, isChild?: boolean) {
@@ -54,7 +59,20 @@ export class ParsedBlock {
       this.content = null
       this.items = [new ParsedBlock(initialValues, true)]
     } else {
-      const { text, checked, caption, type, external, file, url, icon, language } = content
+      const {
+        text,
+        checked,
+        caption,
+        type,
+        external,
+        file,
+        url,
+        icon,
+        language,
+        has_column_header,
+        has_row_header,
+        cells
+      } = content
 
       this.items =
         content.children?.map(
@@ -69,7 +87,10 @@ export class ParsedBlock {
         file,
         url,
         icon,
-        language
+        language,
+        hasColumnHeader: has_column_header,
+        hasRowHeader: has_row_header,
+        cells
       }
     }
   }
@@ -121,6 +142,9 @@ export class ParsedBlock {
       case blockEnum.TABLE_OF_CONTENTS: {
         return TableOfContents
       }
+      case blockEnum.TABLE: {
+        return Table
+      }
       default: {
         return null
       }
@@ -159,6 +183,9 @@ export class ParsedBlock {
         return 'MEDIA'
       case blockEnum.SYNCED_BLOCK:
         return 'CONTAINER'
+      case blockEnum.TABLE:
+      case blockEnum.TABLE_OF_CONTENTS:
+        return 'TABLE'
       default:
         return 'ELEMENT'
     }
@@ -192,8 +219,8 @@ export class ParsedBlock {
     return this.getType() === 'CONTAINER'
   }
 
-  isTableOfContents() {
-    return this.notionType === blockEnum.TABLE_OF_CONTENTS
+  isTable() {
+    return this.getType() === 'TABLE'
   }
 
   equalsType(type: blockEnum) {
@@ -207,16 +234,18 @@ export class ParsedBlock {
   }
 
   hasContent() {
-    return this.getPlainText().trim() !== '' ||
-    this.items?.length ||
-    this.isTableOfContents()
+    return (
+      this.getPlainText().trim() !== '' ||
+      this.items?.length ||
+      this.isTable()
+    )
   }
 }
 
 export type SimpleBlock = {
-  id: string;
-  type: blockEnum;
-  text: Text[] | undefined;
-  plainText: string;
-  subItems?: SimpleBlock[];
-};
+  id: string
+  type: blockEnum
+  text: Text[] | undefined
+  plainText: string
+  subItems?: SimpleBlock[]
+}
