@@ -28,7 +28,11 @@ export default function getBlocksToRender(blocks: NotionBlock[]): ParsedBlock[] 
     if (previousBlock && areRelated(previousBlock, block)) {
       previousBlock.addItem(cleanBlocks[i])
     } else {
-      returnBlocks.push(block)
+      if (block.isContainer() && block.items) {
+        returnBlocks.push(...block.items)
+      } else {
+        returnBlocks.push(block)
+      }
     }
   }
 

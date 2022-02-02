@@ -21,7 +21,7 @@
    - [Giving Styles](#giving-styles)
    - [...moreProps](#moreprops)
    - [Custom Components](#custom-components)
-   - [Display the table of contents](#display-the-table-of-contents)
+   - [Display a custom table of contents](#display-a-custom-table-of-contents)
  - [Supported blocks](#supported-blocks)
  - [Contributions](#contributions)
 
@@ -119,6 +119,12 @@ This is independient to the prop **useStyles**, you can combinate them or use se
 | rnr-pdf | PDF | iframe |
 | rnr-callout | Callout | div |
 | rnr-quote | Quote | blockquote |
+| rnr-divider | Divider | hr |
+| rnr-code | Code | pre > code |
+| rnr-table_of_contents | Table of contents | ul |
+| rnr-table | Table | table |
+| rnr-table_row | Table row | tr |
+
 
 **Text Styles**  <br />
 | ClassName          | Notion Reference    |
@@ -219,7 +225,7 @@ You can embed Videos. You have 3 ways to embed a video.
 ```
 
 
-### Display the table of contents
+### Display a custom table of contents
 
 Now we exporting the **indexGenerator** function, with that you can show a table of contents of your page content. This function receive a list of blocks and return only the title blocks. The structure of the result it's like:
 
@@ -272,11 +278,13 @@ Most common block types are supported. We happily accept pull requests to add su
 | Divider	| ✅ |
 | Link	| ✅ |	
 | Code | ✅ |
-| Web Bookmark |	❌ |	
 | Toggle List	| ✅ |	
 | Page Links	| ✅ |	
 | Checkbox	| ✅ (read-only) |
-| Table Of Contents	| ✅ [indexGenerator](#display-the-table-of-contents) |
+| Table Of Contents	| ✅ |
+| Table | ✅ |
+| Synced blocks | ✅ |
+| Web Bookmark |	❌ |	
 
 ## Contributions:
 If you find a bug, or want to suggest a feature you can create a [New Issue](https://github.com/9gustin/react-notion-render/issues/new) and will be analized. **Contributions of any kind welcome!**

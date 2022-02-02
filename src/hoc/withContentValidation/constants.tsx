@@ -33,6 +33,7 @@ export function getDefaultProps (props: WithContentValidationProps) {
     children: block.content?.text.map((text: Text, index: number) => (
       <RenderText key={index} {...text} />
     )),
-    language: block.content?.language
+    language: block.content?.language,
+    index: props.index
   }
 }
