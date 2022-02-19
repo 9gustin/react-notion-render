@@ -235,6 +235,7 @@ export class ParsedBlock {
 
   hasContent() {
     return (
+      this.getUrl() ||
       this.getPlainText().trim() !== '' ||
       this.items?.length ||
       this.isTable()
