@@ -186,6 +186,8 @@ export class ParsedBlock {
       case blockEnum.TABLE:
       case blockEnum.TABLE_OF_CONTENTS:
         return 'TABLE'
+      case blockEnum.CODE:
+        return 'CODE'
       default:
         return 'ELEMENT'
     }
@@ -201,6 +203,10 @@ export class ParsedBlock {
 
   isList() {
     return this.getType() === 'LIST'
+  }
+
+  isCode() {
+    return this.getType() === 'CODE'
   }
 
   isTitle() {
@@ -240,6 +246,10 @@ export class ParsedBlock {
       this.items?.length ||
       this.isTable()
     )
+  }
+
+  supportCustomComponents () {
+    return !this.isCode()
   }
 }
 
