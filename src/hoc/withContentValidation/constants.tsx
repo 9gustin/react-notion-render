@@ -27,14 +27,16 @@ export function getDefaultProps (props: WithContentValidationProps) {
   const { block } = props
   const plainText = block.getPlainText()
 
-  const TextComponent = block.supportCustomComponents() ? WrappedText : Text
-
   return {
     checked: Boolean(block.content?.checked),
     plainText: plainText,
-    children: block.content?.text.map((text: IText, index: number) => (
-      <TextComponent key={index} {...text} />
-    )),
+    children: block.content?.text.map((text: IText, index: number) => {
+      let TextComponent = Text
+      if (block.supportCustomComponents() && !text.annotations.code) {
+        TextComponent = WrappedText
+      }
+      return <TextComponent key={index} {...text} />
+    }),
     language: block.content?.language,
     index: props.index
   }
