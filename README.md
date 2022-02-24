@@ -133,6 +133,7 @@ This is independient to the prop **useStyles**, you can combinate them or use se
 | rnr-italic | Italicize |
 | rnr-strikethrough | Strike Through |
 | rnr-underline | Underline |
+| rnr-inline-code | Code |
 
 **Text colors**  <br />
 | ClassName          | HEX |

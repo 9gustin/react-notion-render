@@ -1,12 +1,12 @@
 /* eslint-disable camelcase */
 import React, { Fragment, ReactElement } from 'react'
 
-import Text from '../../../types/Text'
+import IText from '../../../types/Text'
 import { getClassname } from '../../../utils/getClassname'
 import Link from '../../common/Link'
 import withCustomComponent from '../../../hoc/withCustomComponent'
 
-function Text({ text, annotations, type, href, plain_text }: Text) {
+export function Text({ text, annotations, type, href, plain_text }: IText) {
   const className = getClassname(annotations)
 
   if (type === 'mention') {

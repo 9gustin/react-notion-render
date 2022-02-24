@@ -1,8 +1,8 @@
 import React from 'react'
 import { WithContentValidationProps } from '.'
-import Text from '../../types/Text'
+import IText from '../../types/Text'
 
-import RenderText from '../../components/core/Text'
+import WrappedText, { Text } from '../../components/core/Text'
 
 export function getMediaProps (props: WithContentValidationProps) {
   const { block } = props
@@ -30,9 +30,13 @@ export function getDefaultProps (props: WithContentValidationProps) {
   return {
     checked: Boolean(block.content?.checked),
     plainText: plainText,
-    children: block.content?.text.map((text: Text, index: number) => (
-      <RenderText key={index} {...text} />
-    )),
+    children: block.content?.text.map((text: IText, index: number) => {
+      let TextComponent = Text
+      if (block.supportCustomComponents() && !text.annotations.code) {
+        TextComponent = WrappedText
+      }
+      return <TextComponent key={index} {...text} />
+    }),
     language: block.content?.language,
     index: props.index
   }
