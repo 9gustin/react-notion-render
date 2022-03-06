@@ -1,10 +1,11 @@
 import React from 'react'
 import Head from 'next/head'
+import NextImg from 'next/image'
 import { getDatabase, getPage, getBlocks } from '../lib/notion'
 import Link from 'next/link'
 import { databaseId } from './blog.js'
 
-import { Render } from '@9gustin/react-notion-render'
+import { Render, withContentValidation } from '@9gustin/react-notion-render'
 
 import Header from '../components/Header'
 import MyTableOfContents from '../components/TableOfContents'
@@ -12,8 +13,8 @@ import MyTableOfContents from '../components/TableOfContents'
 import styles from './index.module.css'
 
 const myMapper = {
-  heading_1: () => <p>heading_1</p>,
-  toggle: ({ block }) => <p key={block.id}>:P</p>
+  heading_1: withContentValidation(({ children }) => <p>test:{children}</p>),
+  image: withContentValidation(({ media }) => <NextImg src={media.src} width="100" height="100"/>)
 }
 
 export default function Post({ page, blocks }) {
