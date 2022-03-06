@@ -6,7 +6,7 @@ import EmptyBlock from '../../components/common/EmptyBlock'
 import { getDefaultProps, getMediaProps } from './constants'
 import { slugify } from '../../utils/slugify'
 import { blockTypeClassname } from '../../utils/getClassname'
-import { BlockComponentsMapperType } from '../../constants/BlockComponentsMapper'
+import { BlockComponentsMapperType } from '../../constants/BlockComponentsMapper/types'
 
 export interface WithContentValidationProps {
   classNames?: boolean
@@ -61,6 +61,7 @@ function withContentValidation(
       config: {
         classNames: classNames,
         block: props.block,
+        blockComponentsMapper: props.blockComponentsMapper,
         emptyBlocks
       }
     }

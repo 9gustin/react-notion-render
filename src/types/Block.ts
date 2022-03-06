@@ -2,6 +2,8 @@
 import Text from './Text'
 import { blockEnum } from './BlockTypes'
 import { NotionBlock } from './NotionBlock'
+import { BlockComponentsMapperType } from '../constants/BlockComponentsMapper/types'
+import { BlockComponentsMapper } from '../constants/BlockComponentsMapper'
 
 export class ParsedBlock {
   id: string
@@ -79,6 +81,12 @@ export class ParsedBlock {
         cells
       }
     }
+  }
+
+  getComponent(customMapper?: BlockComponentsMapperType) {
+    const mapper = { ...BlockComponentsMapper, ...customMapper }
+
+    return mapper[this.notionType]
   }
 
   getUrl() {

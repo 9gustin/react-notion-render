@@ -12,7 +12,8 @@ import MyTableOfContents from '../components/TableOfContents'
 import styles from './index.module.css'
 
 const myMapper = {
-  heading_1: () => <p>heading_1</p>
+  heading_1: () => <p>heading_1</p>,
+  toggle: ({ block }) => <p key={block.id}>:P</p>
 }
 
 export default function Post({ page, blocks }) {

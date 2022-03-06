@@ -16,4 +16,4 @@ export { default as RenderText } from './components/core/Text'
 export { default as withContentValidation } from './hoc/withContentValidation'
 export { default as withCustomComponent } from './hoc/withCustomComponent'
 
-export { BlockComponentsMapperType } from './constants/BlockComponentsMapper'
+export { BlockComponentsMapperType } from './constants/BlockComponentsMapper/types'

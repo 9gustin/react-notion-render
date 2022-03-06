@@ -3,7 +3,7 @@ import React, { useMemo } from 'react'
 import { NotionBlock } from '../../../types/NotionBlock'
 import { indexGenerator } from '../../../utils/indexGenerator'
 import getBlocksToRender from '../../../utils/getBlocksToRender'
-import { BlockComponentsMapperType, getComponent } from '../../../constants/BlockComponentsMapper'
+import { BlockComponentsMapperType } from '../../../constants/BlockComponentsMapper/types'
 
 interface Props {
   blocks: NotionBlock[]
@@ -31,7 +31,7 @@ function Render({
     const index = indexGenerator(blocks)
 
     return renderBlocks.map((block) => {
-      const Component = getComponent(block, blockComponentsMapper)
+      const Component = block.getComponent(blockComponentsMapper)
 
       return Component
         ? (

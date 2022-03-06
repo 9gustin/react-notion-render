@@ -8,7 +8,6 @@ import withContentValidation, {
 import styles from '../../styles.module.css'
 
 import Checkbox from '../Checkbox'
-import { getComponent } from '../../../../../constants/BlockComponentsMapper'
 
 function ListItem({ children, config, className, checked, blockComponentsMapper }: DropedProps) {
   const { notionType: type, items } = config.block
@@ -27,7 +26,7 @@ function ListItem({ children, config, className, checked, blockComponentsMapper 
           <summary className={styles['drop-button']}>{children}</summary>
           <div className={styles['drop-children']}>
             {items.map((block) => {
-              const Component = getComponent(block, blockComponentsMapper)
+              const Component = block.getComponent(blockComponentsMapper)
 
               return Component
                 ? (
