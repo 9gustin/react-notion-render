@@ -8,8 +8,9 @@ import withContentValidation, {
 import styles from '../../styles.module.css'
 
 import Checkbox from '../Checkbox'
+import { getComponent } from '../../../../../constants/BlockComponentsMapper'
 
-function ListItem({ children, config, className, checked }: DropedProps) {
+function ListItem({ children, config, className, checked, blockComponentsMapper }: DropedProps) {
   const { notionType: type, items } = config.block
 
   const renderChildren = useMemo(() => {
@@ -26,7 +27,7 @@ function ListItem({ children, config, className, checked }: DropedProps) {
           <summary className={styles['drop-button']}>{children}</summary>
           <div className={styles['drop-children']}>
             {items.map((block) => {
-              const Component = block.getComponent()
+              const Component = getComponent(block, blockComponentsMapper)
 
               return Component
                 ? (

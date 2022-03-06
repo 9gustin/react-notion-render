@@ -1,21 +1,7 @@
 /* eslint-disable camelcase */
-import DummyText from '../components/common/DummyText'
-import Embed from '../components/common/Embed/wrappedEmbed'
-import File from '../components/common/File'
-import List from '../components/common/List'
-import Paragraph from '../components/common/Paragraph'
-import Title from '../components/common/Title'
-import Video from '../components/common/Video/wrappedVideo'
-import Image from '../components/common/Image/wrappedImage'
-import Quote from '../components/common/Quote'
-import Callout from '../components/common/Callout'
+import Text from './Text'
 import { blockEnum } from './BlockTypes'
 import { NotionBlock } from './NotionBlock'
-import Text from './Text'
-import Divider from '../components/common/Divider'
-import Code from '../components/common/Code'
-import TableOfContents from '../components/common/TableOfContents'
-import Table from '../components/common/Table'
 
 export class ParsedBlock {
   id: string
@@ -91,62 +77,6 @@ export class ParsedBlock {
         hasColumnHeader: has_column_header,
         hasRowHeader: has_row_header,
         cells
-      }
-    }
-  }
-
-  getComponent() {
-    switch (this.notionType) {
-      case blockEnum.PARAGRAPH: {
-        return Paragraph
-      }
-      case blockEnum.HEADING1:
-      case blockEnum.HEADING2:
-      case blockEnum.HEADING3: {
-        return Title
-      }
-      case blockEnum.DOTS_LIST:
-      case blockEnum.ENUM_LIST:
-      case blockEnum.CHECK_LIST:
-      case blockEnum.TOGGLE_LIST: {
-        return List
-      }
-      case blockEnum.VIDEO: {
-        return Video
-      }
-      case blockEnum.FILE: {
-        return File
-      }
-      case blockEnum.PDF:
-      case blockEnum.EMBED: {
-        return Embed
-      }
-      case blockEnum.TITLE: {
-        return DummyText
-      }
-      case blockEnum.IMAGE: {
-        return Image
-      }
-      case blockEnum.CALLOUT: {
-        return Callout
-      }
-      case blockEnum.QUOTE: {
-        return Quote
-      }
-      case blockEnum.DIVIDER: {
-        return Divider
-      }
-      case blockEnum.CODE: {
-        return Code
-      }
-      case blockEnum.TABLE_OF_CONTENTS: {
-        return TableOfContents
-      }
-      case blockEnum.TABLE: {
-        return Table
-      }
-      default: {
-        return null
       }
     }
   }

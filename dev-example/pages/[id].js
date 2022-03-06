@@ -11,6 +11,10 @@ import MyTableOfContents from '../components/TableOfContents'
 
 import styles from './index.module.css'
 
+const myMapper = {
+  heading_1: () => <p>heading_1</p>
+}
+
 export default function Post({ page, blocks }) {
   if (!page || !blocks) {
     return <div />
@@ -31,7 +35,10 @@ export default function Post({ page, blocks }) {
           <section>
             <Render blocks={blocks} emptyBlocks classNames useStyles slugifyFn={(t) => {
               return t.replace(/[^a-zA-Z0-9]/g, '_')
-            }}/>
+            }}
+            blockComponentsMapper={myMapper}
+
+            />
             <Link href='/blog'>
               <a className={styles.back}>← Go home</a>
             </Link>

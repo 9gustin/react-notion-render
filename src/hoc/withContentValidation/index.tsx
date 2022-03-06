@@ -6,6 +6,7 @@ import EmptyBlock from '../../components/common/EmptyBlock'
 import { getDefaultProps, getMediaProps } from './constants'
 import { slugify } from '../../utils/slugify'
 import { blockTypeClassname } from '../../utils/getClassname'
+import { BlockComponentsMapperType } from '../../constants/BlockComponentsMapper'
 
 export interface WithContentValidationProps {
   classNames?: boolean
@@ -14,6 +15,7 @@ export interface WithContentValidationProps {
   slugifyFn?: (text: string) => string
   simpleTitles?: boolean
   index?: SimpleBlock[]
+  blockComponentsMapper?: BlockComponentsMapperType
 }
 
 export type DropedProps = PropsWithChildren<{
@@ -32,6 +34,7 @@ export type DropedProps = PropsWithChildren<{
     player?: string
   }
   index?: SimpleBlock[]
+  blockComponentsMapper?: BlockComponentsMapperType
 }>
 
 function withContentValidation(
