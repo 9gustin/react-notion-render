@@ -61,6 +61,7 @@ export class ParsedBlock {
     } else {
       const {
         rich_text,
+        text,
         checked,
         caption,
         type,
@@ -79,7 +80,7 @@ export class ParsedBlock {
           (child: NotionBlock) => new ParsedBlock(child, true)
         ) ?? null
       this.content = {
-        text: rich_text ?? [],
+        text: rich_text ?? text ?? [],
         checked,
         caption,
         type,
