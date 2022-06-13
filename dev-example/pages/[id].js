@@ -8,13 +8,15 @@ import { databaseId } from './blog.js'
 import { Render, withContentValidation } from '@9gustin/react-notion-render'
 
 import Header from '../components/Header'
+import CustomCode from '../components/CustomCode'
 import MyTableOfContents from '../components/TableOfContents'
 
 import styles from './index.module.css'
 
 const myMapper = {
   heading_1: withContentValidation(({ children }) => <p>test:{children}</p>),
-  image: withContentValidation(({ media }) => <NextImg src={media.src} width="100" height="100"/>)
+  image: withContentValidation(({ media }) => <NextImg src={media.src} width="100" height="100" />),
+  code: withContentValidation(CustomCode)
 }
 
 export default function Post({ page, blocks }) {
@@ -33,13 +35,13 @@ export default function Post({ page, blocks }) {
         <Header />
         <MyTableOfContents blocks={blocks} />
         <article>
-          <Render blocks={[page.properties.Name]}/>
+          <Render blocks={[page.properties.Name]} />
           <section>
-            <Render blocks={blocks} emptyBlocks classNames useStyles slugifyFn={(t) => {
-              return t.replace(/[^a-zA-Z0-9]/g, '_')
-            }}
-            blockComponentsMapper={myMapper}
-
+            <Render
+              blocks={blocks}
+              blockComponentsMapper={myMapper}
+              emptyBlocks
+              classNames
             />
             <Link href='/blog'>
               <a className={styles.back}>← Go home</a>
