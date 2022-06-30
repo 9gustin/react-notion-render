@@ -84,14 +84,14 @@ You can override the package components, for example, if you want to use your ow
 This works to use your own styles, a library of components (like Chackra UI, ANT Design) or better components than natives.
 
 For example, if you want to use a custom H1:
-```
+```JSX
 const MyHeading = ({plainText}) => {
   return <h1 className="my-h1-class">H1! {plainText}</h1>
 }
 ```
 
 And in the render you pass the prop `blockComponentsMapper` like:
-```
+```JSX
 <Render blocks={blocks} blockComponentsMapper={{
   heading_1: withContentValidation(MyHeading)
 }} />
@@ -110,6 +110,9 @@ https://github.com/9gustin/react-notion-render/blob/feature/customBlockMapper/sr
 I recommend that you import withContentValidation HOC from the package and wrap component on it, this HOC parse props and make it more clean, here the font-code:
 https://github.com/9gustin/react-notion-render/blob/154e094e9477b5dada03358e2cecf695c06bb4d3/src/hoc/withContentValidation/index.tsx
 
+<br />
+
+I must work on a more clear documentation about this prop, but for now you can explore it.
 ### Giving styles
 If you followed the [basic example](#basic-example), tou take count that the page are rendered without styles, only pure text. To solve that we can use the Render props, like  the following cases
 
