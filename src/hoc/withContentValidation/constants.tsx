@@ -38,6 +38,7 @@ export function getDefaultProps (props: WithContentValidationProps) {
       return <TextComponent key={index} {...text} />
     }),
     language: block.content?.language,
-    index: props.index
+    index: props.index,
+    blockComponentsMapper: props.blockComponentsMapper
   }
 }
