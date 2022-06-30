@@ -14,7 +14,7 @@ import MyTableOfContents from '../components/TableOfContents'
 import styles from './index.module.css'
 
 const myMapper = {
-  heading_1: withContentValidation(({ children }) => <p>test:{children}</p>),
+  heading_1: withContentValidation(({ children }) => <h1 className='my-class'>test:{children}</h1>),
   image: withContentValidation(({ media }) => <NextImg src={media.src} width="100" height="100" />),
   code: withContentValidation(CustomCode)
 }
