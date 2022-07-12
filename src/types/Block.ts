@@ -1,18 +1,9 @@
-import DummyText from '../components/common/DummyText'
-import Embed from '../components/common/Embed/wrappedEmbed'
-import File from '../components/common/File'
-import List from '../components/common/List'
-import Paragraph from '../components/common/Paragraph'
-import Title from '../components/common/Title'
-import Video from '../components/common/Video/wrappedVideo'
-import Image from '../components/common/Image/wrappedImage'
-import Quote from '../components/common/Quote'
-import Callout from '../components/common/Callout'
+/* eslint-disable camelcase */
+import Text from './Text'
 import { blockEnum } from './BlockTypes'
 import { NotionBlock } from './NotionBlock'
-import Text from './Text'
-import Divider from '../components/common/Divider'
-import Code from '../components/common/Code'
+import { BlockComponentsMapperType } from '../constants/BlockComponentsMapper/types'
+import { BlockComponentsMapper } from '../constants/BlockComponentsMapper'
 
 export class ParsedBlock {
   id: string
@@ -33,8 +24,11 @@ export class ParsedBlock {
     icon?: {
       type: 'emoji'
       emoji: string
-    },
+    }
     language?: string
+    hasColumnHeader?: boolean
+    hasRowHeader?: boolean
+    cells?: (Text[])[]
   }
 
   constructor(initialValues: NotionBlock, isChild?: boolean) {
@@ -53,14 +47,9 @@ export class ParsedBlock {
       this.content = null
       this.items = [new ParsedBlock(initialValues, true)]
     } else {
-      const { text, checked, caption, type, external, file, url, icon, language } = content
-
-      this.items =
-        content.children?.map(
-          (child: NotionBlock) => new ParsedBlock(child, true)
-        ) ?? null
-      this.content = {
-        text: text ?? [],
+      const {
+        rich_text,
+        text,
         checked,
         caption,
         type,
@@ -68,59 +57,37 @@ export class ParsedBlock {
         file,
         url,
         icon,
-        language
+        language,
+        has_column_header,
+        has_row_header,
+        cells
+      } = content
+
+      this.items =
+        content.children?.map(
+          (child: NotionBlock) => new ParsedBlock(child, true)
+        ) ?? null
+      this.content = {
+        text: rich_text ?? text ?? [],
+        checked,
+        caption,
+        type,
+        external,
+        file,
+        url,
+        icon,
+        language,
+        hasColumnHeader: has_column_header,
+        hasRowHeader: has_row_header,
+        cells
       }
     }
   }
 
-  getComponent() {
-    switch (this.notionType) {
-      case blockEnum.PARAGRAPH: {
-        return Paragraph
-      }
-      case blockEnum.HEADING1:
-      case blockEnum.HEADING2:
-      case blockEnum.HEADING3: {
-        return Title
-      }
-      case blockEnum.DOTS_LIST:
-      case blockEnum.ENUM_LIST:
-      case blockEnum.CHECK_LIST:
-      case blockEnum.TOGGLE_LIST: {
-        return List
-      }
-      case blockEnum.VIDEO: {
-        return Video
-      }
-      case blockEnum.FILE: {
-        return File
-      }
-      case blockEnum.PDF:
-      case blockEnum.EMBED: {
-        return Embed
-      }
-      case blockEnum.TITLE: {
-        return DummyText
-      }
-      case blockEnum.IMAGE: {
-        return Image
-      }
-      case blockEnum.CALLOUT: {
-        return Callout
-      }
-      case blockEnum.QUOTE: {
-        return Quote
-      }
-      case blockEnum.DIVIDER: {
-        return Divider
-      }
-      case blockEnum.CODE: {
-        return Code
-      }
-      default: {
-        return null
-      }
-    }
+  getComponent(customMapper?: BlockComponentsMapperType) {
+    const mapper = { ...BlockComponentsMapper, ...customMapper }
+
+    return mapper[this.notionType]
   }
 
   getUrl() {
@@ -153,6 +120,13 @@ export class ParsedBlock {
       case blockEnum.PDF:
       case blockEnum.EMBED:
         return 'MEDIA'
+      case blockEnum.SYNCED_BLOCK:
+        return 'CONTAINER'
+      case blockEnum.TABLE:
+      case blockEnum.TABLE_OF_CONTENTS:
+        return 'TABLE'
+      case blockEnum.CODE:
+        return 'CODE'
       default:
         return 'ELEMENT'
     }
@@ -170,6 +144,10 @@ export class ParsedBlock {
     return this.getType() === 'LIST'
   }
 
+  isCode() {
+    return this.getType() === 'CODE'
+  }
+
   isTitle() {
     return this.getType() === 'TITLE'
   }
@@ -182,6 +160,14 @@ export class ParsedBlock {
     return this.getType() === 'MEDIA' && this.notionType === blockEnum.EMBED
   }
 
+  isContainer() {
+    return this.getType() === 'CONTAINER'
+  }
+
+  isTable() {
+    return this.getType() === 'TABLE'
+  }
+
   equalsType(type: blockEnum) {
     return this.notionType === type
   }
@@ -191,4 +177,25 @@ export class ParsedBlock {
 
     this.items.push(new ParsedBlock(block, true))
   }
+
+  hasContent() {
+    return (
+      this.getUrl() ||
+      this.getPlainText().trim() !== '' ||
+      this.items?.length ||
+      this.isTable()
+    )
+  }
+
+  supportCustomComponents () {
+    return !this.isCode()
+  }
+}
+
+export type SimpleBlock = {
+  id: string
+  type: blockEnum
+  text: Text[] | undefined
+  plainText: string
+  subItems?: SimpleBlock[]
 }

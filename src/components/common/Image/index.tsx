@@ -9,11 +9,18 @@ export interface Props {
 function Image({ className, media }: Props) {
   if (!media) return null
   const { src, alt, href } = media
-  return (
-    <a className={className} href={href} target='_blank' rel='noreferrer'>
-      <img src={src || href} alt={alt} />
+
+  const img = <img className={className} src={src} alt={alt} />
+
+  return href
+    ? (
+    <a href={href} target='_blank' rel='noreferrer'>
+      {img}
     </a>
-  )
+      )
+    : (
+        img
+      )
 }
 
 export default Image

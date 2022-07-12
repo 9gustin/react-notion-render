@@ -1,6 +1,9 @@
 import React, { useMemo } from 'react'
+
 import { NotionBlock } from '../../../types/NotionBlock'
+import { indexGenerator } from '../../../utils/indexGenerator'
 import getBlocksToRender from '../../../utils/getBlocksToRender'
+import { BlockComponentsMapperType } from '../../../constants/BlockComponentsMapper/types'
 
 interface Props {
   blocks: NotionBlock[]
@@ -9,6 +12,7 @@ interface Props {
   emptyBlocks?: boolean
   slugifyFn?: (text: string) => string
   simpleTitles?: boolean
+  blockComponentsMapper?: BlockComponentsMapperType
 }
 
 function Render({
@@ -17,15 +21,17 @@ function Render({
   emptyBlocks,
   useStyles,
   slugifyFn,
-  simpleTitles
+  simpleTitles,
+  blockComponentsMapper
 }: Props) {
   if (!blocks || !blocks.length) return <div />
 
   const render = useMemo(() => {
     const renderBlocks = getBlocksToRender(blocks)
+    const index = indexGenerator(blocks)
 
     return renderBlocks.map((block) => {
-      const Component = block.getComponent()
+      const Component = block.getComponent(blockComponentsMapper)
 
       return Component
         ? (
@@ -36,6 +42,8 @@ function Render({
           block={block}
           slugifyFn={slugifyFn}
           simpleTitles={simpleTitles}
+          index={index}
+          blockComponentsMapper={blockComponentsMapper}
         />
           )
         : null

@@ -18,10 +18,13 @@
    - [Blog with Notion as CMS](#blog-with-notion-as-cms)
    - [Notion page to single page](#notion-page-to-single-page)
  - [Usage](#usage)
+   - [Override built-in components (new)](#override-built-in-components-new)
    - [Giving Styles](#giving-styles)
    - [...moreProps](#moreprops)
    - [Custom Components](#custom-components)
-   - [Display the table of contents](#display-the-table-of-contents)
+   - [Display a custom table of contents](#display-a-custom-table-of-contents)
+ - [Guides](#guides)
+   - [How to use code blocks](https://github.com/9gustin/react-notion-render/wiki/About-code-blocks-and-how-to-colorize-it-%F0%9F%8E%A8)
  - [Supported blocks](#supported-blocks)
  - [Contributions](#contributions)
 
@@ -75,6 +78,41 @@ This example it's not maded by me, but i show you what package can do. This is a
 
 ## Usage
 
+### Override built-in components (new)
+You can override the package components, for example, if you want to use your own Code component or to replace native <img> for NextImage. For this you have the prop `blockComponentsMapper`.
+
+This works to use your own styles, a library of components (like Chackra UI, ANT Design) or better components than natives.
+
+For example, if you want to use a custom H1:
+```JSX
+const MyHeading = ({plainText}) => {
+  return <h1 className="my-h1-class">H1! {plainText}</h1>
+}
+```
+
+And in the render you pass the prop `blockComponentsMapper` like:
+```JSX
+<Render blocks={blocks} blockComponentsMapper={{
+  heading_1: withContentValidation(MyHeading)
+}} />
+```
+
+### How works? 
+**blockComponentsMapper** <br />
+It prop receives an json of type BlockComponentsMapperType, the keys represents the notion type:
+https://github.com/9gustin/react-notion-render/blob/154e094e9477b5dada03358e2cecf695c06bb4d3/src/constants/BlockComponentsMapper/types.ts
+<br />
+
+And here the notion types enum(you can import it):
+https://github.com/9gustin/react-notion-render/blob/feature/customBlockMapper/src/types/BlockTypes.ts
+
+**withContentValidation** <br />
+I recommend that you import withContentValidation HOC from the package and wrap component on it, this HOC parse props and make it more clean, here the font-code:
+https://github.com/9gustin/react-notion-render/blob/154e094e9477b5dada03358e2cecf695c06bb4d3/src/hoc/withContentValidation/index.tsx
+
+<br />
+
+I must work on a more clear documentation about this prop, but for now you can explore it.
 ### Giving styles
 If you followed the [basic example](#basic-example), tou take count that the page are rendered without styles, only pure text. To solve that we can use the Render props, like  the following cases
 
@@ -119,6 +157,12 @@ This is independient to the prop **useStyles**, you can combinate them or use se
 | rnr-pdf | PDF | iframe |
 | rnr-callout | Callout | div |
 | rnr-quote | Quote | blockquote |
+| rnr-divider | Divider | hr |
+| rnr-code | Code | pre > code |
+| rnr-table_of_contents | Table of contents | ul |
+| rnr-table | Table | table |
+| rnr-table_row | Table row | tr |
+
 
 **Text Styles**  <br />
 | ClassName          | Notion Reference    |
@@ -127,6 +171,7 @@ This is independient to the prop **useStyles**, you can combinate them or use se
 | rnr-italic | Italicize |
 | rnr-strikethrough | Strike Through |
 | rnr-underline | Underline |
+| rnr-inline-code | Code |
 
 **Text colors**  <br />
 | ClassName          | HEX |
@@ -219,7 +264,7 @@ You can embed Videos. You have 3 ways to embed a video.
 ```
 
 
-### Display the table of contents
+### Display a custom table of contents
 
 Now we exporting the **indexGenerator** function, with that you can show a table of contents of your page content. This function receive a list of blocks and return only the title blocks. The structure of the result it's like:
 
@@ -253,6 +298,12 @@ export default TableOfContents
 ```
 if you want to add links use **rnrSlugify** or your [custom slugify function](#custom-title-url) to generate the href.
 
+## Guides
+
+### How to use code blocks
+Checkout in this repo wiki:
+https://github.com/9gustin/react-notion-render/wiki/About-code-blocks-and-how-to-colorize-it-%F0%9F%8E%A8
+
 ## Supported blocks
 Most common block types are supported. We happily accept pull requests to add support for the missing blocks.
 
@@ -272,11 +323,13 @@ Most common block types are supported. We happily accept pull requests to add su
 | Divider	| ✅ |
 | Link	| ✅ |	
 | Code | ✅ |
-| Web Bookmark |	❌ |	
 | Toggle List	| ✅ |	
 | Page Links	| ✅ |	
 | Checkbox	| ✅ (read-only) |
-| Table Of Contents	| ✅ [indexGenerator](#display-the-table-of-contents) |
+| Table Of Contents	| ✅ |
+| Table | ✅ |
+| Synced blocks | ✅ |
+| Web Bookmark |	❌ |	
 
 ## Contributions:
 If you find a bug, or want to suggest a feature you can create a [New Issue](https://github.com/9gustin/react-notion-render/issues/new) and will be analized. **Contributions of any kind welcome!**

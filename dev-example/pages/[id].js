@@ -1,15 +1,23 @@
 import React from 'react'
 import Head from 'next/head'
+import NextImg from 'next/image'
 import { getDatabase, getPage, getBlocks } from '../lib/notion'
 import Link from 'next/link'
 import { databaseId } from './blog.js'
 
-import { Render } from '@9gustin/react-notion-render'
+import { Render, withContentValidation } from '@9gustin/react-notion-render'
 
 import Header from '../components/Header'
+import CustomCode from '../components/CustomCode'
 import MyTableOfContents from '../components/TableOfContents'
 
 import styles from './index.module.css'
+
+const myMapper = {
+  heading_1: withContentValidation(({ children }) => <h1 className='my-class'>test:{children}</h1>),
+  image: withContentValidation(({ media }) => <NextImg src={media.src} width="100" height="100" />),
+  code: withContentValidation(CustomCode)
+}
 
 export default function Post({ page, blocks }) {
   if (!page || !blocks) {
@@ -27,11 +35,14 @@ export default function Post({ page, blocks }) {
         <Header />
         <MyTableOfContents blocks={blocks} />
         <article>
-          <Render blocks={[page.properties.Name]}/>
+          <Render blocks={[page.properties.Name]} />
           <section>
-            <Render blocks={blocks} emptyBlocks classNames useStyles slugifyFn={(t) => {
-              return t.replace(/[^a-zA-Z0-9]/g, '_')
-            }}/>
+            <Render
+              blocks={blocks}
+              blockComponentsMapper={myMapper}
+              emptyBlocks
+              classNames
+            />
             <Link href='/blog'>
               <a className={styles.back}>← Go home</a>
             </Link>
