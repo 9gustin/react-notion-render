@@ -24,7 +24,7 @@ function Render({
   simpleTitles,
   blockComponentsMapper
 }: Props) {
-  if (!blocks || !blocks.length) return <div />
+  if (!blocks || !blocks.length) return null
 
   const render = useMemo(() => {
     const renderBlocks = getBlocksToRender(blocks)
