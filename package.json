@@ -1,6 +1,6 @@
 {
   "name": "@9gustin/react-notion-render",
-  "version": "3.10.0-alpha.0",
+  "version": "3.10.0-beta.0",
   "description": "A library to render notion content",
   "author": "9gustin",
   "keywords": [
@@ -40,9 +40,6 @@
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^14.2.6",
-    "@types/node": "^18.0.6",
-    "@types/react": "^18.0.15",
-    "@types/react-dom": "^18.0.6",
     "@typescript-eslint/parser": "^5.30.7",
     "eslint": "^8.20.0",
     "jest": "^28.1.3",
