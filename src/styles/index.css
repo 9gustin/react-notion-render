@@ -23,109 +23,109 @@
   --spacing: 10px;
 }
 
-:global(.rnr-container) *{
+.rnr-container *{
   font-size: var(--font-size-primary);
   font-weight: var(--normal-weight);
 }
 
-:global(.rnr-container) > :global(.block){
+.rnr-container > .block{
   display: block;
 }
 
-:global(.rnr-container) h1,
-:global(.rnr-container) h1 > * {
+.rnr-container h1,
+.rnr-container h1 > * {
   font-size: var(--font-size-display-text);
   font-weight: var(--medium-weight);
 }
 
-:global(.rnr-container) h2,
-:global(.rnr-container) h2 > * {
+.rnr-container h2,
+.rnr-container h2 > * {
   font-size: var(--font-size-title);
   font-weight: var(--medium-weight);
 }
 
-:global(.rnr-container) h3,
-:global(.rnr-container) h3 > * {
+.rnr-container h3,
+.rnr-container h3 > * {
   font-size: var(--font-size-sub-title);
 }
 
-:global(.rnr-container) a,
-:global(.rnr-container) :any-link {
+.rnr-container a,
+.rnr-container :any-link {
   color: var(--color-link);
   opacity: .8;
   transition: opacity .3s;
 }
 
-:global(.rnr-container) a:focus,
-:global(.rnr-container) a:hover {
+.rnr-container a:focus,
+.rnr-container a:hover {
   opacity: 1;
 }
 
-:global(.rnr-container) img {
+.rnr-container img {
   max-width: 100%;
 }
 
-:global(.rnr-container) :any-link:global(.title) {
+.rnr-container :any-link.title {
   color: inherit;
   text-decoration: none;
 }
 
-:global(.rnr-container) :global(.rnr-empty-block) {
+.rnr-container .rnr-empty-block {
   height: var(--spacing);
 }
 
-:global(.rnr-container) :global(.rnr-bold) {
+.rnr-container .rnr-bold {
   font-weight: var(--medium-weight);
 }
 
-:global(.rnr-container) :global(.rnr-italic) {
+.rnr-container .rnr-italic {
   font-style: italic;
 }
 
-:global(.rnr-container) :global(.rnr-strikethrough) {
+.rnr-container .rnr-strikethrough {
   text-decoration: line-through;
 }
 
-:global(.rnr-container) :global(.rnr-underline)	{
+.rnr-container .rnr-underline	{
   text-decoration: underline;
 }
 
-:global(.rnr-container) :global(.rnr-underline.rnr-strikethrough) {
+.rnr-container .rnr-underline.rnr-strikethrough {
   text-decoration: underline line-through;
 }
 
-:global(.rnr-container) :global(.rnr-red) {
-  color: var(--color-red)
+.rnr-container .rnr-red {
+  color: var(--color-red);
 }
 
-:global(.rnr-container) :global(.rnr-gray) {
-  color: var(--color-gray)
+.rnr-container .rnr-gray {
+  color: var(--color-gray);
 }
 
-:global(.rnr-container) :global(.rnr-brown) {
-  color: var(--color-brown)
+.rnr-container .rnr-brown {
+  color: var(--color-brown);
 }
 
-:global(.rnr-container) :global(.rnr-orange) {
-  color: var(--color-orange)
+.rnr-container .rnr-orange {
+  color: var(--color-orange);
 }
 
-:global(.rnr-container) :global(.rnr-yellow) {
-  color: var(--color-yellow)
+.rnr-container .rnr-yellow {
+  color: var(--color-yellow);
 }
 
-:global(.rnr-container) :global(.rnr-green) {
-  color: var(--color-green)
+.rnr-container .rnr-green {
+  color: var(--color-green);
 }
 
-:global(.rnr-container) :global(.rnr-blue) {
-  color: var(--color-blue)
+.rnr-container .rnr-blue {
+  color: var(--color-blue);
 }
 
-:global(.rnr-container) :global(.rnr-purple) {
-  color: var(--color-purple)
+.rnr-container .rnr-purple {
+  color: var(--color-purple);
 }
 
-:global(.rnr-container) :global(.rnr-pink) {
-  color: var(--color-pink)
+.rnr-container .rnr-pink {
+  color: var(--color-pink);
 }

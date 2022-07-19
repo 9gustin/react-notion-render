@@ -3,7 +3,7 @@
 */
 
 /* Callout */
-:global(.rnr-container) :global(.rnr-callout) {
+.rnr-container .rnr-callout {
   background-color: var(--light-color);
   display: flex;
   gap: 16px;
@@ -12,44 +12,44 @@
 }
 
 /* Quote */
-:global(.rnr-container) :global(.rnr-quote) {
+.rnr-container .rnr-quote {
   border-left: 4px solid var(--color-link);
   margin: var(--spacing) 0;
   padding-left: var(--children-spacing);
 }
 
 /* Table of contents */
-:global(.rnr-container) :global(.rnr-table_of_contents) {
+.rnr-container .rnr-table_of_contents {
   list-style: none;
   padding: 0;
 }
 
-:global(.rnr-container) :global(.rnr-table_of_contents) > li {
+.rnr-container .rnr-table_of_contents > li {
   padding: 3px 0;
 }
 
-:global(.rnr-container) :global(.rnr-table_of_contents) > :global(.rnr-heading_2) {
+.rnr-container .rnr-table_of_contents > .rnr-heading_2 {
   margin-left: 30px;
 }
 
-:global(.rnr-container) :global(.rnr-table_of_contents) > :global(.rnr-heading_3) {
+.rnr-container .rnr-table_of_contents > .rnr-heading_3 {
   margin-left: 60px;
 }
 
 /* Table */
-:global(.rnr-container) :global(.rnr-table) {
+.rnr-container .rnr-table {
   border-collapse: collapse;
 }
 
-:global(.rnr-container) :global(.rnr-table) td {
+.rnr-container .rnr-table td {
   border: 1px solid var(--color-gray);
   padding: 5px;
 }
 
-:global(.rnr-container) :global(.has-column-header) tr:first-child > td {
+.rnr-container .has-column-header tr:first-child > td {
   background-color: var(--light-color);
 }
 
-:global(.rnr-container) :global(.has-row-header) tr > td:first-child {
+.rnr-container .has-row-header tr > td:first-child {
   background-color: var(--light-color);
 }
