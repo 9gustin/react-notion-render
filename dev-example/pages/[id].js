@@ -42,6 +42,7 @@ export default function Post({ page, blocks }) {
               blockComponentsMapper={myMapper}
               emptyBlocks
               classNames
+              useStyles
             />
             <Link href='/blog'>
               <a className={styles.back}>← Go home</a>
