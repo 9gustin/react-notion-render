@@ -371,6 +371,26 @@ npm run dev
 
 And voila. The app are running in port 3001 because a config in my pc, if you have problems with this you can change it in package.json, `dev-example` command
 
+### Running another example
+
+In case you want to use another example to test what you are developing, please do the following:
+
+1. In the `package.json` file of your example project, which can be located anywhere in your machine, link to the local version of `react-notion-render`:
+
+```
+"dependencies": {
+  "@9gustin/react-notion-render": "path/to-package"
+}
+```
+
+This path can either be relative or absolute path.
+
+2. Run `npm install` to install all the required packages for the example project, including the locally compiled version of `react-notion-render`.
+
+3. Open a new terminal window and navigate to the `react-notion-render`. Run `npm start` to watch for changes you make to `react-notion-render` and build it on the go.
+
+4. Go back to the terminal window with your example project and run `npm run dev` to test new changes of `react-notion-render` in the example.
+
 ### Project structure
 
 | Directory | Description
