@@ -13,6 +13,7 @@ export interface WithContentValidationProps {
   emptyBlocks?: boolean
   block: ParsedBlock
   slugifyFn?: (text: string) => string
+  mapPageUrlFn?: (input: any) => string
   simpleTitles?: boolean
   index?: SimpleBlock[]
   blockComponentsMapper?: BlockComponentsMapperType
