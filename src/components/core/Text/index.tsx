@@ -6,7 +6,8 @@ import { getClassname } from '../../../utils/getClassname'
 import Link from '../../common/Link'
 import withCustomComponent from '../../../hoc/withCustomComponent'
 
-export function Text({ text, annotations, type, href, plain_text }: IText) {
+export function Text(props: IText) {
+  const { text, annotations, type, href, plain_text, mapPageUrlFn } = props
   const className = getClassname(annotations)
 
   if (type === 'mention') {
@@ -35,7 +36,13 @@ export function Text({ text, annotations, type, href, plain_text }: IText) {
     element = <u className={className}>{text.content}</u>
   }
 
-  if (text.link) element = <Link url={text.link.url} className={className}>{element}</Link>
+  if (text.link) {
+    let { link: { url } } = text
+    if (url[0] === "/" && mapPageUrlFn) {
+      url = mapPageUrlFn(url.slice(1))
+    }
+    element = <Link url={url} className={className}>{element}</Link>
+  }
 
   return element
 }

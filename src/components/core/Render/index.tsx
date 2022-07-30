@@ -11,6 +11,7 @@ interface Props {
   classNames?: boolean
   emptyBlocks?: boolean
   slugifyFn?: (text: string) => string
+  mapPageUrlFn?: (input: any) => string
   simpleTitles?: boolean
   blockComponentsMapper?: BlockComponentsMapperType
 }
@@ -21,6 +22,7 @@ function Render({
   emptyBlocks,
   useStyles,
   slugifyFn,
+  mapPageUrlFn,
   simpleTitles,
   blockComponentsMapper
 }: Props) {
@@ -41,6 +43,7 @@ function Render({
           emptyBlocks={emptyBlocks}
           block={block}
           slugifyFn={slugifyFn}
+          mapPageUrlFn={mapPageUrlFn}
           simpleTitles={simpleTitles}
           index={index}
           blockComponentsMapper={blockComponentsMapper}

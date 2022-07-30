@@ -24,7 +24,7 @@ export function getMediaProps (props: WithContentValidationProps) {
 }
 
 export function getDefaultProps (props: WithContentValidationProps) {
-  const { block } = props
+  const { block, mapPageUrlFn } = props
   const plainText = block.getPlainText()
 
   return {
@@ -35,7 +35,7 @@ export function getDefaultProps (props: WithContentValidationProps) {
       if (block.supportCustomComponents() && !text.annotations.code) {
         TextComponent = WrappedText
       }
-      return <TextComponent key={index} {...text} />
+      return <TextComponent key={index} {...text} mapPageUrlFn={mapPageUrlFn} />
     }),
     language: block.content?.language,
     index: props.index,
