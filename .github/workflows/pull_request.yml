@@ -1,26 +1,32 @@
-name: Test build on Pull Request
-on: 
-  pull_request:
-    branches:
-      - main
-
+name: CI
+on: [push]
 jobs:
   build:
-    name: Build
+    name: Build, lint, and test on Node ${{ matrix.node }} and ${{ matrix.os }}
 
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        node: ['14.x']
+        os: [ubuntu-latest]
 
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
 
-      - name: Use Node
+      - name: Use Node ${{ matrix.node }}
         uses: actions/setup-node@v1
         with:
-          node-version: lts
+          node-version: ${{ matrix.node }}
 
       - name: Install deps and build (with cache)
         uses: bahmutov/npm-install@v1
+
+      - name: Lint
+        run: yarn lint
+
+      - name: Test
+        run: yarn test --ci --coverage --maxWorkers=2
 
       - name: Build
         run: yarn build
