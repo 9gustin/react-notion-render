@@ -113,6 +113,21 @@ https://github.com/9gustin/react-notion-render/blob/154e094e9477b5dada03358e2cec
 <br />
 
 I must work on a more clear documentation about this prop, but for now you can explore it.
+
+### Mapping page url
+
+In Notion, page IDs are used to link between Notion pages. For example, if you link to a Notion page titled "Test" at `notion.so/test-1a2b3c4d`, the underlying markup will look like this:
+
+```
+<div>Link to page
+  <a href="/1a2b3c4d" ...>
+    <span>Test</span>
+  </a>
+</div>
+```
+
+When building a website from Notion content, you may use a different logic for creating paths to access those Notion pages. For example, the page above may now be available at `/test` path. To rewrite `/1a2b3c4d` to `/test`, you can define your own function for mapping url and pass it to prop `mapPageUrlFn` of the Render component.
+
 ### Giving styles
 If you followed the [basic example](#basic-example), tou take count that the page are rendered without styles, only pure text. To solve that we can use the Render props, like  the following cases
 
