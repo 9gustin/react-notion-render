@@ -118,7 +118,7 @@ I must work on a more clear documentation about this prop, but for now you can e
 
 In Notion, page IDs are used to link between Notion pages. For example, if you link to a Notion page titled "Test" at `notion.so/test-1a2b3c4d`, the underlying markup will look like this:
 
-```
+```HTML
 <div>Link to page
   <a href="/1a2b3c4d" ...>
     <span>Test</span>
