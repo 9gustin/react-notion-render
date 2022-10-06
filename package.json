@@ -15,7 +15,7 @@
   "bugs": "https://github.com/9gustin/react-notion-render/issues",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "module": "dist/index.modern.js",
+  "module": "dist/index.modern.mjs",
   "source": "src/index.tsx",
   "engines": {
     "node": ">=10"
