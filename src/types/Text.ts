@@ -21,5 +21,8 @@ export default interface Text {
   // eslint-disable-next-line camelcase
   plain_text: string
   href?: string
+  mention?: {
+    type: string
+  }
   mapPageUrlFn?: (input: any) => string
 }
