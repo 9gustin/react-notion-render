@@ -11,8 +11,13 @@ export function Text(props: IText) {
   const className = getClassname(annotations)
 
   if (type === 'mention') {
+    const redirectProps = props.mention?.type === 'page'
+      ? {
+        target: '_blank', rel: 'noreferrer'
+      } : {}
+
     return (
-      <a className={`rnr-mention ${className}`} href={href}>
+      <a className={`rnr-mention ${className}`} href={href} {...redirectProps}>
         {plain_text}
       </a>
     )
