@@ -129,7 +129,7 @@ In Notion, page IDs are used to link between Notion pages. For example, if you l
 When building a website from Notion content, you may use a different logic for creating paths to access those Notion pages. For example, the page above may now be available at `/test` path. To rewrite `/1a2b3c4d` to `/test`, you can define your own function for mapping url and pass it to prop `mapPageUrlFn` of the Render component.
 
 ### Giving styles
-If you followed the [basic example](#basic-example), tou take count that the page are rendered without styles, only pure text. To solve that we can use the Render props, like  the following cases
+If you followed the [basic example](#basic-example), you may notice that the page are rendered without styles, only pure text. To solve that we can use the Render props, like the following cases.
 
 #### Using default styles
 This package give you default styles, colors, text styles(blod, italic) and some little things, if you want use have to add two things:
