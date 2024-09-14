@@ -11,10 +11,13 @@ export function Text(props: IText) {
   const className = getClassname(annotations)
 
   if (type === 'mention') {
-    const redirectProps = props.mention?.type === 'page'
-      ? {
-        target: '_blank', rel: 'noreferrer'
-      } : {}
+    const redirectProps =
+      props.mention?.type === 'page'
+        ? {
+            target: '_blank',
+            rel: 'noreferrer'
+          }
+        : {}
 
     return (
       <a className={`rnr-mention ${className}`} href={href} {...redirectProps}>
@@ -42,11 +45,17 @@ export function Text(props: IText) {
   }
 
   if (text.link) {
-    let { link: { url } } = text
-    if (url[0] === "/" && mapPageUrlFn) {
+    let {
+      link: { url }
+    } = text
+    if (url[0] === '/' && mapPageUrlFn) {
       url = mapPageUrlFn(url.slice(1))
     }
-    element = <Link url={url} className={className}>{element}</Link>
+    element = (
+      <Link url={url} className='rnr-link'>
+        {element}
+      </Link>
+    )
   }
 
   return element
