@@ -45,17 +45,15 @@ export default function Home({ posts }) {
               <li key={post.id} className={styles.post}>
                 <h3 className={styles.postTitle}>
                   <Link href={`/${post.id}`}>
-                    <a>
                       <Render blocks={[post.properties.Name]}/>
-                    
+
                       {/* {renderTitle(post.properties.Name)} */}
-                    </a>
                   </Link>
                 </h3>
 
                 <p className={styles.postDescription}>{date}</p>
                 <Link href={`/${post.id}`}>
-                  <a> Read post →</a>
+                Read post →
                 </Link>
               </li>
             )

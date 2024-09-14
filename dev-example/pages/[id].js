@@ -14,8 +14,12 @@ import MyTableOfContents from '../components/TableOfContents'
 import styles from './index.module.css'
 
 const myMapper = {
-  heading_1: withContentValidation(({ children }) => <h1 className='my-class'>test:{children}</h1>),
-  image: withContentValidation(({ media }) => <NextImg src={media.src} width="100" height="100" />),
+  heading_1: withContentValidation(({ children }) => (
+    <h1 className='my-class'>test:{children}</h1>
+  )),
+  image: withContentValidation(({ media }) => (
+    <NextImg src={media.src} width='100' height='100' />
+  )),
   code: withContentValidation(CustomCode)
 }
 
@@ -44,8 +48,8 @@ export default function Post({ page, blocks }) {
               classNames
               useStyles
             />
-            <Link href='/blog'>
-              <a className={styles.back}>← Go home</a>
+            <Link className={styles.back} href='/blog'>
+              ← Go home
             </Link>
           </section>
         </article>
