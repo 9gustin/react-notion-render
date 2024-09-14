@@ -1,3 +1,5 @@
+import { LinkAttributes } from '../components/core/Render'
+
 type textTypes = 'text' | 'mention' | string
 
 type Link = {
@@ -25,4 +27,5 @@ export default interface Text {
     type: string
   }
   mapPageUrlFn?: (input: any) => string
+  linkAttributes?: (url: string) => LinkAttributes
 }

@@ -7,7 +7,15 @@ import Link from '../../common/Link'
 import withCustomComponent from '../../../hoc/withCustomComponent'
 
 export function Text(props: IText) {
-  const { text, annotations, type, href, plain_text, mapPageUrlFn } = props
+  const {
+    text,
+    annotations,
+    type,
+    href,
+    plain_text,
+    mapPageUrlFn,
+    linkAttributes
+  } = props
   const className = getClassname(annotations)
 
   if (type === 'mention') {
@@ -52,7 +60,7 @@ export function Text(props: IText) {
       url = mapPageUrlFn(url.slice(1))
     }
     element = (
-      <Link url={url} className='rnr-link'>
+      <Link url={url} linkAttributes={linkAttributes} className='rnr-link'>
         {element}
       </Link>
     )
