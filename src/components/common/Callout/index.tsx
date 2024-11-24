@@ -17,7 +17,7 @@ function Callout({ className, config }: DropedProps) {
       {content.icon?.emoji}
       <span>
         {content.text.map((text, index) => (
-          <Text key={index} {...text} />
+          <Text key={index} linkAttributes={config.linkAttributes} {...text} />
         ))}
       </span>
     </div>

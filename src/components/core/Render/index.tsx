@@ -1,9 +1,14 @@
 import React, { useMemo } from 'react'
 
-import { NotionBlock } from '../../../types/NotionBlock'
-import { indexGenerator } from '../../../utils/indexGenerator'
-import getBlocksToRender from '../../../utils/getBlocksToRender'
 import { BlockComponentsMapperType } from '../../../constants/BlockComponentsMapper/types'
+import { NotionBlock } from '../../../types/NotionBlock'
+import getBlocksToRender from '../../../utils/getBlocksToRender'
+import { indexGenerator } from '../../../utils/indexGenerator'
+
+export interface LinkAttributes {
+  target?: string
+  rel?: string
+}
 
 interface Props {
   blocks: NotionBlock[]
@@ -14,6 +19,7 @@ interface Props {
   mapPageUrlFn?: (input: any) => string
   simpleTitles?: boolean
   blockComponentsMapper?: BlockComponentsMapperType
+  linkAttributes?: (url: string) => LinkAttributes
 }
 
 function Render({
@@ -24,7 +30,8 @@ function Render({
   slugifyFn,
   mapPageUrlFn,
   simpleTitles,
-  blockComponentsMapper
+  blockComponentsMapper,
+  linkAttributes
 }: Props) {
   if (!blocks || !blocks.length) return null
 
@@ -35,8 +42,7 @@ function Render({
     return renderBlocks.map((block) => {
       const Component = block.getComponent(blockComponentsMapper)
 
-      return Component
-        ? (
+      return Component ? (
         <Component
           key={block.id}
           classNames={Boolean(classNames)}
@@ -47,19 +53,17 @@ function Render({
           simpleTitles={simpleTitles}
           index={index}
           blockComponentsMapper={blockComponentsMapper}
+          linkAttributes={linkAttributes}
         />
-          )
-        : null
+      ) : null
     })
   }, [blocks])
 
-  return useStyles
-    ? (
+  return useStyles ? (
     <div className='rnr-container'>{render}</div>
-      )
-    : (
+  ) : (
     <React.Fragment>{render}</React.Fragment>
-      )
+  )
 }
 
 export default Render

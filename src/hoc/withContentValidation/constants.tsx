@@ -4,7 +4,7 @@ import IText from '../../types/Text'
 
 import WrappedText, { Text } from '../../components/core/Text'
 
-export function getMediaProps (props: WithContentValidationProps) {
+export function getMediaProps(props: WithContentValidationProps) {
   const { block } = props
   const url = block.getUrl()
 
@@ -23,8 +23,8 @@ export function getMediaProps (props: WithContentValidationProps) {
   }
 }
 
-export function getDefaultProps (props: WithContentValidationProps) {
-  const { block, mapPageUrlFn } = props
+export function getDefaultProps(props: WithContentValidationProps) {
+  const { block, mapPageUrlFn, linkAttributes } = props
   const plainText = block.getPlainText()
 
   return {
@@ -35,10 +35,18 @@ export function getDefaultProps (props: WithContentValidationProps) {
       if (block.supportCustomComponents() && !text.annotations.code) {
         TextComponent = WrappedText
       }
-      return <TextComponent key={index} {...text} mapPageUrlFn={mapPageUrlFn} />
+      return (
+        <TextComponent
+          key={index}
+          {...text}
+          mapPageUrlFn={mapPageUrlFn}
+          linkAttributes={linkAttributes}
+        />
+      )
     }),
     language: block.content?.language,
     index: props.index,
-    blockComponentsMapper: props.blockComponentsMapper
+    blockComponentsMapper: props.blockComponentsMapper,
+    linkAttributes: props.linkAttributes
   }
 }
