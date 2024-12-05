@@ -33,7 +33,7 @@ export class ParsedBlock {
 
   constructor(initialValues: NotionBlock, isChild?: boolean) {
     const notionType = initialValues.type as blockEnum
-    const content = initialValues[notionType]
+    const content = (initialValues as unknown as Record<blockEnum, any>)[notionType] // TODO: Fix this type casting
 
     if (!notionType || !content) return
 
@@ -46,6 +46,11 @@ export class ParsedBlock {
     } else if (this.isList() && !isChild) {
       this.content = null
       this.items = [new ParsedBlock(initialValues, true)]
+    } else if (this.isColumnList()) {
+      this.content = null
+      this.items = content.children?.map((columnBlock: NotionBlock) => {
+        return new ParsedBlock(columnBlock, true)
+      }) ?? null
     } else {
       const {
         rich_text,
@@ -125,6 +130,10 @@ export class ParsedBlock {
       case blockEnum.TABLE:
       case blockEnum.TABLE_OF_CONTENTS:
         return 'TABLE'
+      case blockEnum.COLUMN_LIST:
+        return 'COLUMN_LIST'
+      case blockEnum.COLUMN:
+        return 'COLUMN'
       case blockEnum.CODE:
         return 'CODE'
       default:
@@ -166,6 +175,14 @@ export class ParsedBlock {
 
   isTable() {
     return this.getType() === 'TABLE'
+  }
+
+  isColumnList() {
+    return this.getType() === 'COLUMN_LIST'
+  }
+
+  isColumn() {
+    return this.getType() === "COLUMN"
   }
 
   equalsType(type: blockEnum) {
