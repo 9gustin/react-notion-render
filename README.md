@@ -11,22 +11,37 @@
 ![Stars](https://img.shields.io/github/stars/9gustin/react-notion-render.svg?style=social)
 
 ## Table of contents
- - [Description](#description)
- - [Installation](#installation)
- - [Examples](#examples)
-   - [Basic example](#basic-example)
-   - [Blog with Notion as CMS](#blog-with-notion-as-cms)
-   - [Notion page to single page](#notion-page-to-single-page)
- - [Usage](#usage)
-   - [Override built-in components (new)](#override-built-in-components-new)
-   - [Giving Styles](#giving-styles)
-   - [...moreProps](#moreprops)
-   - [Custom Components](#custom-components)
-   - [Display a custom table of contents](#display-a-custom-table-of-contents)
- - [Guides](#guides)
-   - [How to use code blocks](https://github.com/9gustin/react-notion-render/wiki/About-code-blocks-and-how-to-colorize-it-%F0%9F%8E%A8)
- - [Supported blocks](#supported-blocks)
- - [Contributions](#contributions)
+- [Table of contents](#table-of-contents)
+- [Description](#description)
+- [Installation](#installation)
+- [Examples](#examples)
+  - [Basic example](#basic-example)
+  - [Fetching data with @notionhq/client](#fetching-data-with-notionhqclient)
+  - [Blog with Notion as CMS](#blog-with-notion-as-cms)
+  - [Notion page to single page](#notion-page-to-single-page)
+- [Usage](#usage)
+  - [Override built-in components (new)](#override-built-in-components-new)
+  - [How works?](#how-works)
+  - [Mapping page url](#mapping-page-url)
+  - [Giving styles](#giving-styles)
+    - [Using default styles](#using-default-styles)
+    - [Using your own styles](#using-your-own-styles)
+  - [...moreProps](#moreprops)
+    - [Custom title url](#custom-title-url)
+    - [Preserve empty blocks](#preserve-empty-blocks)
+  - [Custom components](#custom-components)
+    - [Link](#link)
+  - [Image](#image)
+  - [Video](#video)
+  - [Display a custom table of contents](#display-a-custom-table-of-contents)
+- [Guides](#guides)
+  - [How to use code blocks](#how-to-use-code-blocks)
+- [Supported blocks](#supported-blocks)
+- [Contributions:](#contributions)
+  - [Running the dev example](#running-the-dev-example)
+  - [Running another example](#running-another-example)
+  - [Project structure](#project-structure)
+- [License](#license)
 
 ## Description
 
@@ -61,6 +76,89 @@ export const getStaticProps = async () => {
   }
 }
 ```
+
+### Fetching data with @notionhq/client
+
+```jsx
+// e.g. /lib/notion-cms.ts
+
+import { Client } from '@notionhq/client'
+
+// Initialize a new client
+const DATABASE_ID = '54d0ff3097694ad08bd21932d598b93d'
+const notion = new Client({ auth: process.env.NOTION_TOKEN })
+
+export const fetchPages = cache(() => {
+    return notion.databases.query({
+        database_id: DATABASE_ID,
+        filter: {
+            property: "status",
+            status: {
+                equals: "live",
+            }
+        } // if you have a status property for controlling, you can easily filter it
+
+    })
+})
+
+// If you have a slug property you can use this function to get the page by slug
+export const fetchBySlug = cache((slug: string) => {
+    return notion.databases.query({
+        database_id: notionBlogDatabaseId,
+        filter: {
+            property: "slug",
+            rich_text: {
+                equals: slug,
+            },
+        }
+    })
+        .then((res) => res.results[0] as PageObjectResponse | undefined)
+}) 
+
+// OR - you can simply just use the page id
+export const getPageById = cache((pageId: string) => {
+    return notion.pages.retrieve({
+        page_id: pageId,
+    })
+}) 
+
+// This is a function to get the blocks of a page (and the children blocks)
+export const getBlocksWithChildren = cache(async (pageId: string) => {
+    const response = await notion.blocks.children.list({
+        block_id: pageId,
+    })
+    const blocks = response.results as BlockObjectResponse[];
+
+    const childBlocks = await Promise.all(
+        blocks
+          .filter((block) => block.has_children)
+          .map(async (block) => {
+            return {
+              id: block.id,
+              children: await fetchPageBlock(block.id)
+            }
+          })
+    );
+
+    const blocksWithChildren = blocks.map((block) => {
+        // Add child blocks if the block should contain children but none exists
+        if (block.has_children) {
+          const blockType = block.type;
+          if (blockType in block && !(block as any)[blockType].children) {
+            (block as any)[blockType].children = childBlocks.find(
+              (x) => x.id === block.id
+            )?.children;
+          }
+        }
+        return block
+    });
+
+    return blocksWithChildren;
+})
+```
+
+After initializing this, you can use the functions in the example above to get the blocks of a page. See the basic example above.
+
 
 ### Blog with Notion as CMS
 
@@ -344,6 +442,7 @@ Most common block types are supported. We happily accept pull requests to add su
 | Table Of Contents	| ✅ |
 | Table | ✅ |
 | Synced blocks | ✅ |
+| Columns | ✅ |
 | Web Bookmark |	❌ |	
 
 ## Contributions:
