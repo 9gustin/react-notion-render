@@ -14,6 +14,8 @@ import Image from '../../components/common/Image/wrappedImage'
 import Video from '../../components/common/Video/wrappedVideo'
 import Embed from '../../components/common/Embed/wrappedEmbed'
 import TableOfContents from '../../components/common/TableOfContents'
+import ColumnList from '../../components/common/ColumnList'
+import Column from '../../components/common/ColumnList/Column'
 
 import { BlockComponentsMapperType } from './types'
 
@@ -40,5 +42,7 @@ export const BlockComponentsMapper: BlockComponentsMapperType = {
   [blockEnum.TABLE]: Table,
   [blockEnum.TABLE_ROW]: undefined,
   [blockEnum.SYNCED_BLOCK]: undefined,
-  [blockEnum.BOOKMARK]: undefined
+  [blockEnum.BOOKMARK]: undefined,
+  [blockEnum.COLUMN_LIST]: ColumnList,
+  [blockEnum.COLUMN]: Column
 }

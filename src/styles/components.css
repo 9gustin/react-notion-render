@@ -53,3 +53,35 @@
 .rnr-container .has-row-header tr > td:first-child {
   background-color: var(--light-color);
 }
+
+/* Column List */
+.rnr-container .rnr-column_list {
+  display: grid;
+  gap: 2rem;
+  width: 100%;
+}
+
+.rnr-container .rnr-column_list[data-columns="2"] {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.rnr-container .rnr-column_list[data-columns="3"] {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.rnr-container .rnr-column_list[data-columns="4"] {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.rnr-container .rnr-column_list[data-columns="5"] {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.rnr-container .rnr-column {
+  width: 100%;
+}
+
+.rnr-container .rnr-column > *:not(:last-child) {
+  margin-bottom: 1rem;
+}
+

@@ -37,6 +37,8 @@ interface Block {
   [blockEnum.TABLE_ROW]?: BlockTypeContent & {
     cells: Text[];
   }
+  [blockEnum.COLUMN]?: BlockTypeContent
+  [blockEnum.COLUMN_LIST]?: BlockTypeContent
 }
 
 export type NotionBlock = Block | Title

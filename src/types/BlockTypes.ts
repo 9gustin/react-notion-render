@@ -22,6 +22,8 @@ export enum blockEnum {
   TABLE_OF_CONTENTS = 'table_of_contents',
   TABLE = 'table',
   TABLE_ROW = 'table_row',
+  COLUMN_LIST = 'column_list',
+  COLUMN = 'column'
 }
 
 export const UNSUPPORTED_TYPE = 'unsupported'
