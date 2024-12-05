@@ -96,7 +96,7 @@ export const fetchPages = cache(() => {
             status: {
                 equals: "live",
             }
-        } // if you have a status property for controlling, you can easily filter it
+        } // if you have a status property for controlling the post status, you can easily filter it
 
     })
 })
@@ -275,6 +275,8 @@ This is independient to the prop **useStyles**, you can combinate them or use se
 | rnr-table_of_contents | Table of contents | ul |
 | rnr-table | Table | table |
 | rnr-table_row | Table row | tr |
+| rnr-column_list | ColumnList | div | 
+| rnr-column | Column | div |
 
 
 **Text Styles**  <br />
