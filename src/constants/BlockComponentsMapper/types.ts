@@ -27,4 +27,6 @@ export type BlockComponentsMapperType = {
   [blockEnum.TABLE_ROW]?: BlockComponent
   [blockEnum.SYNCED_BLOCK]?: BlockComponent
   [blockEnum.BOOKMARK]?: BlockComponent
+  [blockEnum.COLUMN_LIST]?: BlockComponent
+  [blockEnum.COLUMN]?: BlockComponent
 }
