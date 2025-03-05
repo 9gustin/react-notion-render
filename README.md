@@ -100,7 +100,7 @@ https://github.com/9gustin/react-notion-render/blob/154e094e9477b5dada03358e2cec
 <br />
 
 And here the notion types enum(you can import it):
-https://github.com/9gustin/react-notion-render/blob/feature/customBlockMapper/src/types/BlockTypes.ts
+https://github.com/9gustin/react-notion-render/blob/main/src/types/BlockTypes.ts
 
 **withContentValidation** <br />
 I recommend that you import withContentValidation HOC from the package and wrap component on it, this HOC parse props and make it more clean, here the font-code:
